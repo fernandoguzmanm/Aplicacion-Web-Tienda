@@ -12,14 +12,11 @@ header {
     text-align: center;
 }
 
-header h1 {
-    margin: 0;
-}
-
 nav ul {
     list-style-type: none;
     padding: 0;
     text-align: center;
+    margin: 0;
 }
 
 nav ul li {
@@ -30,51 +27,85 @@ nav ul li {
 nav ul li a {
     color: white;
     text-decoration: none;
+    font-weight: bold;
 }
 
 nav ul li a:hover {
     text-decoration: underline;
 }
 
-section {
-    padding: 15px;
-    margin: 20px;
-}
-
-section h2 {
+h2 {
     color: #007BFF;
-}
-
-ul {
-    line-height: 1.5;
-}
-
-ul li {
-    margin-bottom: 10px;
-}
-
-table {
-    width: 100%;
-    border: 1px solid #ddd;
-    border-collapse: collapse;
+    text-align: center;
     margin-top: 20px;
 }
 
-table th, table td {
-    padding: 8px;
-    border: 1px solid #ddd;
-    text-align: left;
+form {
+    background: white;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-table th {
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.motivo-label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.motivo-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+}
+
+.motivo-container label {
+    font-weight: normal;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="submit"] {
     background-color: #007BFF;
     color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 15px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-table tr:hover {
-    background-color: #f1f1f1;
+input[type="submit"]:hover {
+    background-color: #0056b3;
 }
