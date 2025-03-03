@@ -1,0 +1,37 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <link rel="stylesheet" href="CSS/estilo.css">
+</head>
+<body>
+    <div id="contenedor">
+        <?php include("includes/vistas/comun/cabecera.php"); ?>
+        <?php include("includes/vistas/comun/sidebarIzq.php"); ?>
+
+        <div id="contenido">
+            <?php
+            if (isset($_SESSION["login"]) && $_SESSION["login"] == true) {
+                echo "<h2>Adiós muy buenas</h2>";
+                echo "<p>Gracias por visitar nuestra web. Hasta pronto.</p>";
+                echo "<a href='index.php'>Volver a la página principal</a>";
+                session_destroy();
+            } else {
+                echo "<h2>No hay sesión iniciada</h2>";
+                echo "<p><a href='index.php'>Volver a la página principal</a></p>";
+            }
+            ?>
+        </div>
+
+        <?php include("includes/vistas/comun/sidebarDer.php"); ?>
+        <?php include("includes/vistas/comun/pie.php"); ?>
+    </div> <!-- Fin del contenedor -->
+</body>
+</html>
