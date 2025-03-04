@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($user == "user" && $pwd == "userpass") {
         $_SESSION["login"] = true;
         $_SESSION["nombre"] = "Usuario";
-        header("Location: contenido.php");
+        header("Location: index.php");
         exit();
     } elseif ($user == "admin" && $pwd == "adminpass") {
         $_SESSION["login"] = true;
