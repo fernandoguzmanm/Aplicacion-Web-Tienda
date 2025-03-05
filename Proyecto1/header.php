@@ -17,6 +17,7 @@ $page_title = basename($_SERVER['PHP_SELF'], ".php");
         <nav>
             <ul>
                 <li><a href="index.php">Inicio</a></li>
+                <li><a href="tienda.php">Tienda</a></li>
                 <li><a href="detalles.php">Detalles</a></li>
                 <li><a href="bocetos.php">Bocetos</a></li>
                 <li><a href="miembros.php">Miembros</a></li>
