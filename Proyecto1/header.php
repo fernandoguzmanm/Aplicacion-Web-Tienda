@@ -20,7 +20,9 @@ $page_title = basename($_SERVER['PHP_SELF'], ".php");
         <div id="login-container">
             <?php
             if (isset($_SESSION['usuario'])) {
-                echo "<p>Bienvenido, " . $_SESSION['usuario'] . " | <a href='logout.php'>Cerrar sesión</a></p>";
+                var_dump($_SESSION);
+                echo "<p>Bienvenido, " . $_SESSION['nombre'];
+                echo "<p><a href='logout.php'>Cerrar sesión</a></p>";
             } else {
                 echo "<p><a href='login.php'>Iniciar sesión</a></p>";
             }

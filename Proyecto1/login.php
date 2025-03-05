@@ -14,11 +14,13 @@
         <div id="contenido">
             <h2>Iniciar Sesión</h2>
             <form action="procesarLogin.php" method="post">
-                <label for="user">Usuario:</label>
-                <input type="text" id="user" name="user" required><br>
-                <label for="pwd">Contraseña:</label>
-                <input type="password" id="pwd" name="pwd" required><br>
+                <label for="nombre">Usuario:</label>
+                <input type="text" id="nombre" name="nombre" required><br>
+                <label for="contraseña">Contraseña:</label>
+                <input type="contraseña" id="contraseña" name="contraseña" required><br>
                 <button type="submit">Iniciar Sesión</button>
+                <p>Si todavía no tienes una cuenta creada:</p>
+                <a href="registro.php">Registro</a></li>
                    </div>
 
         

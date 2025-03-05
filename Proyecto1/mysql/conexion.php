@@ -10,5 +10,4 @@
         die("Database connection failed: " . mysqli_connect_error());
     }
     echo "Connected successfully";
-    $conn->close();
 ?>
