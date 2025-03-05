@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/cssHeader.css">
+</head>
+<body>
+
 <?php
 session_start(); // Iniciar sesión para detectar si el usuario ha iniciado sesión
 $page_title = basename($_SERVER['PHP_SELF'], ".php");
@@ -20,7 +28,7 @@ $page_title = basename($_SERVER['PHP_SELF'], ".php");
         <div id="login-container">
             <?php
             if (isset($_SESSION['usuario'])) {
-                var_dump($_SESSION);
+                //var_dump($_SESSION);
                 echo "<p>Bienvenido, " . $_SESSION['nombre'];
                 echo "<p><a href='logout.php'>Cerrar sesión</a></p>";
             } else {
@@ -30,56 +38,3 @@ $page_title = basename($_SERVER['PHP_SELF'], ".php");
         </div>
     </div>
 </header>
-
-<style>
-    header {
-        background-color: #007BFF;
-        color: white;
-        padding: 10px 20px;
-    }
-
-    .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    h1 {
-        margin: 0;
-    }
-
-    nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    nav ul li {
-        display: inline;
-        margin: 0 15px;
-    }
-
-    nav ul li a {
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    nav ul li a:hover {
-        text-decoration: underline;
-    }
-
-    #login-container {
-        text-align: right;
-    }
-
-    #login-container a {
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    #login-container a:hover {
-        text-decoration: underline;
-    }
-</style>
