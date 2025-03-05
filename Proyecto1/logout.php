@@ -13,9 +13,8 @@ if (session_status() == PHP_SESSION_NONE) {
 </head>
 <body>
     <div id="contenedor">
-        <?php include("includes/vistas/comun/cabecera.php"); ?>
-        <?php include("includes/vistas/comun/sidebarIzq.php"); ?>
-
+        <?php include("header.php"); ?>
+        
         <div id="contenido">
             <?php
             if (isset($_SESSION["login"]) && $_SESSION["login"] == true) {
@@ -30,8 +29,6 @@ if (session_status() == PHP_SESSION_NONE) {
             ?>
         </div>
 
-        <?php include("includes/vistas/comun/sidebarDer.php"); ?>
-        <?php include("includes/vistas/comun/pie.php"); ?>
     </div> <!-- Fin del contenedor -->
 </body>
 </html>
