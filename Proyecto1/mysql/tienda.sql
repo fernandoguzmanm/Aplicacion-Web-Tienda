@@ -58,17 +58,29 @@ CREATE TABLE `usuarios` (
 --
 
 CREATE TABLE `productos` (
-  `id_producto` INT(7) NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(25) NOT NULL,
-  `descripcion` VARCHAR(100) NOT NULL,
-  `precio` DECIMAL(10, 2) NOT NULL,
-  `stock` INT(10) NOT NULL,
-  `id_vendedor` INT(10) NOT NULL,
-  `id_categoria` INT(10) NOT NULL,
+  `id_producto` int(7) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(25) NOT NULL,
+  `precio` float NOT NULL,
+  `imagen` text NOT NULL,
+  `descripcion` varchar(100) NOT NULL,
+  `stock` int(10) NOT NULL,
+  `id_vendedor` int(10) NOT NULL
+  --`id_categoria` INT(10) NOT NULL,
   PRIMARY KEY (`id_producto`),
   FOREIGN KEY (`id_vendedor`) REFERENCES `usuarios`(`id_usuario`) ON DELETE CASCADE,
-  FOREIGN KEY (`id_categoria`) REFERENCES `categorias`(`id_categoria`) ON DELETE CASCADE
+  --FOREIGN KEY (`id_categoria`) REFERENCES `categorias`(`id_categoria`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `productos`
+--
+
+INSERT INTO `productos` (`id_producto`, `nombre`, `precio`, `imagen`, `descripcion`, `stock`, `id_vendedor`) VALUES
+(0, 'pepino', 1.39, 'pepino.jpg', 'fruta', 20, 1),
+(1, 'platanos', 3.49, 'platanos.jpg', 'fruta', 20, 1),
+(2, 'tomates', 1.59, 'tomates.jpg', 'fruta', 20, 1),
+(5, 'arroz', 1.39, 'arroz.jpg', 'cereales', 20, 2);
+
 
 -- --------------------------------------------------------
 
