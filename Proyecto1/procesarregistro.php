@@ -5,8 +5,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id_usuario = uniqid(); // Generar un ID único
     $nombre = trim($_POST["nombre"]);
     $email = trim($_POST["email"]);
-    //$password = password_hash($_POST["password"], PASSWORD_DEFAULT); // Cifrar contraseña
-    $password = trim($_POST["password"]);
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT); // Cifrar contraseña
+    //$password = trim($_POST["password"]);
     $tipo_usuario = "cliente"; // Por defecto, el usuario es cliente
     $puntis_fidelidad = 0; // Inicia con 0 puntos de fidelidad
 

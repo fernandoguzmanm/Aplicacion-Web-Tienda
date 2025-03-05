@@ -22,10 +22,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->fetch();
 
         // Verificar si la contraseña es correcta
-        var_dump($contraseña);
-        var_dump($hashed_contraseña);
-        //if (password_verify($contraseña, $hashed_contraseña)) {
-        if ($contraseña == $hashed_contraseña) {
+        var_dump($_POST);
+        //var_dump($contraseña);
+        //var_dump($hashed_contraseña);
+        if (password_verify($contraseña, $hashed_contraseña)) {
+        //if ($contraseña == $hashed_contraseña) {
             // Iniciar sesión y guardar información
             $_SESSION["login"] = true;
             $_SESSION["id_usuario"] = $id_usuario;

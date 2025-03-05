@@ -17,7 +17,7 @@
                 <label for="nombre">Usuario:</label>
                 <input type="text" id="nombre" name="nombre" required><br>
                 <label for="contraseña">Contraseña:</label>
-                <input type="contraseña" id="contraseña" name="contraseña" required><br>
+                <input type="password" id="contraseña" name="contraseña" required><br>
                 <button type="submit">Iniciar Sesión</button>
                 <p>Si todavía no tienes una cuenta creada:</p>
                 <a href="registro.php">Registro</a></li>
