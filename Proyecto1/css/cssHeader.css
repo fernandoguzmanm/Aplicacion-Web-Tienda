@@ -1,51 +1,96 @@
-    header {
-        background-color: #007BFF;
-        color: white;
-        padding: 0px 20px;
-    }
+/* Estilo general */
+/* Establecer una altura mínima para evitar cambios de tamaño */
+header {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 80px;
+    max-height: 80px; /* Fijar altura máxima */
+    overflow: hidden; /* Evita que elementos internos lo expandan */
+}
 
-    .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
 
-    h1 {
-        margin: 0;
-    }
 
-    nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
+/* Contenedor principal */
+.header-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    nav ul li {
-        display: inline;
-        margin: 0 15px;
-    }
+/* Navegación */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
 
-    nav ul li a {
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-    }
+nav ul li {
+    margin: 0 15px;
+}
 
-    nav ul li a:hover {
-        text-decoration: underline;
-    }
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-    #login-container {
-        text-align: right;
-    }
+nav ul li a:hover {
+    text-decoration: underline;
+}
 
-    #login-container a {
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-    }
+/* Contenedor del login y carrito */
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
 
-    #login-container a:hover {
-        text-decoration: underline;
-    }
+/* Estilo del botón del carrito */
+#carrito-container {
+    background-color: white;
+    border-radius: 20px;
+    padding: 5px 15px;
+}
 
+.carrito-btn {
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.carrito-btn:hover {
+    text-decoration: underline;
+}
+
+#login-container {
+    min-width: 200px;
+    max-width: 200px; /* Ancho fijo */
+    overflow: hidden; /* Evita que el texto largo lo agrande */
+    text-align: right;
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+
+#carrito-container {
+    min-width: 120px;
+    max-width: 120px; /* Ancho fijo */
+    overflow: hidden;
+}
+
+
+header h1 {
+    font-size: 2em;
+    margin: 0;
+    line-height: 80px; /* Asegura que el h1 ocupe la misma altura */
+}
+
+
+header div, header nav, #login-container, #carrito-container {
+    margin: 0;
+    padding: 5px 0;
+}

@@ -9,6 +9,9 @@
 <?php
 session_start(); // Iniciar sesión para detectar si el usuario ha iniciado sesión
 $page_title = basename($_SERVER['PHP_SELF'], ".php");
+
+// Contar productos en el carrito
+$carrito_count = isset($_SESSION['carrito']) ? array_sum(array_column($_SESSION['carrito'], 'cantidad')) : 0;
 ?>
 
 <header>
@@ -26,16 +29,22 @@ $page_title = basename($_SERVER['PHP_SELF'], ".php");
             </ul>
         </nav>
 
-        <div id="login-container">
-            <?php
-            if (isset($_SESSION['usuario'])) {
-                //var_dump($_SESSION);
-                echo "<p>Bienvenido, " . $_SESSION['nombre'];
-                echo "<p><a href='logout.php'>Cerrar sesión</a></p>";
-            } else {
-                echo "<p><a href='login.php'>Iniciar sesión</a></p>";
-            }
-            ?>
+        <div class="right-section">
+            <div id="login-container">
+                <?php if (isset($_SESSION['usuario'])) : ?>
+                    <p>Bienvenido, <?php echo htmlspecialchars($_SESSION['usuario']); ?></p>
+                    <p><a href="logout.php">Cerrar sesión</a></p>
+                <?php else : ?>
+                    <p><a href="login.php">Iniciar sesión</a></p>
+                <?php endif; ?>
+            </div>
+
+            <!-- Botón del carrito -->
+            <div id="carrito-container">
+                <a href="carrito.php" class="carrito-btn">
+                    🛒 Carrito <?php if ($carrito_count > 0) echo "($carrito_count)"; ?>
+                </a>
+            </div>
         </div>
     </div>
 </header>
