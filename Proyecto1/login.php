@@ -24,6 +24,6 @@
                    </div>
 
         
-    </div> <!-- Fin del contenedor -->
+    </div>
 </body>
 </html>
