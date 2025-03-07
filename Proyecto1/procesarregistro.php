@@ -2,7 +2,6 @@
 require './mysql/conexion.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id_usuario = uniqid();
     $nombre = trim($_POST["nombre"]);
     $email = trim($_POST["email"]);
     $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
@@ -20,9 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->num_rows > 0) {
         echo "El usuario ya existe. <a href='registro.php'>Intentar de nuevo</a>";
     } else {
-        $stmt = $conn->prepare("INSERT INTO usuarios (id_usuario, nombre, email, contraseña, tipo_usuario, puntos_fidelidad) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssi", $id_usuario, $nombre, $email, $password, $tipo_usuario, $puntos_fidelidad);
-
+        
+        $stmt = $conn->prepare("INSERT INTO usuarios (nombre, email, contraseña, tipo_usuario, puntos_fidelidad) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssi", $nombre, $email, $password, $tipo_usuario, $puntos_fidelidad);
+        
         if ($stmt->execute()) {
             echo "Registro exitoso. <a href='login.php'>Iniciar sesión</a>";
         } else {

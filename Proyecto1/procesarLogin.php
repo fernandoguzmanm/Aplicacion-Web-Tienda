@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($contraseña, $hashed_contraseña)) {
             $_SESSION["login"] = true;
             $_SESSION["id_usuario"] = $id_usuario;
-            $_SESSION["nombre"] = $nombre;//aqui pilla el email y ns por q
+            $_SESSION["nombre"] = $nombre;
             
             if ($tipo_usuario == "admin") {
                 $_SESSION["esAdmin"] = true;

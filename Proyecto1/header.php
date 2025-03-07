@@ -7,7 +7,7 @@
 <body>
 
 <?php
-//session_start(); // Iniciar sesión para detectar si el usuario ha iniciado sesión
+session_start(); // Iniciar sesión para detectar si el usuario ha iniciado sesión
 $page_title = basename($_SERVER['PHP_SELF'], ".php");
 
 // Contar productos en el carrito
@@ -33,7 +33,6 @@ $carrito_count = isset($_SESSION['carrito']) ? array_sum(array_column($_SESSION[
         <div class="right-section">
             <div id="login-container">
                 <?php if (isset($_SESSION['usuario'])) : ?>
-                    
                     <p>Bienvenido, <?php echo htmlspecialchars($_SESSION['nombre']); ?></p>
                     <p><a href="logout.php">Cerrar sesión</a></p>
                 <?php else : ?>

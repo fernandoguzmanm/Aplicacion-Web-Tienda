@@ -9,8 +9,8 @@
 </head>
 <body>
 
-<?php include 'header.php'; ?> <!-- Incluir la cabecera modular -->
-
+<?php include 'header.php'; ?>
+<p><?php $_SESSION ?></p>
 <main>
     <h2>Bienvenido a ShopEasy</h2>
     <div class="logo-container">
