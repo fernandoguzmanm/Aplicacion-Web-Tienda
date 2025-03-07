@@ -17,8 +17,10 @@ if (session_status() == PHP_SESSION_NONE) {
         
         <div id="contenido">
             <?php
-            if (isset($_SESSION["login"]) && $_SESSION["login"] == true) {
-                echo "<h2>Adiós muy buenas</h2>";
+            if (isset($_SESSION["login"])) {
+                echo "<h2>Adiós</h2>";
+                echo "<h2>Adiós</h2>";
+                echo "<h2>Adiós</h2>";
                 echo "<p>Gracias por visitar nuestra web. Hasta pronto.</p>";
                 echo "<a href='index.php'>Volver a la página principal</a>";
                 session_destroy();
@@ -29,6 +31,6 @@ if (session_status() == PHP_SESSION_NONE) {
             ?>
         </div>
 
-    </div> <!-- Fin del contenedor -->
+    </div>
 </body>
 </html>

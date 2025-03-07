@@ -40,7 +40,6 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `email`, `contraseña`, `tipo_usuario`, `puntos_fidelidad`) VALUES
 (1, 'Vendedor1', 'vendedor1@gmail.com', 'v1', 'vendedor', 0),
 (2, 'Vendedor2', 'vendedor2@gmail.com', 'v2', 'vendedor', 0);
-
 -- --------------------------------------------------------
 -- Estructura de tabla para la tabla `productos`
 
