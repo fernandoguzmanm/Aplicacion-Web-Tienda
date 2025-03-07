@@ -2,14 +2,14 @@
 session_start();
 require './mysql/conexion.php';
 
-$nombre = $contraseña = "";
+$email = $contraseña = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombre = test_input($_POST["nombre"]);
+    $email = test_input($_POST["email"]);
     $contraseña = test_input($_POST["contraseña"]);
     
-    $stmt = $conn->prepare("SELECT id_usuario, nombre, contraseña, tipo_usuario FROM usuarios WHERE nombre = ?");
-    $stmt->bind_param("s", $nombre);
+    $stmt = $conn->prepare("SELECT id_usuario, nombre, contraseña, tipo_usuario FROM usuarios WHERE email = ?");
+    $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
     
@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($contraseña, $hashed_contraseña)) {
             $_SESSION["login"] = true;
             $_SESSION["id_usuario"] = $id_usuario;
+            $_SESSION["email"] = $email;
             $_SESSION["nombre"] = $nombre;
             
             if ($tipo_usuario == "admin") {

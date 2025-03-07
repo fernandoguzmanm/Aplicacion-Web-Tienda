@@ -2,12 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./css/cssHeader.css">
+    <link rel="stylesheet" href="./css/cssHeader.css?v=2">
 </head>
 <body>
 
 <?php
-session_start(); // Iniciar sesión para detectar si el usuario ha iniciado sesión
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 $page_title = basename($_SERVER['PHP_SELF'], ".php");
 
 // Contar productos en el carrito

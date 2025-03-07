@@ -8,10 +8,10 @@
 </head>
 <body>
 
-<?php include 'header.php'; ?> <!-- Incluir el header modular -->
+<?php include 'header.php'; ?>
 
 <main>
-    <h1>Formulario de Contacto</h1>
+    <h2>Formulario de Contacto</h2>
 
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {

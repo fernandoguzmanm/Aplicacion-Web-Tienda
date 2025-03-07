@@ -14,8 +14,8 @@
         <div id="contenido">
             <h2>Iniciar Sesión</h2>
             <form action="procesarLogin.php" method="post">
-                <label for="nombre">Usuario:</label>
-                <input type="text" id="nombre" name="nombre" required><br>
+                <label for="email">Correo:</label>
+                <input type="email" id="email" name="email" required><br>
                 <label for="contraseña">Contraseña:</label>
                 <input type="password" id="contraseña" name="contraseña" required><br>
                 <button type="submit">Iniciar Sesión</button>

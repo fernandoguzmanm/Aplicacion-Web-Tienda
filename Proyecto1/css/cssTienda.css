@@ -66,3 +66,9 @@ body {
 .btn:hover {
     background-color: #0056b3;
 }
+
+h2, h3 {
+    text-align: center;
+    color: #007BFF;
+    margin-top: 20px;
+}

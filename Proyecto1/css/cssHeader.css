@@ -9,7 +9,7 @@ header {
     align-items: center;
     min-height: 80px;
     max-height: 80px; /* Fijar altura máxima */
-    overflow: hidden; /* Evita que elementos internos lo expandan */
+    /* overflow: hidden; Evita que elementos internos lo expandan */
 }
 
 
@@ -28,16 +28,18 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
+    gap: 30px;
 }
 
 nav ul li {
-    margin: 0 15px;
+    margin: 0;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    font-size: 16px;
 }
 
 nav ul li a:hover {
@@ -56,12 +58,18 @@ nav ul li a:hover {
     background-color: white;
     border-radius: 20px;
     padding: 5px 15px;
+    
+    align-items: center;
+    justify-content: center;
 }
 
 .carrito-btn {
     color: #007BFF;
     text-decoration: none;
     font-weight: bold;
+
+    align-items: center;
+    justify-content: center;
 }
 
 .carrito-btn:hover {
@@ -93,4 +101,8 @@ header h1 {
 header div, header nav, #login-container, #carrito-container {
     margin: 0;
     padding: 5px 0;
+}
+
+html {
+    overflow-y: scroll;
 }

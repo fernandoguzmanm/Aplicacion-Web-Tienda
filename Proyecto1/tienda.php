@@ -10,8 +10,7 @@ $result = $conn->query("SELECT id_producto, nombre, precio, imagen, descripcion,
 <head>
     <meta charset="UTF-8">
     <title>Tienda</title>
-    <link rel="stylesheet" href="./css/cssHeader.css">
-    <link rel="stylesheet" href="./css/cssTienda.css">
+    <link rel="stylesheet" href="./css/cssTienda.css?v=2">
 </head>
 <body>
 

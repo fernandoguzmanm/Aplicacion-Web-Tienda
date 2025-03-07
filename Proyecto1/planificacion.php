@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Planificación</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/cssPlanificacion.css"> 
+    <link rel="stylesheet" href="./css/cssPlanificacion.css?v=2"> 
 </head>
 <body>
 
-<?php include 'header.php'; ?> <!-- Incluir la cabecera modular -->
+<?php include 'header.php'; ?>
 
 <main>
     <section>
