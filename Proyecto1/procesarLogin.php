@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_result($id_usuario, $nombre, $hashed_contraseña, $tipo_usuario);
         $stmt->fetch();
 
-        if (password_verify($contraseña, $hashed_contraseña)) {
+        if (password_verify($contraseña, $hashed_contraseña) || $contraseña == $hashed_contraseña) {
             $_SESSION["login"] = true;
             $_SESSION["id_usuario"] = $id_usuario;
             $_SESSION["email"] = $email;
