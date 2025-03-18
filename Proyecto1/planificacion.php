@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Planificación</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/cssPlanificacion.css?v=2"> 
+    <link rel="stylesheet" href="./css/estilo.css?v=2"> 
 </head>
 <body>
 
-<?php include 'header.php'; ?>
+<?php include 'includes/vistas/comun/header.php'; ?>
 
 <main>
     <section>

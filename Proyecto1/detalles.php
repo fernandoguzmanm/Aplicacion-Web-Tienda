@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Detalles</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/cssDetalles.css?v=3">
+    <link rel="stylesheet" href="./css/estilo.css">
 </head>
 <body>
 
-<?php include 'header.php'; ?> 
+<?php include 'includes/vistas/comun/header.php'; ?> 
 
 <main>
     <h2>Introducción</h2>

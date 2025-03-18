@@ -9,11 +9,11 @@ if (session_status() == PHP_SESSION_NONE) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consola de Administración</title>
-    <link rel="stylesheet" href="CSS/cssAdmin.css">
+    <link rel="stylesheet" href="CSS/estilo.css">
 </head>
 <body>
     <div id="contenedor">
-        <?php include("header.php"); ?>
+        <?php include("includes/vistas/comun/header.php"); ?>
 
         <div id="contenido">
             <?php

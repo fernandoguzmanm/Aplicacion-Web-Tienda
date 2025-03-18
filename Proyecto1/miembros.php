@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <title>Miembros del Grupo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/cssMiembros.css?v=3"> 
+    <link rel="stylesheet" href="./css/estilo.css?v=3"> 
 </head>
 <body>
 
-<?php include 'header.php'; ?> <!-- Incluir la cabecera modular -->
+<?php include 'includes/vistas/comun/header.php'; ?> <!-- Incluir la cabecera modular -->
 
 <main>
     <h2>Miembros del Grupo</h2>
 
-    <div class="references">
+
         <ul>
             <?php
             $miembros = [
@@ -28,7 +28,7 @@
             }
             ?>
         </ul>
-    </div>
+
 
     <?php
     $datos_miembros = [

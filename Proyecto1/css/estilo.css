@@ -1,0 +1,134 @@
+/* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+/* Enlaces comunes */
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Botones comunes */
+button, .btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-decoration: none;
+}
+
+button:hover, .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo de títulos */
+h2, h3 {
+    text-align: center;
+    color: #007BFF;
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+/* Contenedores principales */
+.container, .admin-container, .carrito-container, .productos-container, .member, .references {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tablas comunes */
+table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #007BFF;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+img {
+    display: block;
+    width: 300px;
+    height: 200px;
+    margin: 20px auto;
+    border-radius: 10%;
+    object-fit: cover;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Flexbox común */
+.references, .member {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: 1px solid #007BFF;
+    background-color: #E3F2FD;
+    border-radius: 5px;
+    color: #000000;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+/* Contenedor de productos */
+.productos-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Estilo para los párrafos (p) como en detalles.css */
+p {
+    line-height: 1.6;
+    font-size: 1.1em;
+    text-align: justify;
+    padding: 10px;
+    margin: 0 auto 20px;
+    max-width: 80%;
+}
+
+ul {
+    list-style-type: none; /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    text-align: center; /* Alinea el texto a la izquierda */
+}

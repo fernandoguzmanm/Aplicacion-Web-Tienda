@@ -2,7 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-include './mysql/conexion.php'; 
+include './includes/mysql/conexion.php'; 
 
 // Inicializar el carrito si no existe
 if (!isset($_SESSION['carrito'])) {
@@ -59,11 +59,11 @@ if (isset($_GET['clear'])) {
 <head>
     <meta charset="UTF-8">
     <title>Carrito de Compras</title>
-    <link rel="stylesheet" href="CSS/cssCarrito.css">
+    <link rel="stylesheet" href="CSS/estilo.css">
 </head>
 <body>
 
-<?php include 'header.php'; ?>
+<?php include 'includes/vistas/comun/header.php'; ?>
 
 <main class="carrito-container">
     <h2>Carrito de Compras</h2>

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<?php include 'header.php'; ?> 
+<?php include 'includes/vistas/comun/header.php'; ?> 
 
 <main>
     <?php

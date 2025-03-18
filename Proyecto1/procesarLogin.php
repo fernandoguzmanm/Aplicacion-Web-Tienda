@@ -1,6 +1,6 @@
 <?php
 session_start();
-require './mysql/conexion.php';
+require 'includes/mysql/conexion.php';
 
 $email = $contraseña = "";
 

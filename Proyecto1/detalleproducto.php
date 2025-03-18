@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'mysql/conexion.php';
+include 'includes/mysql/conexion.php';
 
 // Obtener el ID del producto desde la URL
 $id = $_GET['id'] ?? null;
@@ -34,7 +34,7 @@ if (!$producto) {
 </head>
 <body>
 
-<?php include 'header.php'; ?>
+<?php include 'includes/vistas/comun/header.php'; ?>
 
 <main class="detalle-container">
     <img src="img/productos/<?php echo $producto['imagen']; ?>" alt="<?php echo htmlspecialchars($producto['nombre']); ?>" class="detalle-imagen">

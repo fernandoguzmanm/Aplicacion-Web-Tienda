@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShopEasy</title>
     <link rel="stylesheet" href="./css/cssHeader.css">
-    <link rel="stylesheet" href="./css/cssIndex.css">
+    <link rel="stylesheet" href="./css/estilo.css">
 </head>
 <body>
 
-<?php include 'header.php'; ?>
+<?php include 'includes/vistas/comun/header.php'; ?>
 <p><?php $_SESSION ?></p>
 <main>
     <h2>Bienvenido a ShopEasy</h2>

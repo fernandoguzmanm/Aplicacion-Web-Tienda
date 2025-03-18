@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>Contacto</title>
     <script src="./JS/mailto.js" defer></script> 
-    <link rel="stylesheet" href="./css/cssContacto.css"> 
+    <link rel="stylesheet" href="./css/cssFormularios.css"> 
 </head>
 <body>
 
-<?php include 'header.php'; ?>
+<?php include 'includes/vistas/comun/header.php'; ?>
 
-<main>
+<body>
     <h2>Formulario de Contacto</h2>
 
     <?php
@@ -36,26 +36,27 @@
         <input type="email" id="email" name="email" required><br><br>
     
         <p>Motivo de la consulta:</p>
-        <input type="radio" id="evaluacion" name="motivo" value="Evaluación" required>
+        
         <label for="evaluacion">Evaluación</label><br>
-    
-        <input type="radio" id="sugerencias" name="motivo" value="Sugerencias" required>
+        <input type="radio" id="evaluacion" name="motivo" value="Evaluación" required>
+        
         <label for="sugerencias">Sugerencias</label><br>
-    
-        <input type="radio" id="criticas" name="motivo" value="Críticas" required>
+        <input type="radio" id="sugerencias" name="motivo" value="Sugerencias" required>
+        
         <label for="criticas">Críticas</label><br><br>
-
-        <input type="checkbox" id="terminos" name="terminos" required>
+        <input type="radio" id="criticas" name="motivo" value="Críticas" required>
+        
         <label for="terminos">Marque esta casilla para verificar que ha leído nuestros términos y condiciones del servicio</label>
-    
+        <input type="checkbox" id="terminos" name="terminos" required>
+
         <label for="mensaje">Consulta:</label><br>
         <textarea id="mensaje" name="mensaje" rows="4" cols="50" required></textarea><br><br>
     
         <input type="submit" value="Enviar">
     </form>
 
-    <?php } ?> <!-- Cierre del bloque PHP -->
-</main>
+    <?php } ?>
+    </body>
 
 </body>
 </html>

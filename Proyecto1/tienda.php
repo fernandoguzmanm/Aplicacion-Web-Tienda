@@ -1,5 +1,5 @@
 <?php
-include './mysql/conexion.php'; 
+include './includes/mysql/conexion.php'; 
 
 // Obtener productos de la base de datos
 $result = $conn->query("SELECT id_producto, nombre, precio, imagen, descripcion, stock FROM productos");
@@ -11,10 +11,11 @@ $result = $conn->query("SELECT id_producto, nombre, precio, imagen, descripcion,
     <meta charset="UTF-8">
     <title>Tienda</title>
     <link rel="stylesheet" href="./css/cssTienda.css?v=2">
+    <link rel="stylesheet" href="./css/estilo.css?v=2">
 </head>
 <body>
 
-<?php include 'header.php'; ?>
+<?php include 'includes/vistas/comun/header.php'; ?>
 
 <main>
     <h2>Nuestros Productos</h2>
