@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<?php include 'includes/vistas/comun/header.php'; ?> <!-- Incluir la cabecera modular -->
+<?php include 'includes/vistas/comun/header.php'; ?>
 
 <main>
     <h2>Miembros del Grupo</h2>

@@ -14,7 +14,10 @@ header {
     box-sizing: border-box; /* Evita que el padding afecte el tamaño total */
 }
 
-
+a {
+    color: #000000;
+    text-decoration: none;
+}
 
 /* Contenedor principal */
 .header-container {
@@ -57,12 +60,12 @@ nav ul li a:hover {
 
 /* Estilo del botón del carrito */
 #carrito-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
     background-color: white;
-    border-radius: 20px;
-    padding: 5px 15px;
-    
-    align-items: center;
-    justify-content: center;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .carrito-btn {

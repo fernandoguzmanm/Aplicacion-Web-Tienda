@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Contacto</title>
     <script src="./JS/mailto.js" defer></script> 
-    <link rel="stylesheet" href="./css/cssFormularios.css"> 
+    <link rel="stylesheet" href="./css/cssFormularios.css?v=4"> 
 </head>
 <body>
 
