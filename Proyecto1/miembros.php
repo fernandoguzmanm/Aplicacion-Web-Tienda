@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Miembros del Grupo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/estilo.css?v=3"> 
-</head>
-<body>
-
-<?php include 'includes/vistas/comun/header.php'; ?>
-
 <main>
     <h2>Miembros del Grupo</h2>
 
@@ -71,3 +59,5 @@
 
 </body>
 </html>
+
+<?php require './includes/vistas/plantillas/plantilla2.php'; ?>

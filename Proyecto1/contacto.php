@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Contacto</title>
-    <script src="./JS/mailto.js" defer></script> 
-    <link rel="stylesheet" href="./css/cssFormularios.css?v=4"> 
-</head>
-<body>
-
-<?php include 'includes/vistas/comun/header.php'; ?>
-
 <body>
     <h2>Formulario de Contacto</h2>
 
@@ -60,3 +48,5 @@
 
 </body>
 </html>
+
+<?php require './includes/vistas/plantillas/plantilla3.php'; ?>

@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="../../../css/cssFormularios.css?v=2">
-</head>
-<?php include("../../../includes/vistas/comun/header.php"); ?>
+
 <body>
 
     <h2>Iniciar Sesión</h2>
@@ -21,3 +13,5 @@
 
 </body>
 </html>
+
+<?php require $_SERVER['DOCUMENT_ROOT'] . '/AW/Proyecto1/includes/vistas/plantillas/plantilla3.php'; ?>

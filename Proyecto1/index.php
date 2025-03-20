@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShopEasy</title>
-    <link rel="stylesheet" href="./css/estilo.css?v=5">
-</head>
-<body>
+<?php
 
-<?php include 'includes/vistas/comun/header.php'; ?>
-<p><?php $_SESSION ?></p>
-<main>
+//require_once __DIR__.'/includes/config.php';
+
+$tituloPagina = 'Portada';
+
+$contenidoPrincipal = <<<EOS
     <h2>Bienvenido a ShopEasy</h2>
     <div class="logo-container">
         <img src="./img/logotipo.jpeg" alt="Logotipo de ShopEasy" class="logo">
@@ -26,7 +20,6 @@
         fidelización donde los clientes acumulan puntos por sus compras y pueden canjearlos
         por descuentos o productos exclusivos.
     </p>
-</main>
+EOS;
 
-</body>
-</html>
+require './includes/vistas/plantillas/plantilla.php';

@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Planificación</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/estilo.css?v=2"> 
-</head>
-<body>
-
-<?php include 'includes/vistas/comun/header.php'; ?>
-
 <main>
     <section>
         <h2>Plan de Desarrollo</h2>
@@ -67,3 +55,5 @@
 
 </body>
 </html>
+
+<?php require './includes/vistas/plantillas/plantilla2.php'; ?>

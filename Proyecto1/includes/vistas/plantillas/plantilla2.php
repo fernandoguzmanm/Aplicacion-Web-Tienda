@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -10,14 +9,3 @@
 <?php
 require(__DIR__ . '/../comun/header.php');
 ?>
-	<main>
-		<article>
-			<?= $contenidoPrincipal ?>
-		</article>
-	</main>
-<?php
-?>
-</div>
-</body>
-</html>
-
