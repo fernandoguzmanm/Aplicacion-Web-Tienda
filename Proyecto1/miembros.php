@@ -1,3 +1,5 @@
+<?php $tituloPagina = 'Miembros';?>
+
 <main>
     <h2>Miembros del Grupo</h2>
 

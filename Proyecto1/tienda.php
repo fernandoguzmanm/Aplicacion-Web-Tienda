@@ -5,6 +5,18 @@ include './includes/mysql/conexion.php';
 $result = $conn->query("SELECT id_producto, nombre, precio, imagen, descripcion, stock FROM productos");
 ?>
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tienda</title>
+    <link rel="stylesheet" href="./css/cssTienda.css?v=2">
+    <link rel="stylesheet" href="./css/estilo.css?v=2">
+</head>
+<body>
+
+<?php include 'includes/vistas/comun/header.php'; ?>
+
 <main>
     <h2>Nuestros Productos</h2>
     
@@ -29,5 +41,3 @@ $result = $conn->query("SELECT id_producto, nombre, precio, imagen, descripcion,
 
 </body>
 </html>
-
-<?php require './includes/vistas/plantillas/plantilla2.php'; ?>

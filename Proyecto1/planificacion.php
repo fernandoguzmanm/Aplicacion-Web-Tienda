@@ -1,3 +1,5 @@
+<?php $tituloPagina = 'Planificación';?>
+
 <main>
     <section>
         <h2>Plan de Desarrollo</h2>

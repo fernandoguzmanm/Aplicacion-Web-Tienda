@@ -1,3 +1,5 @@
+<?php $tituloPagina = 'Contacto';?>
+
 <body>
     <h2>Formulario de Contacto</h2>
 

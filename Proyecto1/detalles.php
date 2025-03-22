@@ -1,3 +1,5 @@
+<?php $tituloPagina = 'Detalles';?>
+
 <main>
     <h2>Introducción</h2>
     <p>

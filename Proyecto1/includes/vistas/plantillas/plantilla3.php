@@ -2,10 +2,9 @@
 <head>
 	<meta charset="UTF-8">
     <title><?= $tituloPagina ?></title>
-    <link rel="stylesheet" type="text/css" href="<?= $_SERVER['DOCUMENT_ROOT'] . '/css/cssFormularios.css' ?>" />
+    <link rel="stylesheet" type="text/css" href='/AW/Proyecto1/css/cssFormularios.css?v=3' />
 </head>
 <body>
-<div id="contenedor">
 <?php
 require(__DIR__ . '/../comun/header.php');
 ?>
