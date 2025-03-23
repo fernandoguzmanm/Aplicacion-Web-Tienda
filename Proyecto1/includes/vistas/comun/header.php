@@ -16,12 +16,12 @@ $base_url = "/AW/Proyecto1/";
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="<?=$base_url ?>css/cssHeader.css?v=2">
+    <link rel="stylesheet" href="<?=$base_url ?>css/cssHeader.css?v=3">
 </head>
 
 <header>
+    <h1> <?php echo ucfirst($page_title); ?> </h1>
     <div class="header-container">
-        <h1> <?php echo ucfirst($page_title); ?> </h1>
         <nav>
             <ul>
                 <li><a href="<?=$base_url ?>index.php">Inicio</a></li>
@@ -33,6 +33,16 @@ $base_url = "/AW/Proyecto1/";
                 <li><a href="<?=$base_url ?>contacto.php">Contacto</a></li>
             </ul>
         </nav>
+
+    <form action="buscar.php" method="GET">
+        <input type="text" name="query" placeholder="Buscar productos...">
+        <select name="categoria">
+            <option value="">Todas las categorías</option>
+            <option value="cereales">Cereales</option>
+            <option value="fruta">Fruta</option>
+        </select>
+        <button type="submit">Buscar</button>
+    </form>
         
         <div class="right-section">
             <div id="login-container">

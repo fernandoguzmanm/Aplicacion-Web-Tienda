@@ -8,10 +8,10 @@ header {
     min-height: 80px;
     max-height: 80px;
     position: fixed;
-    top: 0; /* Lo fija en la parte superior */
-    left: 0; /* Asegura que empiece desde la izquierda */
-    width: 100%; /* Se extiende a todo el ancho */
-    box-sizing: border-box; /* Evita que el padding afecte el tamaño total */
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 a {
@@ -19,15 +19,15 @@ a {
     text-decoration: none;
 }
 
-/* Contenedor principal */
 .header-container {
     display: flex;
-    width: 100%;
+    width: calc(100% - 100px);
     justify-content: space-between;
     align-items: center;
+    left: 0; /* Alineado con el borde izquierdo de la pantalla */
+    padding-left: 100px; /* Ajusta según necesidad */
 }
 
-/* Navegación */
 nav ul {
     list-style: none;
     padding: 0;
