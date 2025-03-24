@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
     <title><?= $tituloPagina ?></title>
-    <link rel="stylesheet" type="text/css" href='/AW/Proyecto1/css/cssFormularios.css?v=3' />
+    <link rel="stylesheet" type="text/css" href='/AW/Proyecto1/css/cssFormularios.css?v=6' />
 </head>
 <body>
 <?php

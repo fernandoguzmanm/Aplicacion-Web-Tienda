@@ -1,15 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Documentación de Bocetos</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/estilo.css?v=5"> 
-</head>
-<body>
-
-<?php include 'includes/vistas/comun/header.php'; ?> 
-
 <main>
     <?php
     $bocetos = [
@@ -45,3 +33,6 @@
 
 </body>
 </html>
+
+
+<?php require './includes/vistas/plantillas/plantilla2.php'; ?>

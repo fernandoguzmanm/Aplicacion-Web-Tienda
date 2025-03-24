@@ -16,7 +16,7 @@ $base_url = "/AW/Proyecto1/";
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="<?=$base_url ?>css/cssHeader.css?v=8">
+    <link rel="stylesheet" href="<?=$base_url ?>css/cssHeader.css?v=6">
 </head>
 
 <header>
@@ -33,8 +33,8 @@ $base_url = "/AW/Proyecto1/";
             </ul>
         </nav>
 
-        <form action="buscar.php" method="GET">
-            <input type="text" name="query" placeholder="Buscar productos...">
+        <form action="buscar.php" method="GET" class="busqueda-form">
+            <input type="text" name="query" placeholder="Buscar productos">
             <select name="categorias">
                 <option value="">Todas las categorías</option>
                 <option value="cereales">Cereales</option>

@@ -12,6 +12,7 @@ header {
     left: 0;
     width: 100%;
     box-sizing: border-box;
+    z-index: 10;
 }
 
 footer {
@@ -138,7 +139,7 @@ html {
     overflow-y: scroll;
 }
 
-form {
+.busqueda-form {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -149,7 +150,7 @@ form {
     width: 234px;
 }
 
-form input[type="text"] {
+.busqueda-form input[type="text"] {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -158,7 +159,7 @@ form input[type="text"] {
     outline: none;
 }
 
-form select {
+.busqueda-form select {
     padding: 4px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -168,7 +169,7 @@ form select {
     width: 65px;
 }
 
-form button {
+.busqueda-form button {
     background-color: #007BFF;
     color: white;
     border: none;
@@ -178,6 +179,6 @@ form button {
     font-size: 12px;
 }
 
-form button:hover {
+.busqueda-form button:hover {
     background-color: #0056b3;
 }

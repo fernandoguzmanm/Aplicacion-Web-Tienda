@@ -1,10 +1,10 @@
-/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding-top: 80px;
+    padding: 0;
     background-color: #ffffff;
-    flex-direction: column;
+    text-align: center;
+    padding-top: 80px;
 }
 
 #contenedor,
@@ -50,7 +50,6 @@ textarea {
     font-size: 1em;
 }
 
-/* Estilo de los botones */
 button,
 input[type="submit"] {
     background-color: #007BFF;

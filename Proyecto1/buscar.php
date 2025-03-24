@@ -18,9 +18,6 @@ $stmt->bind_param(str_repeat("s", count($params)), ...$params);
 $stmt->execute();
 $result = $stmt->get_result();
 $resultados = $result->fetch_all(MYSQLI_ASSOC);
-
-
-
 ?>
 
 <!DOCTYPE html>
