@@ -9,7 +9,7 @@ $sql = "SELECT * FROM productos WHERE nombre LIKE ?";
 $params = ["%$query%"];
 
 if (!empty($categoria)) {
-    $sql .= " AND categorias = ?";
+    $sql .= " AND descripcion = ?";
     $params[] = $categoria;
 }
 
@@ -18,6 +18,9 @@ $stmt->bind_param(str_repeat("s", count($params)), ...$params);
 $stmt->execute();
 $result = $stmt->get_result();
 $resultados = $result->fetch_all(MYSQLI_ASSOC);
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +42,6 @@ $resultados = $result->fetch_all(MYSQLI_ASSOC);
                 alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
                 <h3><?php echo htmlspecialchars($producto['nombre']); ?></h3>
                 <p class="precio">$<?php echo number_format($producto['precio'], 2); ?></p>
-
                 <a href="detalleproducto.php?id=<?php echo $producto['id_producto']; ?>" class="btn">Ver detalles</a>
                 <a href="carrito.php?add=<?php echo $producto['id_producto']; ?>" class="btn">Añadir al carrito</a>  
                 </div>

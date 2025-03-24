@@ -35,7 +35,7 @@ $base_url = "/AW/Proyecto1/";
 
         <form action="buscar.php" method="GET">
             <input type="text" name="query" placeholder="Buscar productos...">
-            <select name="categoria">
+            <select name="categorias">
                 <option value="">Todas las categorías</option>
                 <option value="cereales">Cereales</option>
                 <option value="fruta">Fruta</option>
