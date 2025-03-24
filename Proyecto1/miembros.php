@@ -2,9 +2,7 @@
 
 <main>
     <h2>Miembros del Grupo</h2>
-
-
-        <ul>
+      <ul>
             <?php
             $miembros = [
                 "fernando_guzman" => "Fernando Guzmán Muñoz",
@@ -18,8 +16,6 @@
             }
             ?>
         </ul>
-
-
     <?php
     $datos_miembros = [
         "fernando_guzman" => [

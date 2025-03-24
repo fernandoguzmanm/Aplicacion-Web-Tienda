@@ -35,7 +35,6 @@ button:hover, .btn:hover {
     background-color: #0056b3;
 }
 
-/* Estilo de títulos */
 h2, h3 {
     text-align: center;
     color: #007BFF;
@@ -46,7 +45,6 @@ h2 {
     font-size: 1.5em;
 }
 
-/* Contenedores principales */
 .container, .admin-container,.productos-container, .member, .references {
     max-width: 1200px;
     margin: auto;
@@ -56,7 +54,6 @@ h2 {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Tablas comunes */
 table {
     border-collapse: collapse;
     margin-top: 20px;
@@ -83,6 +80,22 @@ tr:nth-child(even) {
     background: #f9f9f9;
 }
 
+.bocetos-img {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto;
+    width: 80%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.bocetos-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
 img {
     display: block;
     width: 300px;
@@ -93,7 +106,8 @@ img {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Flexbox común */
+
+
 .references, .member {
     display: flex;
     gap: 15px;
@@ -107,7 +121,6 @@ img {
     font-weight: normal;
 }
 
-/* Contenedor de productos */
 .productos-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -117,7 +130,6 @@ img {
     margin: auto;
 }
 
-/* Estilo para los párrafos (p) como en detalles.css */
 p {
     line-height: 1.6;
     font-size: 1.1em;
@@ -128,8 +140,8 @@ p {
 }
 
 ul {
-    list-style-type: none; /* Elimina los puntos de la lista */
+    list-style-type: none;
     padding: 0;
     margin: 0;
-    text-align: center; /* Alinea el texto a la izquierda */
+    text-align: center;
 }

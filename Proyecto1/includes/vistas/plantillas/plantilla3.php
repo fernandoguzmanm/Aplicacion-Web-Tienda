@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -7,4 +8,5 @@
 <body>
 <?php
 require(__DIR__ . '/../comun/header.php');
+require(__DIR__ . '/../comun/pie.php');
 ?>

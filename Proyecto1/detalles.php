@@ -1,4 +1,9 @@
-<?php $tituloPagina = 'Detalles';?>
+<?php $tituloPagina = 'Detalles';
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 
 <main>
     <h2>Introducción</h2>

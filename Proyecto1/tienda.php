@@ -1,7 +1,6 @@
 <?php
 include './includes/mysql/conexion.php'; 
 
-// Obtener productos de la base de datos
 $result = $conn->query("SELECT id_producto, nombre, precio, imagen, descripcion, stock FROM productos");
 ?>
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Documentación de Bocetos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/cssBocetos.css?v=4"> 
+    <link rel="stylesheet" href="./css/estilo.css?v=5"> 
 </head>
 <body>
 
@@ -25,7 +25,7 @@
     foreach ($bocetos as $id => $titulo) {
         echo "<h2 id='$id'>$titulo</h2>";
         echo "<p>" . obtenerDescripcion($id) . "</p>";
-        echo "<img src='bocetos/$id.png' alt='Boceto de la $titulo'>";
+        echo "<img src='bocetos/$id.png' alt='Boceto de la $titulo' class='bocetos-img'>";
     }
 
     function obtenerDescripcion($pagina) {
