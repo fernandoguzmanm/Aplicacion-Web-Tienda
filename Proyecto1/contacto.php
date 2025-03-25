@@ -18,7 +18,7 @@
     } else {
     ?>
 
-    <form action="contacto.php" method="post">
+    <form action="contacto.php" method="post" class="formulario-form">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required><br><br>
     
@@ -42,12 +42,10 @@
         <label for="mensaje">Consulta:</label><br>
         <textarea id="mensaje" name="mensaje" rows="4" cols="50" required></textarea><br><br>
     
-        <input type="submit" value="Enviar">
+        <input type="submit-button" value="Enviar">
     </form>
 
     <?php } ?>
-    </body>
-
 </body>
 </html>
 

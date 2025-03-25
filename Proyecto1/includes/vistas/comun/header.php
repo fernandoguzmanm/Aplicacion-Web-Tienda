@@ -34,13 +34,13 @@ $base_url = "/AW/Proyecto1/";
         </nav>
 
         <form action="buscar.php" method="GET" class="busqueda-form">
-            <input type="text" name="query" placeholder="Buscar productos">
+            <input type="product-name" name="query" placeholder="Buscar productos">
             <select name="categorias">
                 <option value="">Todas las categorías</option>
                 <option value="cereales">Cereales</option>
                 <option value="fruta">Fruta</option>
             </select>
-            <button type="submit">Buscar</button>
+            <button type="submit-product">Buscar</button>
         </form>
         
         <div class="right-section">

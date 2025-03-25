@@ -5,6 +5,7 @@ body {
     background-color: #ffffff;
     text-align: center;
     padding-top: 80px;
+    flex: 1;
 }
 
 a {
@@ -15,7 +16,7 @@ a {
 a:hover {
     text-decoration: underline;
 }
-
+/*
 button, .btn {
     background-color: #007BFF;
     color: white;
@@ -31,7 +32,7 @@ button, .btn {
 button:hover, .btn:hover {
     background-color: #0056b3;
 }
-
+*/
 h2, h3 {
     text-align: center;
     color: #007BFF;

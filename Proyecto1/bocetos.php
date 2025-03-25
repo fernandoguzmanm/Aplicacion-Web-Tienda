@@ -1,3 +1,5 @@
+<?php $tituloPagina = 'Bocetos';?>
+
 <main>
     <?php
     $bocetos = [
