@@ -57,12 +57,6 @@
             var_dump("hola hola");
             unset($_SESSION['carrito']);
         }
-        // Vaciar el carrito
-        if (isset($_GET['clear'])) {
-            unset($_SESSION['carrito']);
-            header("Location: carrito.php");
-            exit();
-        }
 
         // Calcular el total del carrito
         public function calcularTotal() {

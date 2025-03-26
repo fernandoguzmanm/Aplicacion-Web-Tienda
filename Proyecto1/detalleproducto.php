@@ -1,4 +1,4 @@
-<?php
+<?php/*
 session_start();
 include 'includes/mysql/conexion.php';
 
@@ -22,7 +22,7 @@ $producto = $result->fetch_assoc();
 if (!$producto) {
     header("Location: tienda.php");
     exit();
-}
+}*/
 ?>
 
 <!DOCTYPE html>
