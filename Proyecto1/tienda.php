@@ -1,9 +1,3 @@
-<?php
-include './includes/mysql/conexion.php'; 
-
-$result = $conn->query("SELECT id_producto, nombre, precio, imagen, descripcion, stock FROM productos");
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,27 +10,31 @@ $result = $conn->query("SELECT id_producto, nombre, precio, imagen, descripcion,
 
 <?php include 'includes/vistas/comun/header.php'; ?>
 
+
 <main>
     <h2>Nuestros Productos</h2>
     
     <div class="productos-container">
-        <?php if ($result->num_rows > 0): ?>
-            <?php while ($row = $result->fetch_assoc()) : ?>
+        <?php if (!empty($productos)): ?>
+            <?php foreach ($productos as $producto): ?>
                 <div class="producto">
-                    <img src="img/productos/<?php echo !empty($row['imagen']) ? $row['imagen'] : 'default.png'; ?>" 
-                         alt="<?php echo htmlspecialchars($row['nombre']); ?>">
-                    <h3><?php echo htmlspecialchars($row['nombre']); ?></h3>
-                    <p class="precio">$<?php echo number_format($row['precio'], 2); ?></p>
+                    <img src="img/productos/<?php echo !empty($producto['imagen']) ? $producto['imagen'] : 'default.png'; ?>" 
+                         alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
+                    <h3><?php echo htmlspecialchars($producto['nombre']); ?></h3>
+                    <p class="precio">$<?php echo number_format($producto['precio'], 2); ?></p>
                     
-                    <a href="detalleproducto.php?id=<?php echo $row['id_producto']; ?>" class="btn">Ver detalles</a>
-                    <a href="carrito.php?add=<?php echo $row['id_producto']; ?>" class="btn">Añadir al carrito</a>  
+                    <a href="detalleproducto.php?id=<?php echo $producto['id_producto']; ?>" class="btn">Ver detalles</a>
+                    <a href="carrito.php?add=<?php echo $producto['id_producto']; ?>" class="btn">Añadir al carrito</a>  
                 </div>
-            <?php endwhile; ?>
+            <?php endforeach; ?>
         <?php else: ?>
             <p>No hay productos disponibles en este momento.</p>
         <?php endif; ?>
     </div>
 </main>
+
+</body>
+</html>
 
 </body>
 </html>

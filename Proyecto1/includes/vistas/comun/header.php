@@ -25,24 +25,26 @@ $base_url = "/AW/Proyecto1/";
         <nav>
             <ul>
                 <li><a href="<?=$base_url ?>index.php">Inicio</a></li>
-                <li><a href="<?=$base_url ?>tienda.php">Tienda</a></li>
-                <li><a href="<?=$base_url ?>detalles.php">Detalles</a></li>
-                <li><a href="<?=$base_url ?>bocetos.php">Bocetos</a></li>
-                <li><a href="<?=$base_url ?>miembros.php">Miembros</a></li>
-                <li><a href="<?=$base_url ?>planificacion.php">Planificación</a></li>
+                <li><a href="controller.php?controller=tienda&action=mostrarTienda">Tienda</a></li>
+                <li><a href="controller.php?controller=detalles&action=mostrarDetalles">Detalles</a></li>
+                <li><a href="controller.php?controller=bocetos&action=mostrarBocetos">Bocetos</a></li>
+                <li><a href="controller.php?controller=miembros&action=mostrarMiembros">Miembros</a></li>
+                <li><a href="controller.php?controller=planificacion&action=mostrarPlanificacion">Planificación</a></li>
             </ul>
         </nav>
 
-        <form action="buscar.php" method="GET" class="busqueda-form">
-            <input type="product-name" name="query" placeholder="Buscar productos">
-            <select name="categorias">
-                <option value="">Todas las categorías</option>
-                <option value="cereales">Cereales</option>
-                <option value="fruta">Fruta</option>
-            </select>
-            <button type="submit-product">Buscar</button>
-        </form>
-        
+        <div class="busqueda-container">
+            <form action="busquedaController.php" method="GET" class="busqueda-form">
+                <input type="product-name" name="query" placeholder="Buscar productos">
+                <select name="categorias">
+                    <option value="">Todas las categorías</option>
+                    <option value="cereales">Cereales</option>
+                    <option value="fruta">Fruta</option>
+                </select>
+                <button type="submit-product">Buscar</button>
+            </form>
+        </div>
+
         <div class="right-section">
             <div id="login-container">
                 <?php if (isset($_SESSION['usuario'])) : ?>

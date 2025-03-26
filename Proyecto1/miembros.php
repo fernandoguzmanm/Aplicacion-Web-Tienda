@@ -1,61 +1,19 @@
-<?php $tituloPagina = 'Miembros';?>
-
 <main>
     <h2>Miembros del Grupo</h2>
-      <ul>
-            <?php
-            $miembros = [
-                "fernando_guzman" => "Fernando Guzmán Muñoz",
-                "fernando_vieites" => "Fernando Vieites Moreira",
-                "rishi" => "Rishi Pursnani Mirpuri",
-                "guillermo" => "Guillermo Guzmán González Ortiz"
-            ];
-            
-            foreach ($miembros as $id => $nombre) {
-                echo "<li><a href='#$id'>$nombre</a></li>";
-            }
-            ?>
-        </ul>
-    <?php
-    $datos_miembros = [
-        "fernando_guzman" => [
-            "nombre" => "Fernando Guzmán Muñoz",
-            "imagen" => "./img/fernando_guzman.jpeg",
-            "correo" => "feguzm01@ucm.es",
-            "descripcion" => "Apasionado por la inteligencia artificial y la ciberseguridad. En su tiempo libre, disfruta del deporte y los videojuegos."
-        ],
-        "fernando_vieites" => [
-            "nombre" => "Fernando Vieites Moreira",
-            "imagen" => "./img/fernando_vieites.jpeg",
-            "correo" => "fvieites@ucm.es",
-            "descripcion" => "Entusiasta de la robótica y el desarrollo web. Le encanta viajar y probar nuevas gastronomías."
-        ],
-        "rishi" => [
-            "nombre" => "Rishi Pursnani Mirpuri",
-            "imagen" => "./img/rishi.jpeg",
-            "correo" => "ripursna@ucm.es",
-            "descripcion" => "Interesado en la programación competitiva y el análisis de datos. Disfruta de la lectura y el ajedrez."
-        ],
-        "guillermo" => [
-            "nombre" => "Guillermo Guzmán González Ortiz",
-            "imagen" => "./img/guillermo.JPG",
-            "correo" => "guilgo08@ucm.es",
-            "descripcion" => "Le apasiona el desarrollo de videojuegos y la realidad virtual. También hace fútbol en su tiempo libre."
-        ]
-    ];
+    <ul>
+        <?php foreach ($miembros as $id => $nombre): ?>
+            <li><a href="#<?= htmlspecialchars($id) ?>"><?= htmlspecialchars($nombre) ?></a></li>
+        <?php endforeach; ?>
+    </ul>
 
-    foreach ($datos_miembros as $id => $info) {
-        echo "<div id='$id' class='member'>";
-        echo "<h2>{$info['nombre']}</h2>";
-        echo "<img src='{$info['imagen']}' alt='Foto de {$info['nombre']}'>";
-        echo "<p><strong>Correo:</strong> {$info['correo']}</p>";
-        echo "<p>{$info['descripcion']}</p>";
-        echo "</div>";
-    }
-    ?>
+    <?php foreach ($datos_miembros as $id => $info): ?>
+        <div id="<?= htmlspecialchars($id) ?>" class="member">
+            <h2><?= htmlspecialchars($info['nombre']) ?></h2>
+            <img src="<?= htmlspecialchars($info['imagen']) ?>" alt="Foto de <?= htmlspecialchars($info['nombre']) ?>">
+            <p><strong>Correo:</strong> <?= htmlspecialchars($info['correo']) ?></p>
+            <p><?= htmlspecialchars($info['descripcion']) ?></p>
+        </div>
+    <?php endforeach; ?>
 </main>
-
-</body>
-</html>
 
 <?php require './includes/vistas/plantillas/plantilla2.php'; ?>
