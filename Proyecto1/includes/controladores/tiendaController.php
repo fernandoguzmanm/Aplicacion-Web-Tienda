@@ -1,17 +1,17 @@
 <?php
 require_once 'includes/modelos/producto.php';
-require_once 'includes/mysql/conexion.php';
+//require_once 'includes/mysql/conexion.php';
 
 class TiendaController {
-    private $productoModel;
+    private $producto;
 
     public function __construct() {
         global $conn;
-        $this->productoModel = new Producto($conn);
+        $this->producto = new Producto($conn);
     }
 
     public function mostrarTienda() {
-        $productos = $this->productoModel->obtenerProductos();
+        $productos = $this->producto->obtenerProductos();
         require 'tienda.php';
     }
 }

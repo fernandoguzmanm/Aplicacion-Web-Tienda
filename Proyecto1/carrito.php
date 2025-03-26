@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 include './includes/mysql/conexion.php'; 
-
+/*
 // Inicializar el carrito si no existe
 if (!isset($_SESSION['carrito'])) {
     $_SESSION['carrito'] = [];
@@ -51,7 +51,7 @@ if (isset($_GET['clear'])) {
     unset($_SESSION['carrito']);
     header("Location: carrito.php");
     exit();
-}
+}*/
 ?>
 
 <!DOCTYPE html>

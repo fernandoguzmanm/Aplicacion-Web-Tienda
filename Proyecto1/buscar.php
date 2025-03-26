@@ -1,25 +1,3 @@
-<?php
-require 'includes/mysql/conexion.php';
-
-$query = isset($_GET['query']) ? trim($_GET['query']) : '';
-$categoria = isset($_GET['categorias']) ? $_GET['categorias'] : '';
-
-$sql = "SELECT * FROM productos WHERE nombre LIKE ?";
-
-$params = ["%$query%"];
-
-if (!empty($categoria)) {
-    $sql .= " AND descripcion = ?";
-    $params[] = $categoria;
-}
-
-$stmt = $conn->prepare($sql);
-$stmt->bind_param(str_repeat("s", count($params)), ...$params);
-$stmt->execute();
-$result = $stmt->get_result();
-$resultados = $result->fetch_all(MYSQLI_ASSOC);
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>

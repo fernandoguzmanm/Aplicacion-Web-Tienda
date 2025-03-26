@@ -29,18 +29,23 @@ $base_url = "/AW/Proyecto1/";
                 <li><a href="controller.php?controller=detalles&action=mostrarDetalles">Detalles</a></li>
                 <li><a href="controller.php?controller=bocetos&action=mostrarBocetos">Bocetos</a></li>
                 <li><a href="controller.php?controller=miembros&action=mostrarMiembros">Miembros</a></li>
-                <li><a href="controller.php?controller=planificacion&action=mostrarPlanificacion">Planificación</a></li>
+                <li><a href="controller.php?controller=planificacion&action=mostrarPlanificacion">Planificacion</a></li>
             </ul>
         </nav>
 
         <div class="busqueda-container">
-            <form action="busquedaController.php" method="GET" class="busqueda-form">
+            <form action="controller.php" method="GET" class="busqueda-form">
                 <input type="product-name" name="query" placeholder="Buscar productos">
                 <select name="categorias">
                     <option value="">Todas las categorías</option>
                     <option value="cereales">Cereales</option>
                     <option value="fruta">Fruta</option>
+                    <option value="lacteo">Lacteos</option>
+                    <option value="dulce">Dulces</option>
+                    <option value="refresco">Refrescos</option>
                 </select>
+                <input type="hidden" name="controller" value="busqueda">
+                <input type="hidden" name="action" value="mostrarBusqueda">
                 <button type="submit-product">Buscar</button>
             </form>
         </div>
@@ -49,9 +54,9 @@ $base_url = "/AW/Proyecto1/";
             <div id="login-container">
                 <?php if (isset($_SESSION['usuario'])) : ?>
                     <p>Bienvenido, <?php echo htmlspecialchars($_SESSION['nombre']); ?></p>
-                    <p><a href="includes/clases/usuario/logout.php">Cerrar sesión</a></p>
+                    <p><a href="logout.php">Cerrar sesión</a></p>
                 <?php else : ?>
-                    <p><a href="includes/clases/usuario/login.php">Iniciar sesión</a></p>
+                    <p><a href="login.php">Iniciar sesión</a></p>
                 <?php endif; ?>
             </div>
 
