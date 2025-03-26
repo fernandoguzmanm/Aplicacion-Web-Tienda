@@ -1,3 +1,4 @@
+
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
@@ -16,6 +17,9 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
+
+CREATE DATABASE IF NOT EXISTS tienda;
+USE tienda;
 
 --
 -- Database: `tienda`
@@ -164,8 +168,7 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `email`, `contraseña`, `tipo_usuario`, `puntos_fidelidad`) VALUES
 (1, 'Vendedor1', 'vendedor1@gmail.com', 'v1', 'vendedor', 0),
 (2, 'Vendedor2', 'vendedor2@gmail.com', 'v2', 'vendedor', 0),
-(3, 'fer', 'fer@gmail.com', '1234', 'vendedor', 0),
-(4, 'juan', 'juan@gmail.com','holajuan','comprador',0);
+(3, 'fer', 'fer@gmail.com', '1234', 'vendedor', 0);
 
 --
 -- Indexes for dumped tables
