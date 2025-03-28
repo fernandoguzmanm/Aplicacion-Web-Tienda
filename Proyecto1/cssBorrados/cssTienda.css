@@ -1,13 +1,11 @@
-/* Estilo general */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f9f9;
+    background-color: #000000;
     text-align: center;
 }
 
-/* Contenedor de los productos */
 .productos-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -17,7 +15,6 @@ body {
     margin: auto;
 }
 
-/* Tarjetas de producto */
 .producto {
     background-color: white;
     padding: 15px;
@@ -31,14 +28,15 @@ body {
     transform: scale(1.05);
 }
 
-/* Imagen del producto */
 .producto img {
-    width: 100%;
-    height: auto;
+    width: 320px;
+    height: 250px;
+    object-fit: cover;
     border-radius: 8px;
+    display: block;
+    margin: 0 auto;
 }
 
-/* Estilos del título y precio */
 .producto h3 {
     color: #007BFF;
     font-size: 1.2em;
@@ -50,7 +48,6 @@ body {
     color: #333;
 }
 
-/* Botón */
 .btn {
     display: inline-block;
     background-color: #007BFF;

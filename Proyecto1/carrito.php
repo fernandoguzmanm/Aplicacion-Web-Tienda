@@ -89,14 +89,14 @@ if (isset($_GET['clear'])) {
                     <td><?php echo $producto['cantidad']; ?></td>
                     <td>$<?php echo number_format($producto['precio'] * $producto['cantidad'], 2); ?></td>
                     <td>
-                        <a href="carrito.php?remove=<?php echo $id; ?>" class="btn">Eliminar</a>
+                        <a href="controller.php?controller=carrito&action=eliminarProducto&id=<?php echo $id; ?>" class="btn">Eliminar</a>
                     </td>
                 </tr>
                 <?php $total += $producto['precio'] * $producto['cantidad']; ?>
             <?php endforeach; ?>
         </table>
         <h3>Total: $<?php echo number_format($total, 2); ?></h3>
-        <a href="carrito.php?clear=true" class="btn">Vaciar Carrito</a>
+        <a href="controller.php?controller=carrito&action=vaciarCarrito" class="btn">Vaciar Carrito</a>
         <a href="checkout.php" class="btn">Finalizar Compra</a>
     <?php endif; ?>
 </main>

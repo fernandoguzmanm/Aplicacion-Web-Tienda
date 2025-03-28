@@ -32,24 +32,25 @@ switch ($controlador) {
         break;
     case 'carrito':
         $controller = new CarritoController();
+
+        if (isset($_GET['action']) && $_GET['action'] == 'eliminarProducto' && isset($_GET['id'])) {
+            $controller->eliminarProducto($_GET['id']);
+        }
+        else if (isset($_GET['action']) && $_GET['action'] == 'vaciarCarrito' && isset($_GET['id'])) {
+            $controller->vaciarCarrio();
+        }
         break;
     case 'add':
-        // Aquí gestionamos la acción add para agregar al carrito
         if (isset($_GET['add']) && is_numeric($_GET['add'])) {
-            // Verificar si la clase CarritoController está bien implementada
             $carritoController = new CarritoController();
-            $carritoController->agregarProducto($_GET['add']);
+            $carritoController->añadirProducto($_GET['add']);
         }
-        exit();
-    case 'vaciarCarrito':
-        $carritoController = new CarritoController();
-        $carritoController->vaciarCarrito();
         header("Location: carrito.php");
         exit();
     case 'detalle':
-        $detalleController = new DetalleProductoController($conn);
+        $controller = new DetalleProductoController();
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-            $detalleController->mostrarDetalle($_GET['id']);
+            $controller->mostrarDetalle($_GET['id']);
         } else {
             header("Location: tienda.php");
             exit();
