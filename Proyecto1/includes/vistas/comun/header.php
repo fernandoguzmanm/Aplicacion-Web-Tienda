@@ -7,9 +7,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-$page_title = basename($_SERVER['PHP_SELF'], ".php");
 
-// Contar productos en el carrito
 $carrito_count = isset($_SESSION['carrito']) ? array_sum(array_column($_SESSION['carrito'], 'cantidad')) : 0;
 $base_url = "/AW/Proyecto1/";
 ?>
@@ -20,7 +18,7 @@ $base_url = "/AW/Proyecto1/";
 </head>
 
 <header>
-    <h1> <?php echo ucfirst($page_title); ?> </h1>
+    <h1> <?php echo ucfirst($tituloPagina); ?> </h1>
     <div class="header-container">
         <nav>
             <ul>

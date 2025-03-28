@@ -238,3 +238,19 @@ ul {
 .btn:hover {
     background-color: #0056b3;
 }
+
+.detalle-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagen del producto */
+.detalle-imagen {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}

@@ -1,3 +1,5 @@
+<?php $tituloPagina = 'Tienda' ?>
+
 <main>
     <h2>Nuestros Productos</h2>
     
