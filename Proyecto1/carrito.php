@@ -84,7 +84,7 @@ if (isset($_GET['clear'])) {
             <?php foreach ($_SESSION['carrito'] as $id => $producto): ?>
                 <tr>
                     <td><img src="img/productos/<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>" class="carrito-img"></td>
-                    <td><?php echo $producto['nombre']; ?></td>
+                    <td><?php echo ucfirst($producto['nombre']); ?></td>
                     <td>$<?php echo number_format($producto['precio'], 2); ?></td>
                     <td><?php echo $producto['cantidad']; ?></td>
                     <td>$<?php echo number_format($producto['precio'] * $producto['cantidad'], 2); ?></td>

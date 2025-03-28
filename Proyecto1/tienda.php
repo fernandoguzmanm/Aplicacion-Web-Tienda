@@ -14,8 +14,7 @@
                     
                     <a href="controller.php?controller=detalle&action=mostrarDetalle&id=<?php echo $producto['id_producto']; ?>" class="btn">Ver detalles</a>
 
-                    <a href="carrito.php?add=<?php echo $producto['id_producto']; ?>" class="btn">Añadir al carrito</a>  
-                    <a href="controller.php?controller=add&action=añadirProducto&add=<?php echo $producto['id_producto']; ?>" class="btn">Añadir al carrito2</a>
+                    <a href="controller.php?controller=carrito&action=añadirProducto&id=<?php echo $producto['id_producto']; ?>" class="btn">Añadir al carrito</a>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>

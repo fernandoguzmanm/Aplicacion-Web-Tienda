@@ -36,17 +36,21 @@ switch ($controlador) {
         if (isset($_GET['action']) && $_GET['action'] == 'eliminarProducto' && isset($_GET['id'])) {
             $controller->eliminarProducto($_GET['id']);
         }
-        else if (isset($_GET['action']) && $_GET['action'] == 'vaciarCarrito' && isset($_GET['id'])) {
-            $controller->vaciarCarrio();
+        else if (isset($_GET['action']) && $_GET['action'] == 'vaciarCarrito') {
+            $controller->vaciarCarrito();
         }
-        break;
-    case 'add':
+        else if (isset($_GET['action']) && $_GET['action'] == 'añadirProducto' && isset($_GET['id'])) {
+            $controller->añadirProducto($_GET['id']);
+        }
+        header("Location: carrito.php");
+        exit();
+    /*case 'add':
         if (isset($_GET['add']) && is_numeric($_GET['add'])) {
             $carritoController = new CarritoController();
             $carritoController->añadirProducto($_GET['add']);
         }
         header("Location: carrito.php");
-        exit();
+        exit();*/
     case 'detalle':
         $controller = new DetalleProductoController();
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
