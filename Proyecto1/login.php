@@ -1,5 +1,8 @@
-<?php $tituloPagina = 'Login';?>
+<?php 
 
+require_once './includes/formulariologin.php';
+require_once './includes/config.php';
+/*
 <body>
     <h2>Iniciar Sesión</h2>
     <form action="../../../procesarLogin.php" method="post" class="formulario-form">
@@ -11,6 +14,16 @@
         <p>Si todavía no tienes una cuenta creada:</p>
         <a href="../../../registro.php">Registro</a></li>
     </form>
+</body>*/
+
+$form = new formulariologin();
+$htmlFormLogin = $form->gestiona();
+
+$tituloPagina = 'Login';
+?>
+<body>
+    <h2> Iniciar Sesión</h2>
+    <?= $htmlFormLogin ?>
 </body>
 
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/AW/Proyecto1/includes/vistas/plantillas/plantilla3.php'; ?>

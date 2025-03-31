@@ -5,7 +5,11 @@ if (session_status() == PHP_SESSION_NONE) {
 
 $carrito_count = isset($_SESSION['carrito']) ? array_sum(array_column($_SESSION['carrito'], 'cantidad')) : 0;
 $base_url = "/AW/Proyecto1/";
+//require_once 'C:\xampp\htdocs\AW\Proyecto1\includes\usuario.php';//cambiar
+//var_dump($usuario);
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -47,7 +51,7 @@ $base_url = "/AW/Proyecto1/";
                 <button type="submit-product">Buscar</button>
             </form>
         </div>
-
+        <p><a href="logout.php">Cerrar sesión</a></p>
         <div class="right-section">
             <div id="login-container">
                 <?php if (isset($_SESSION['usuario'])) : ?>

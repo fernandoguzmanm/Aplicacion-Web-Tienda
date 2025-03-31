@@ -15,26 +15,34 @@ class CarritoController {
             $_SESSION['carrito'] = [];
         }
     }
-
-    public function añadirProducto($id_producto) {
+    
+    public function añadirProducto($id_producto, $cantidad) {
         $producto = $this->producto->obtenerProductoPorId($id_producto);
         if ($producto) {
             if (isset($_SESSION['carrito'][$id_producto])) {
-                $_SESSION['carrito'][$id_producto]['cantidad']++;
+                $_SESSION['carrito'][$id_producto]['cantidad'] += $cantidad;
             } else {
                 $_SESSION['carrito'][$id_producto] = [
                     'nombre' => $producto['nombre'],
                     'precio' => $producto['precio'],
                     'imagen' => $producto['imagen'],
-                    'cantidad' => 1
+                    'cantidad' => $cantidad
                 ];
             }
         }
     }
 
+    public function eliminarProducto($id_producto, $cantidad) {
+        $producto = $this->producto->obtenerProductoPorId($id_producto);
+        if ($producto) {
+            $_SESSION['carrito'][$id_producto]['cantidad'] -= $cantidad;
+        }
+    }
+    
+    /*
     public function eliminarProducto($id_producto) {
         unset($_SESSION['carrito'][$id_producto]);
-    }
+    }*/
 
     public function vaciarCarrito() {
         $_SESSION['carrito'] = [];

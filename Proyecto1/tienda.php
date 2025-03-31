@@ -14,7 +14,13 @@
                     
                     <a href="controller.php?controller=detalle&action=mostrarDetalle&id=<?php echo $producto['id_producto']; ?>" class="btn">Ver detalles</a>
 
-                    <a href="controller.php?controller=carrito&action=añadirProducto&id=<?php echo $producto['id_producto']; ?>" class="btn">Añadir al carrito</a>
+                    <form action="controller.php" method="get">
+                        <input type="hidden" name="id" value="<?php echo $producto['id_producto']; ?>">
+                        <input type="number" id="numero_unidades" name="numero_unidades" step="1" min="1" value="<?php echo isset($_GET['numero_unidades']) ? $_GET['numero_unidades'] : ''; ?>" placeholder="Número">
+                        <input type="hidden" name="controller" value="carrito">
+                        <input type="hidden" name="action" value="añadirProducto">
+                        <button type="submit" class="btn">Añadir al carrito</button>
+                    </form>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>

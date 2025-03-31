@@ -1,0 +1,76 @@
+<?php
+//require_once __DIR__.'/Formulario.php';
+//require_once __DIR__.'/Usuario.php';
+//namespace es\ucm\fdi\aw;
+
+//use es\ucm\fdi\aw\Usuario; 
+//use es\ucm\fdi\aw\formularios;
+//require_once 'mysql/conexios.php';
+require_once 'usuario.php';
+require_once 'formularios.php';
+
+class formulariologin extends formularios
+{
+    public function __construct() {
+        parent::__construct('formLogin', ['urlRedireccion' => 'index.php']);
+    }
+    
+    protected function generaCamposFormulario(&$datos)
+    {
+        // Se reutiliza el nombre de usuario introducido previamente o se deja en blanco
+        $correo = $datos['correo'] ?? '';
+
+        // Se generan los mensajes de error si existen.
+        $htmlErroresGlobales = self::generaListaErroresGlobales($this->errores);
+        $erroresCampos = self::generaErroresCampos(['correo', 'password'], $this->errores, 'span', array('class' => 'error'));
+
+        // Se genera el HTML asociado a los campos del formulario y los mensajes de error.
+        $html = <<<EOF
+        $htmlErroresGlobales
+        <fieldset>
+            <div>
+                <label for="correo">Correo:</label>
+                <input id="correo" type="text" name="correo" value="$correo" />
+                {$erroresCampos['correo']}
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input id="password" type="password" name="password" />
+                {$erroresCampos['password']}
+            </div>
+            <div>
+                <button type="submit" name="login">Entrar</button>
+            </div>
+        </fieldset>
+        EOF;
+        return $html;
+    }
+
+    protected function procesaFormulario(&$datos)
+    {   
+        $this->errores = [];
+        $correo = trim($datos['correo'] ?? '');
+        $correo = filter_var($correo, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        if ( ! $correo || empty($correo) ) {
+            $this->errores['correo'] = 'El correo del usuario no puede estar vacío';
+        }
+        
+        $password = trim($datos['password'] ?? '');
+        $password = filter_var($password, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        if ( ! $password || empty($password) ) {
+            $this->errores['password'] = 'La contraseña no puede estar vacía';
+        }
+        //print_r($_SESSION);
+        if (count($this->errores) === 0) {
+            $usuario = Usuario::login($correo, $password);
+            //print_r($_SESSION);
+            if (!$usuario) {
+                $this->errores[] = "El correo o la contraseña no coinciden";
+            } else {
+                $_SESSION['login'] = true;
+                $_SESSION['nombre'] = $usuario->getNombre();
+                //$_SESSION['esAdmin'] = $usuario->tieneRol(Usuario::ADMIN_ROLE);
+            }
+        }
+    }
+}
