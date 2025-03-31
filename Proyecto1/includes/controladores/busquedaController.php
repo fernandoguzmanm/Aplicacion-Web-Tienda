@@ -1,6 +1,6 @@
 <?php
 require_once 'includes/modelos/Producto.php';
-
+//use aw\proyecto1\producto;
 class BusquedaController {
 
     private $productoModel;

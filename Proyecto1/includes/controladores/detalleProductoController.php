@@ -1,6 +1,6 @@
 <?php
 require_once 'includes/modelos/producto.php';
-
+//use aw\proyecto1\producto;
 class DetalleProductoController {
     private $producto;
 

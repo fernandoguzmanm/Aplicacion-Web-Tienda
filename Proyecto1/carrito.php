@@ -2,68 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-include './includes/mysql/conexion.php'; 
-/*
-// Inicializar el carrito si no existe
-if (!isset($_SESSION['carrito'])) {
-    $_SESSION['carrito'] = [];
-}
-
-// Agregar un producto al carrito
-if (isset($_GET['add']) && is_numeric($_GET['add'])) {
-    $id_producto = $_GET['add'];
-
-    // Verificar si el producto existe en la base de datos
-    $stmt = $conn->prepare("SELECT id_producto, nombre, precio, imagen FROM productos WHERE id_producto = ?");
-    $stmt->bind_param("i", $id_producto);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $producto = $result->fetch_assoc();
-
-    if ($producto) {
-        // Si el producto ya está en el carrito, aumentar cantidad
-        if (isset($_SESSION['carrito'][$id_producto])) {
-            $_SESSION['carrito'][$id_producto]['cantidad']++;
-        } else {
-            // Agregar producto al carrito
-            $_SESSION['carrito'][$id_producto] = [
-                'nombre' => $producto['nombre'],
-                'precio' => $producto['precio'],
-                'imagen' => $producto['imagen'],
-                'cantidad' => 1
-            ];
-        }
-    }
-    header("Location: carrito.php");
-    exit();
-}
-
-// Eliminar un producto del carrito
-if (isset($_GET['remove']) && is_numeric($_GET['remove'])) {
-    $id_producto = $_GET['remove'];
-    unset($_SESSION['carrito'][$id_producto]);
-    header("Location: carrito.php");
-    exit();
-}
-
-// Vaciar el carrito
-if (isset($_GET['clear'])) {
-    unset($_SESSION['carrito']);
-    header("Location: carrito.php");
-    exit();
-}*/
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Carrito de Compras</title>
-    <link rel="stylesheet" href="CSS/estilo.css">
-</head>
-<body>
-
-<?php include 'includes/vistas/comun/header.php'; ?>
 
 <main class="carrito-container">
     <h2>Carrito de Compras</h2>
@@ -101,5 +40,5 @@ if (isset($_GET['clear'])) {
     <?php endif; ?>
 </main>
 
-</body>
-</html>
+<?php require './includes/vistas/plantillas/plantilla2.php'; ?>
+

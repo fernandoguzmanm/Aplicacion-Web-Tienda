@@ -1,3 +1,5 @@
+<?php $tituloPagina = 'Busqueda' ?>
+
 <body>
     <h2>Resultados de búsqueda</h2>
 

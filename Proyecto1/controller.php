@@ -44,13 +44,6 @@ switch ($controlador) {
         }
         header("Location: carrito.php");
         exit();
-    /*case 'add':
-        if (isset($_GET['add']) && is_numeric($_GET['add'])) {
-            $carritoController = new CarritoController();
-            $carritoController->añadirProducto($_GET['add']);
-        }
-        header("Location: carrito.php");
-        exit();*/
     case 'detalle':
         $controller = new DetalleProductoController();
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {

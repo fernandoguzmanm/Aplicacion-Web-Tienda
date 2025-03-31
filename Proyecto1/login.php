@@ -1,7 +1,6 @@
 <?php $tituloPagina = 'Login';?>
 
 <body>
-
     <h2>Iniciar Sesión</h2>
     <form action="../../../procesarLogin.php" method="post" class="formulario-form">
         <label for="email">Correo:</label>
@@ -13,6 +12,5 @@
         <a href="../../../registro.php">Registro</a></li>
     </form>
 </body>
-</html>
 
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/AW/Proyecto1/includes/vistas/plantillas/plantilla3.php'; ?>

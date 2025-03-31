@@ -1,7 +1,6 @@
 <?php
 require_once 'includes/modelos/producto.php';
-//require_once 'includes/mysql/conexion.php';
-
+//use aw\proyecto1\producto;
 class TiendaController {
     private $producto;
 

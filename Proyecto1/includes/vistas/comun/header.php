@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<body>
-
 <?php
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -11,6 +6,11 @@ if (session_status() == PHP_SESSION_NONE) {
 $carrito_count = isset($_SESSION['carrito']) ? array_sum(array_column($_SESSION['carrito'], 'cantidad')) : 0;
 $base_url = "/AW/Proyecto1/";
 ?>
+
+<!DOCTYPE html>
+<html lang="es">
+
+<body>
 
 <head>
     <meta charset="UTF-8">

@@ -47,6 +47,5 @@
 
     <?php } ?>
 </body>
-</html>
 
 <?php require './includes/vistas/plantillas/plantilla3.php'; ?>

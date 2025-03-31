@@ -3,6 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 require_once 'includes/modelos/producto.php';
+//use aw\proyecto1\producto;
 
 class CarritoController {
     private $producto;

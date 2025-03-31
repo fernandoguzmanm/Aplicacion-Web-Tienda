@@ -35,7 +35,4 @@
     <?php endforeach; ?>
 </main>
 
-</body>
-</html>
-
 <?php require './includes/vistas/plantillas/plantilla2.php'; ?>

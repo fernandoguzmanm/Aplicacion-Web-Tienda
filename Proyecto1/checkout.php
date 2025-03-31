@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<?php include 'includes/vistas/comun/header.php'; ?>
+<?php include 'includes/vistas/comun/header.php';?>
 
 <main class="checkout-container">
     <h2>Se implementará próximamente</h2>

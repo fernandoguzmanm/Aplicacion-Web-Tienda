@@ -1,4 +1,5 @@
 <?php
+//namespace aw\proyecto1;
 require_once 'includes/mysql/conexion.php';
 
 class Producto {

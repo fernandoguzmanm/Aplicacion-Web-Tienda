@@ -33,6 +33,6 @@ if (session_status() == PHP_SESSION_NONE) {
             ?>
         </div>
 
-    </div> <!-- Fin del contenedor -->
+    </div>
 </body>
 </html>

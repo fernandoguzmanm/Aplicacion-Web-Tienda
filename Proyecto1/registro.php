@@ -15,6 +15,5 @@
         <button type="submit-button">Registrarse</button>
     </form>
 </body>
-</html>
 
 <?php require './includes/vistas/plantillas/plantilla3.php'; ?>
