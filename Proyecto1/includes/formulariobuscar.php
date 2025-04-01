@@ -17,7 +17,6 @@ class formulariobuscar extends formularios
         $query = $datos['query'] ?? '';
         $categoria = $datos['categorias'] ?? '';
 
-        // Se generan los mensajes de error si existen.
         $htmlErroresGlobales = self::generaListaErroresGlobales($this->errores);
         $erroresCampos = self::generaErroresCampos(['query', 'categorias'], $this->errores, 'span', array('class' => 'error'));
 
@@ -50,10 +49,6 @@ class formulariobuscar extends formularios
 
         $query = trim($datos['query'] ?? '');
         $categoria = trim($datos['categorias'] ?? '');
-        /*
-        if (empty($query) && empty($categoria)) {
-            $this->errores['query'] = 'Debe ingresar un término de búsqueda o seleccionar una categoría.';
-        }*/
 
         if (count($this->errores) === 0) {
             $params = [];

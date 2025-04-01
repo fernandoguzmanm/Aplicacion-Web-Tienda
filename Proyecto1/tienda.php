@@ -1,4 +1,6 @@
-<?php $tituloPagina = 'Tienda' ?>
+tienda
+<?php $tituloPagina = 'Tienda';
+require_once 'C:\xampp\htdocs\AW\Proyecto1\includes\formulariounidadescarrito.php';?>
 
 <main>
     <h2>Nuestros Productos</h2>
@@ -14,14 +16,12 @@
                     <p class="stock">Stock disponible: <?php echo $producto['stock']; ?></p>
                     
                     <a href="controller.php?controller=detalle&action=mostrarDetalle&id=<?php echo $producto['id_producto']; ?>" class="btn">Ver detalles</a>
-
-                    <form action="controller.php" method="get">
-                        <input type="hidden" name="id" value="<?php echo $producto['id_producto']; ?>">
-                        <input type="number" id="numero_unidades" name="numero_unidades" step="1" min="1" value="<?php echo isset($_GET['numero_unidades']) ? $_GET['numero_unidades'] : ''; ?>" placeholder="Número">
-                        <input type="hidden" name="controller" value="carrito">
-                        <input type="hidden" name="action" value="añadirProducto">
-                        <button type="submit" class="btn">Añadir al carrito</button>
-                    </form>
+                    <?php
+                    
+                    $form = new formulariounidadescarrito($producto['id_producto']);                   
+                    $htmlFormUdsCarrito = $form->gestiona();
+                    ?> 
+                    <?= $htmlFormUdsCarrito ?>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
@@ -30,4 +30,4 @@
     </div>
 </main>
 
-<?php require './includes/vistas/plantillas/plantilla2.php'; ?>
+<?php require './includes/vistas/plantillas/plantilla2.php';?>
