@@ -48,7 +48,7 @@ class Producto {
     
 
     public function obtenerProductoPorId($id_producto) {
-        $stmt = $this->conn->prepare("SELECT id_producto, nombre, precio, imagen, descripcion FROM productos WHERE id_producto = ?");
+        $stmt = $this->conn->prepare("SELECT id_producto, nombre, descripcion, precio, stock, imagen FROM productos WHERE id_producto = ?");
         $stmt->bind_param("i", $id_producto);
         $stmt->execute();
         $result = $stmt->get_result();

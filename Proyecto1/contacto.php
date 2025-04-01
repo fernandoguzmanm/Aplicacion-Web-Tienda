@@ -11,7 +11,6 @@ $tituloPagina = 'Contacto';
 <body>
     <h2> Formulario de Contacto</h2>
     <?= $htmlFormContacto ?>
-    <script src="mailto.js"></script>
 </body>
 <?php require './includes/vistas/plantillas/plantilla3.php'; 
 

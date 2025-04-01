@@ -13,7 +13,7 @@ class formulariocontacto extends formularios
     protected function generaCamposFormulario(&$datos)
     {
         // Se reutiliza el nombre de usuario introducido previamente o se deja en blanco
-        //$correo = $datos['correo'] ?? '';
+        $correo = $datos['correo'] ?? '';
 
         // Se generan los mensajes de error si existen.
         $htmlErroresGlobales = self::generaListaErroresGlobales($this->errores);

@@ -18,7 +18,8 @@ class CarritoController {
     
     public function añadirProducto($id_producto, $cantidad) {
         $producto = $this->producto->obtenerProductoPorId($id_producto);
-        if ($producto) {
+        if ($producto && $cantidad >= $producto['stock']) {
+            $producto['stock'] -= $cantidad;
             if (isset($_SESSION['carrito'][$id_producto])) {
                 $_SESSION['carrito'][$id_producto]['cantidad'] += $cantidad;
             } else {
