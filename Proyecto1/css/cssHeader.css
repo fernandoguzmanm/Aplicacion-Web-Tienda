@@ -1,3 +1,4 @@
+/* Header principal: estilo fijo superior, fondo azul y contenido centrado con flexbox */
 header {
     background-color: #007BFF;
     color: white;
@@ -15,6 +16,7 @@ header {
     z-index: 10;
 }
 
+/* Footer con estilo azul oscuro y alineación con flexbox */
 footer {
     background-color: #003772;
     color: white;
@@ -26,6 +28,7 @@ footer {
     justify-content: space-between;
 }
 
+/* Título dentro del header: evita desbordamiento y mantiene alineación */
 header h1 {
     width: 250px;  
     white-space: nowrap; 
@@ -33,6 +36,7 @@ header h1 {
     text-align: left;
 }
 
+/* Contenedor general del header: separación interna y distribución del contenido */
 .header-container {
     display: flex;
     width: calc(100% - 100px);
@@ -42,6 +46,7 @@ header h1 {
     padding-left: 100px;
 }
 
+/* Navegación: elimina estilos de lista y distribuye enlaces en línea */
 nav ul {
     list-style: none;
     padding: 0;
@@ -50,10 +55,12 @@ nav ul {
     gap: 30px;
 }
 
+/* Elementos de la lista sin margen extra */
 nav ul li {
     margin: 0;
 }
 
+/* Estilo de los enlaces del menú */
 nav ul li a {
     color: white;
     text-decoration: none;
@@ -61,16 +68,19 @@ nav ul li a {
     font-size: 16px;
 }
 
+/* Subrayado al pasar el ratón por los enlaces del menú */
 nav ul li a:hover {
     text-decoration: underline;
 }
 
+/* Sección derecha del header (carrito + login): alineación horizontal */
 .right-section {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
+/* Contenedor del carrito: estilo tipo tarjeta */
 #carrito-container {
     max-width: 1200px;
     margin: auto;
@@ -80,6 +90,7 @@ nav ul li a:hover {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Botón del carrito: estilo azul y centrado */
 .carrito-btn {
     color: #007BFF;
     text-decoration: none;
@@ -88,10 +99,12 @@ nav ul li a:hover {
     justify-content: center;
 }
 
+/* Efecto hover para el botón del carrito */
 .carrito-btn:hover {
     text-decoration: underline;
 }
 
+/* Contenedor de login: columna derecha con estilo compacto */
 #login-container {
     min-width: 200px;
     max-width: 200px;
@@ -104,6 +117,7 @@ nav ul li a:hover {
     gap: 0;
 }
 
+/* Texto dentro del contenedor de login */
 #login-container p {
     color: white;
     text-decoration: none;
@@ -112,39 +126,44 @@ nav ul li a:hover {
     margin: 0;
 }
 
+/* Enlaces del login (como cerrar sesión o perfil) */
 #login-container a {
     color: white;
 }
 
+/* Redefinición de carrito-container con tamaño mínimo y máximo fijo */
 #carrito-container {
     min-width: 120px;
     max-width: 120px;
     overflow: hidden;
 }
 
-
+/* Redefinición de h1 en header: tamaño grande y alineado con el alto del header */
 header h1 {
     font-size: 2em;
     margin: 0;
     line-height: 80px;
 }
 
-
+/* Espaciado vertical uniforme para todos los elementos del header */
 header div, header nav, #login-container, #carrito-container {
     margin: 0;
     padding: 5px 0;
 }
 
+/* Fuerza el scroll vertical aunque el contenido no lo necesite */
 html {
     overflow-y: scroll;
 }
 
+/* Contenedor de la barra de búsqueda: centrado vertical y horizontal */
 .busqueda-container {
     display: flex;
     justify-content: center;  
     align-items: center;    
 }
 
+/* Formulario de búsqueda: estilo de caja redondeada y alineación horizontal */
 .busqueda-form {
     display: flex;
     align-items: center;
@@ -156,6 +175,7 @@ html {
     width: 234px;
 }
 
+/* Input de búsqueda por nombre del producto */
 .busqueda-form input[type="product-name"] {
     padding: 5px;
     border: 1px solid #ccc;
@@ -165,6 +185,7 @@ html {
     outline: none;
 }
 
+/* Selector de categorías en la búsqueda */
 .busqueda-form select[name = "categorias"] {
     padding: 4px;
     border: 1px solid #ccc;
@@ -175,6 +196,7 @@ html {
     width: 65px;
 }
 
+/* Botón de búsqueda */
 .busqueda-form button[type="submit-product"] {
     background-color: #007BFF;
     color: white;
@@ -185,6 +207,7 @@ html {
     font-size: 12px;
 }
 
+/* Hover para botón de búsqueda */
 .busqueda-form button:hover {
     background-color: #0056b3;
 }
