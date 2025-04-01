@@ -8,5 +8,5 @@
 
 <?php
 require(__DIR__ . '/../comun/header.php');
-require(__DIR__ . '/../comun/pie.php');
+//require(__DIR__ . '/../comun/pie.php');
 ?>

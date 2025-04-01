@@ -1,4 +1,5 @@
 <?php
+require 'C:\xampp\htdocs\AW\Proyecto1\includes\formulariobuscar.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -32,6 +33,7 @@ $base_url = "/AW/Proyecto1/";
         </nav>
 
         <div class="busqueda-container">
+            <?php /*
             <form action="controller.php" method="GET" class="busqueda-form">
                 <input type="product-name" name="query" placeholder="Buscar productos">
                 <select name="categorias">
@@ -45,7 +47,12 @@ $base_url = "/AW/Proyecto1/";
                 <input type="hidden" name="controller" value="busqueda">
                 <input type="hidden" name="action" value="mostrarBusqueda">
                 <button type="submit-product">Buscar</button>
-            </form>
+            </form>*/
+            
+            $form = new formulariobuscar();
+            $htmlFormBuscar = $form->gestiona();
+            ?>
+            <?= $htmlFormBuscar ?>
         </div>
         <div class="right-section">
             <div id="login-container">

@@ -1,5 +1,6 @@
 <?php $tituloPagina = 'Busqueda';
-require_once __DIR__.'/includes/formularioprecio.php';?>
+require_once __DIR__.'/includes/formularioprecio.php';
+require './includes/vistas/plantillas/plantilla2.php';?>
 
 <body>
     <h2>Resultados de búsqueda</h2>
@@ -44,4 +45,4 @@ require_once __DIR__.'/includes/formularioprecio.php';?>
     </div>
 </body>
 
-<?php require './includes/vistas/plantillas/plantilla2.php'; ?>
+<?php  ?>

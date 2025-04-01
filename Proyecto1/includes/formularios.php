@@ -122,16 +122,16 @@ abstract class formularios
     public function gestiona()
     {
         $datos = &$_POST;
-        var_dump($datos);
+        
         if (strcasecmp('GET', $this->method) == 0) {
             $datos = &$_GET;
         }
         $this->errores = [];
-
+        
         if (!$this->formularioEnviado($datos)) {
             return $this->generaFormulario();
         }
-        var_dump("joal");
+        
         $this->procesaFormulario($datos);
         
         $esValido = count($this->errores) === 0;

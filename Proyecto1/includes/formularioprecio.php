@@ -9,7 +9,7 @@ require_once __DIR__.'/formularios.php';
 class formularioprecio extends formularios
 {
     public function __construct() {
-        parent::__construct('formPrecio', ['urlRedireccion' => 'buscar.php']);
+        parent::__construct('formPrecio', ['urlRedireccion' => 'header.php']);
     }
 
     protected function generaCamposFormulario(&$datos)
