@@ -11,6 +11,7 @@
                          alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
                     <h3><?php echo ucfirst(htmlspecialchars($producto['nombre'])); ?></h3>
                     <p class="precio">$<?php echo number_format($producto['precio'], 2); ?></p>
+                    <p class="stock">Stock disponible: <?php echo $producto['stock']; ?></p>
                     
                     <a href="controller.php?controller=detalle&action=mostrarDetalle&id=<?php echo $producto['id_producto']; ?>" class="btn">Ver detalles</a>
 

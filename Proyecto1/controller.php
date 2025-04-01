@@ -1,4 +1,5 @@
 <?php
+require_once './includes/mysql/conexion.php';
 require_once './includes/controladores/tiendaController.php';
 require_once './includes/controladores/detallesController.php';
 require_once './includes/controladores/bocetosController.php';
@@ -32,10 +33,6 @@ switch ($controlador) {
         break;
     case 'carrito':
         $controller = new CarritoController();
-        /*
-        if (isset($_GET['action']) && $_GET['action'] == 'eliminarProducto' && isset($_GET['id'])) {
-            $controller->eliminarProducto($_GET['id']);
-        }*/
         if (isset($_GET['action']) && $_GET['action'] == 'eliminarProducto' && isset($_GET['id'])) {
             $cantidad = isset($_GET['numero_unidades']) ? intval($_GET['numero_unidades']) : 1;
             $controller->eliminarProducto($_GET['id'], $cantidad);
@@ -46,9 +43,28 @@ switch ($controlador) {
         else if (isset($_GET['action']) && $_GET['action'] == 'añadirProducto' && isset($_GET['id'])) {
             $cantidad = isset($_GET['numero_unidades']) ? intval($_GET['numero_unidades']) : 1;
             $controller->añadirProducto($_GET['id'], $cantidad);
+            /*
+            $id_producto = $_GET['id'] ?? null;
+            $numero_unidades = $_GET['numero_unidades'] ?? 1;
+
+            if ($id_producto) {
+                $query = "SELECT stock FROM productos WHERE id_producto = ?";
+                $stmt = $db->prepare($query);
+                $stmt->bind_param('i', $id_producto);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $producto = $result->fetch_assoc();
+
+                if ($producto && $producto['stock'] >= $numero_unidades) {
+                    // meter al carrito
+                    echo "Producto añadido al carrito.";
+                } else {
+                    echo "Lo sentimos, no hay suficiente stock disponible.";
+                }
+            } else {
+                echo "Producto no válido.";
+            }*/
         }
-        //header("Location: carrito.php");
-        //exit();
     case 'detalle':
         $controller = new DetalleProductoController();
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
