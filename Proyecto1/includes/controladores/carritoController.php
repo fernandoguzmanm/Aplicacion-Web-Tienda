@@ -18,12 +18,13 @@ class CarritoController {
     
     public function añadirProducto($id_producto, $cantidad) {
         $producto = $this->producto->obtenerProductoPorId($id_producto);
-        if ($producto && $cantidad >= $producto['stock']) {
-            $producto['stock'] -= $cantidad;
+        if ($producto && $cantidad <= $producto['stock']) {
+            $this->producto->reducirStock($id_producto, $cantidad);
             if (isset($_SESSION['carrito'][$id_producto])) {
                 $_SESSION['carrito'][$id_producto]['cantidad'] += $cantidad;
             } else {
                 $_SESSION['carrito'][$id_producto] = [
+                    'id_producto' => $id_producto, 
                     'nombre' => $producto['nombre'],
                     'precio' => $producto['precio'],
                     'imagen' => $producto['imagen'],
@@ -36,22 +37,31 @@ class CarritoController {
     public function eliminarProducto($id_producto, $cantidad) {
         $producto = $this->producto->obtenerProductoPorId($id_producto);
         if ($producto) {
+            if ($cantidad > $_SESSION['carrito'][$id_producto]['cantidad']) {
+                $cantidad = $_SESSION['carrito'][$id_producto]['cantidad'];
+            }
+            $this->producto->aumentarStock($id_producto, $cantidad);
             $_SESSION['carrito'][$id_producto]['cantidad'] -= $cantidad;
+            
+            if ($_SESSION['carrito'][$id_producto]['cantidad'] <= 0) {
+                unset($_SESSION['carrito'][$id_producto]);
+            }
         }
     }
-    
-    /*
-    public function eliminarProducto($id_producto) {
-        unset($_SESSION['carrito'][$id_producto]);
-    }*/
 
     public function vaciarCarrito() {
+        if (!empty($_SESSION['carrito'])) {
+            foreach ($_SESSION['carrito'] as $id_producto => $producto) {
+                var_dump($_SESSION['carrito']);
+                $this->producto->aumentarStock($id_producto, $producto['cantidad']);
+            }
+        }
+    
         $_SESSION['carrito'] = [];
         header("Location: carrito.php");
         exit();
     }
-
-    // Calcular el total del carrito
+    /*
     public function calcularTotal() {
         $total = 0;
         if (!empty($_SESSION['carrito'])) {
@@ -61,7 +71,7 @@ class CarritoController {
         }
         return $total;
     }
-        /*
+        
     // Mostrar la vista del carrito
     public function mostrarCarrito() {
         $total = $this->calcularTotal();

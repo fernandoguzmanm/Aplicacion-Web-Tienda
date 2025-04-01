@@ -28,13 +28,13 @@ if (session_status() == PHP_SESSION_NONE) {
                     <td><?php echo $producto['cantidad']; ?></td>
                     <td>$<?php echo number_format($producto['precio'] * $producto['cantidad'], 2); ?></td>
                     <td>
-                        <a href="controller.php?controller=carrito&action=eliminarProducto&id=<?php echo $id; ?>" class="btn">Eliminar</a>
                         <form action="controller.php" method="get">
                             <input type="hidden" name="id" value="<?php echo $id; ?>">
                             <input type="number" id="numero_unidades" name="numero_unidades" step="1" min="1" value="<?php echo isset($_GET['numero_unidades']) ? $_GET['numero_unidades'] : ''; ?>" placeholder="Número">
                             <input type="hidden" name="controller" value="carrito">
                             <input type="hidden" name="action" value="eliminarProducto">
-                            <button type="submit" class="btn">Eliminar2</button>
+                            <button type="submit" class="btn">Eliminar</button>
+                        </form>
                     </td>
 
                 </tr>

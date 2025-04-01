@@ -48,11 +48,26 @@ class Producto {
     
 
     public function obtenerProductoPorId($id_producto) {
-        $stmt = $this->conn->prepare("SELECT id_producto, nombre, descripcion, precio, stock, imagen FROM productos WHERE id_producto = ?");
+        $stmt = $this->conn->prepare("SELECT id_producto, nombre, precio, imagen, descripcion, stock FROM productos WHERE id_producto = ?");
         $stmt->bind_param("i", $id_producto);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_assoc();
+    }
+
+    public function reducirStock($id_producto, $cantidad) {
+        $stmt = $this->conn->prepare("UPDATE productos SET stock = stock - ? WHERE id_producto = ? AND stock >= ?");
+        $stmt->bind_param("iii", $cantidad, $id_producto, $cantidad);
+        $stmt->execute();
+    
+        return $stmt->affected_rows > 0;
+    }
+    public function aumentarStock($id_producto, $cantidad) {
+        $stmt = $this->conn->prepare("UPDATE productos SET stock = stock + ? WHERE id_producto = ? AND stock >= ?");
+        $stmt->bind_param("iii", $cantidad, $id_producto, $cantidad);
+        $stmt->execute();
+    
+        return $stmt->affected_rows > 0;
     }
 }
 ?>
