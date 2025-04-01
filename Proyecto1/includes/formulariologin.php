@@ -7,7 +7,7 @@ require_once 'formularios.php';
 class formulariologin extends formularios
 {
     public function __construct() {
-        parent::__construct('formLogin', ['urlRedireccion' => 'login.php']);
+        parent::__construct('formLogin', ['urlRedireccion' => 'index.php']);
     }
     
     protected function generaCamposFormulario(&$datos)

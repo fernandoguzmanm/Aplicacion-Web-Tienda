@@ -1,9 +1,25 @@
-<?php $tituloPagina = 'Contacto';?>
+<?php 
 
+require_once './includes/formulariocontacto.php';
+require_once './includes/config.php';
+
+$form = new formulariocontacto();
+$htmlFormContacto = $form->gestiona();
+
+$tituloPagina = 'Contacto';
+?>
+<body>
+    <h2> Formulario de Contacto</h2>
+    <?= $htmlFormContacto ?>
+    <script src="mailto.js"></script>
+</body>
+<?php require './includes/vistas/plantillas/plantilla3.php'; 
+
+/*
 <body>
     <h2>Formulario de Contacto</h2>
 
-    <?php
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nombre = htmlspecialchars($_POST['nombre']);
         $email = htmlspecialchars($_POST['email']);
@@ -16,9 +32,7 @@
         echo "<p><strong>Motivo:</strong> $motivo</p>";
         echo "<p><strong>Consulta:</strong> $mensaje</p>";
     } else {
-    ?>
-
-    <form action="contacto.php" method="post" class="formulario-form">
+        <form action="contacto.php" method="post" class="formulario-form">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required><br><br>
     
@@ -44,8 +58,6 @@
     
         <input type="submit-button" value="Enviar">
     </form>
-
-    <?php } ?>
-</body>
-
-<?php require './includes/vistas/plantillas/plantilla3.php'; ?>
+    }
+</body>*/
+?>
