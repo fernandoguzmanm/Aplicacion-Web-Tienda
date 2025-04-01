@@ -1,18 +1,13 @@
 <?php
-//require_once __DIR__.'/Formulario.php';
-//require_once __DIR__.'/Usuario.php';
-//namespace es\ucm\fdi\aw;
-
 //use es\ucm\fdi\aw\Usuario; 
 //use es\ucm\fdi\aw\formularios;
-//require_once 'mysql/conexios.php';
 require_once 'usuario.php';
 require_once 'formularios.php';
 
 class formulariologin extends formularios
 {
     public function __construct() {
-        parent::__construct('formLogin', ['urlRedireccion' => 'index.php']);
+        parent::__construct('formLogin', ['urlRedireccion' => 'login.php']);
     }
     
     protected function generaCamposFormulario(&$datos)
@@ -60,16 +55,14 @@ class formulariologin extends formularios
         if ( ! $password || empty($password) ) {
             $this->errores['password'] = 'La contraseña no puede estar vacía';
         }
-        //print_r($_SESSION);
         if (count($this->errores) === 0) {
             $usuario = Usuario::login($correo, $password);
-            //print_r($_SESSION);
             if (!$usuario) {
                 $this->errores[] = "El correo o la contraseña no coinciden";
             } else {
+                var_dump("adios adios");
                 $_SESSION['login'] = true;
                 $_SESSION['nombre'] = $usuario->getNombre();
-                //$_SESSION['esAdmin'] = $usuario->tieneRol(Usuario::ADMIN_ROLE);
             }
         }
     }

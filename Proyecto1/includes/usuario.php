@@ -1,7 +1,7 @@
 <?php
 
 //namespace es\ucm\fdi\aw;
-include_once 'aplicacion.php';//esto hacerlo en config dps
+include_once 'aplicacion.php';
 
 class Usuario
 {
@@ -15,15 +15,14 @@ class Usuario
     {
         $usuario = self::buscaUsuario($correo);
         if ($usuario && $usuario->compruebaPassword($password)) {
-            return self::cargaRoles($usuario);
+            return $usuario;
         }
         return false;
     }
     
-    public static function crea($correo, $password, $nombre, $id_usuario, $puntos_fidelidad, $tipo_usuario)
+    public static function crea($correo, $password, $nombre)
     {
-        $user = new Usuario($correo, self::hashPassword($password), $nombre);
-        $user->añadeRol($tipo_usuario);
+        $user = new Usuario(null, $nombre, $correo, self::hashPassword($password), "cliente", 0);
         return $user->guarda();
     }
 
@@ -102,24 +101,26 @@ class Usuario
             exit();
         }
         else {
-            $_SESSION["usuario"] = true;
+            $_SESSION["cliente"] = true;
             //header("Location: login.php");
             //exit();
         }
     }
-    /*
+    
     private static function inserta($usuario)
     {
         $result = false;
         $conn = Aplicacion::getInstance()->getConexionBd();
-        $query=sprintf("INSERT INTO Usuarios(nombreUsuario, nombre, password) VALUES ('%s', '%s', '%s')"
-            , $conn->real_escape_string($usuario->nombreUsuario)
+        $query=sprintf("INSERT INTO usuarios (nombre, email, contraseña, tipo_usuario, puntos_fidelidad) VALUES ('%s', '%s', '%s', '%s', '%s')"
             , $conn->real_escape_string($usuario->nombre)
+            , $conn->real_escape_string($usuario->email)
             , $conn->real_escape_string($usuario->password)
+            , $conn->real_escape_string($usuario->tipo_usuario)
+            , $conn->real_escape_string($usuario->puntos_fidelidad)
         );
         if ( $conn->query($query) ) {
             $usuario->id = $conn->insert_id;
-            $result = self::insertaRoles($usuario);
+            //$result = self::insertaRoles($usuario);
         } else {
             error_log("Error BD ({$conn->errno}): {$conn->error}");
         }
@@ -141,7 +142,7 @@ class Usuario
         }
         return $usuario;
     }
-    */
+    /**/
     private static function actualiza($usuario)
     {
         $result = false;
@@ -230,7 +231,6 @@ class Usuario
 
     public function getNombreUsuario()
     {
-        //var_dump($this->nombreUsuario);
         return $this->nombreUsuario;
     }
 
@@ -269,7 +269,7 @@ class Usuario
     
     public function guarda()
     {
-        if ($this->id !== null) {
+        if ($this->id_usuario !== null) {
             return self::actualiza($this);
         }
         return self::inserta($this);
@@ -277,7 +277,7 @@ class Usuario
     
     public function borrate()
     {
-        if ($this->id !== null) {
+        if ($this->id_usuario !== null) {
             return self::borra($this);
         }
         return false;

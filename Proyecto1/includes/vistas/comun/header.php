@@ -54,7 +54,7 @@ $base_url = "/AW/Proyecto1/";
         <p><a href="logout.php">Cerrar sesión</a></p>
         <div class="right-section">
             <div id="login-container">
-                <?php if (isset($_SESSION['usuario'])) : ?>
+                <?php if (isset($_SESSION['login'])) : ?>
                     <p>Bienvenido, <?php echo htmlspecialchars($_SESSION['nombre']); ?></p>
                     <p><a href="logout.php">Cerrar sesión</a></p>
                 <?php else : ?>
