@@ -1,8 +1,9 @@
-<?php $tituloPagina = 'Busqueda' ?>
+<?php $tituloPagina = 'Busqueda';
+require_once __DIR__.'/includes/formularioprecio.php';?>
 
 <body>
     <h2>Resultados de búsqueda</h2>
-
+    <?php /*
     <div class="filtro-precio">
         <form action="controller.php" method="get">
             <label for="min_precio">Precio Mínimo:</label>
@@ -16,6 +17,12 @@
             <button type="submit">Filtrar</button>
         </form>
     </div>
+*/
+    
+    $form = new formularioprecio();
+    $htmlFormPrecio = $form->gestiona();
+    ?>
+    <?= $htmlFormPrecio ?>
 
     <div class="productos-container">
         <?php if (empty($resultados)): ?>
