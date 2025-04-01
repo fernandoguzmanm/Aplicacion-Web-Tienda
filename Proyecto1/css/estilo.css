@@ -1,3 +1,4 @@
+/* Estilo general del body: fuente base, fondo blanco, contenido centrado y espaciado superior */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -8,13 +9,15 @@ body {
     flex: 1;
 }
 
+/* Estilo base para los enlaces: azul sin subrayado */
 a {
     color: #007BFF;
     text-decoration: none;
 }
 
+/* Hover en enlaces: aparece subrayado */
 a:hover {
-    text-decoration: underline;
+    text-decoration: underline; 
 }
 /*
 button, .btn {
@@ -33,16 +36,19 @@ button:hover, .btn:hover {
     background-color: #0056b3;
 }
 */
+
+/* Títulos centrados con margen y color principal */
 h2, h3 {
     text-align: center;
     color: #007BFF;
     margin-top: 20px;
 }
-
+/* Tamaño de fuente para h2 */
 h2 {
     font-size: 1.5em;
 }
 
+/* Contenedores de secciones: ancho fijo, centrado, fondo blanco y sombreado */
 .container, .admin-container, .member, .references {
     max-width: 1200px;
     margin: auto;
@@ -52,6 +58,7 @@ h2 {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Tablas con diseño colapsado y centrado */
 table {
     border-collapse: collapse;
     margin-top: 20px;
@@ -60,24 +67,29 @@ table {
     margin-right: auto;
 }
 
+/* Borde para toda la tabla y celdas */
 table, th, td {
     border: 1px solid #ccc;
 }
 
+/* Celdas centradas y con relleno */
 th, td {
     padding: 10px;
     text-align: center;
 }
 
+/* Encabezados de tabla con fondo azul y texto blanco */
 th {
     background: #007BFF;
     color: white;
 }
 
+/* Filas pares con fondo gris claro */
 tr:nth-child(even) {
     background: #f9f9f9;
 }
 
+/* Imagen de bocetos: centrada, con tamaño máximo y bordes redondeados */
 .bocetos-img {
     display: block;
     margin: 20px auto;
@@ -89,11 +101,13 @@ tr:nth-child(even) {
     border-radius: 8px;
 }
 
+/* Efecto hover para imagen de bocetos: zoom y sombra */
 .bocetos-img:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
+/* Estilo general para imágenes: centradas, tamaño fijo, bordes redondeados y sombra */
 img {
     display: block;
     width: 300px;
@@ -104,8 +118,7 @@ img {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-
-
+/* Miembros y referencias: estilo en bloque, colores claros y borde */
 .references, .member {
     display: flex;
     gap: 15px;
@@ -119,6 +132,7 @@ img {
     font-weight: normal;
 }
 
+/* Contenedor grid para productos: tres columnas, espaciado y centrado */
 .productos-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -127,6 +141,8 @@ img {
     max-width: 1200px;
     margin: auto;
 }
+
+/* Tarjeta individual de producto */
 .producto {
     background-color: white;
     padding: 15px;
@@ -136,10 +152,12 @@ img {
     transition: transform 0.2s;
 }
 
+/* Efecto zoom al pasar por encima del producto */
 .producto:hover {
     transform: scale(1.05);
 }
 
+/* Imagen del producto: tamaño fijo, centrada y redondeada */
 .producto img {
     width: 320px;
     height: 250px;
@@ -149,17 +167,20 @@ img {
     margin: 0 auto;
 }
 
+/* Título del producto con color principal */
 .producto h3 {
     color: #007BFF;
     font-size: 1.2em;
 }
 
+/* Precio del producto: énfasis en negrita */
 .precio {
     font-size: 1.1em;
     font-weight: bold;
     color: #333;
 }
 
+/* Estilo de párrafos: justificados, con márgenes y espaciado */
 p {
     line-height: 1.6;
     font-size: 1.1em;
@@ -169,6 +190,7 @@ p {
     max-width: 80%;
 }
 
+/* Listas centradas y sin viñetas */
 ul {
     list-style-type: none;
     padding: 0;
@@ -176,6 +198,7 @@ ul {
     text-align: center;
 }
 
+/* Contenedor del filtro de precios: estilo de tarjeta centrada */
 .filtro-precio {
     background-color: #ffffff;
     padding: 15px;
@@ -187,6 +210,7 @@ ul {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Etiquetas del filtro: negrita y espaciado superior */
 .filtro-precio label {
     font-weight: bold;
     display: block;
@@ -194,6 +218,7 @@ ul {
     color: #333;
 }
 
+/* Campos de entrada del filtro */
 .filtro-precio input {
     width: 100%;
     padding: 8px;
@@ -204,6 +229,7 @@ ul {
     box-sizing: border-box;
 }
 
+/* Botón del filtro: estilo azul y adaptado al ancho */
 .filtro-precio button {
     display: block;
     width: 100%;
@@ -218,11 +244,12 @@ ul {
     transition: background-color 0.3s ease;
 }
 
+/* Hover del botón del filtro */
 .filtro-precio button:hover {
     background-color: #0056b3;
 }
 
-
+/* Estilo general de botones con clase .btn */
 .btn {
     display: inline-block;
     background-color: #007BFF;
@@ -235,10 +262,12 @@ ul {
     transition: background 0.3s;
 }
 
+/* Hover del botón */
 .btn:hover {
     background-color: #0056b3;
 }
 
+/* Contenedor del detalle del producto */
 .detalle-container {
     max-width: 600px;
     margin: 40px auto;
@@ -247,6 +276,7 @@ ul {
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
+
 
 /* Imagen del producto */
 .detalle-imagen {
