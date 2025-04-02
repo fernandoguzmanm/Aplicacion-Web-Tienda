@@ -1,41 +1,35 @@
 <?php
 require_once __DIR__.'/includes/config.php';
-require_once __DIR__.'/includes/modelos/producto.php';
-require_once RUTA_CONTROLADORES . 'vendedorController.php';
+//require_once __DIR__.'/includes/modelos/producto.php';
+//require_once RUTA_CONTROLADORES . 'vendedorController.php';
 
-$tituloPagina = 'Gestión de Productos';
-
-$vendedor = new VendedorController();
-
-
-require_once __DIR__.'/includes/vistas/comun/header.php';
+$tituloPagina = 'Vendedor';
 ?>
+<main>
+    <h2>Panel de Vendedor - Gestión de Productos</h2>
 
-<h1>Panel de Vendedor - Gestión de Productos</h1>
-
-<table border="1">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Precio (€)</th>
-            <th>Cantidad</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($productos as $producto): ?>
+    <table border="1">
+        <thead>
             <tr>
-                <td><?= htmlspecialchars($producto['nombre']) ?></td>
-                <td><?= number_format($producto['precio'], 2) ?></td>
-                <td><?= (int)$producto['cantidad'] ?></td>
-                <td>
-                    <a href="editar_producto.php?id=<?= urlencode($producto['id']) ?>">Editar</a>
-                </td>
+                <th>Nombre</th>
+                <th>Precio (€)</th>
+                <th>Cantidad</th>
+                <th>Acciones</th>
             </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <?php foreach ($productos as $producto): ?>
+                <tr>
+                    <td><?= htmlspecialchars($producto['nombre']) ?></td>
+                    <td><?= number_format($producto['precio'], 2) ?></td>
+                    <td><?= (int)$producto['stock'] ?></td>
+                    <td>
+                        
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</main>
 
-<?php
-require_once __DIR__.'/includes/vistas/comun/pie.php';
-?>
+<?php require './includes/vistas/plantillas/plantilla2.php'; ?>

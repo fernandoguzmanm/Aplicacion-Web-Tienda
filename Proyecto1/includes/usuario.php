@@ -66,20 +66,46 @@ class Usuario
         return password_hash($password, PASSWORD_DEFAULT);
     }
 
-    private static function cargaRoles($usuario)
-    {
-        if ($usuario->tipo_usuario == "admin") {
-            $_SESSION["esAdmin"] = true;
-            header("Location: " . RUTA_APP . "admin.php");
-            exit();
-        } else if ($usuario->tipo_usuario == "vendedor") {
-            $_SESSION["vendedor"] = true;
-            header("Location: " . RUTA_APP . "login.php");
-            exit();
-        } else {
-            $_SESSION["cliente"] = true;
-        }
-    }
+    private static function cargaRoles($usuario) //esto no se si deberia ser diferente
+     {
+         /*
+         $roles=[];
+             
+         $conn = Aplicacion::getInstance()->getConexionBd();
+         $query = sprintf("SELECT RU.rol FROM RolesUsuario RU WHERE RU.usuario=%d"
+             , $usuario->id
+         );
+         $rs = $conn->query($query);
+         if ($rs) {
+             $roles = $rs->fetch_all(MYSQLI_ASSOC);
+             $rs->free();
+ 
+             $usuario->roles = [];
+             foreach($roles as $rol) {
+                 $usuario->roles[] = $rol['rol'];
+             }
+             return $usuario;
+ 
+         } else {
+             error_log("Error BD ({$conn->errno}): {$conn->error}");
+         }
+         return false;*/
+         if ($usuario->tipo_usuario == "admin") {
+             $_SESSION["esAdmin"] = true;
+             header("Location: admin.php");
+             exit();
+         } else if ($usuario->tipo_usuario == "vendedor") {
+             $_SESSION["vendedor"] = true;
+             header("Location: login.php");
+             exit();
+         }
+         else {
+             $_SESSION["usuario"] = true;
+             $_SESSION["cliente"] = true;
+             //header("Location: login.php");
+             //exit();
+         }
+     }
     
     private static function inserta($usuario)
     {

@@ -9,6 +9,7 @@ require_once RUTA_CONTROLADORES . 'planificacionController.php';
 require_once RUTA_CONTROLADORES . 'busquedaController.php';
 require_once RUTA_CONTROLADORES . 'carritoController.php';
 require_once RUTA_CONTROLADORES . 'detalleProductoController.php';
+require_once RUTA_CONTROLADORES . 'vendedorController.php';
 
 $controlador = isset($_GET['controller']) ? $_GET['controller'] : 'tienda';
 $accion = isset($_GET['action']) ? $_GET['action'] : 'mostrarTienda';
@@ -16,6 +17,9 @@ $accion = isset($_GET['action']) ? $_GET['action'] : 'mostrarTienda';
 switch ($controlador) {
     case 'tienda':
         $controller = new TiendaController();
+        break;
+    case 'vendedor':
+        $controller = new VendedorController();
         break;
     case 'detalles':
         $controller = new DetallesController();

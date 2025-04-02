@@ -56,7 +56,7 @@ class formulariologin extends formularios
         
         if (count($this->errores) === 0) {
             $usuario = Usuario::login($correo, $password);
-            
+            var_dump($usuario);
             if (!$usuario) {
                 $this->errores[] = "El correo o la contraseña no coinciden";
             } else {
