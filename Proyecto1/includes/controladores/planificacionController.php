@@ -13,7 +13,7 @@ class PlanificacionController {
         $tareas = $this->tareas;
         $hitos = $this->hitos;
 
-        require 'planificacion.php';
+        require RUTA_VISTAS . 'planificacion.php';
     }
 
     private function obtenerTareas() {

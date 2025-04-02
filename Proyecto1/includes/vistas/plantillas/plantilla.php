@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title><?= $tituloPagina ?></title>
-    <link rel="stylesheet" type="text/css" href="/AW/Proyecto1/css/estilo.css?v=4" />
+    <link rel="stylesheet" type="text/css" href="<?= RUTA_CSS . 'estilo.css?v=4' ?>" />
 </head>
 <body>
 <?php
-require(__DIR__ . '/../comun/header.php');
+require RUTA_VISTAS . 'comun/header.php';
 ?>
-	<main>
-		<article>
-			<?= $contenidoPrincipal ?>
-		</article>
-	</main>
+    <main>
+        <article>
+            <?= $contenidoPrincipal ?>
+        </article>
+    </main>
 <?php
 ?>
 </body>
 </html>
 
-<?php require(__DIR__ . '/../comun/pie.php'); ?>
+<?php require RUTA_VISTAS . 'comun/pie.php'; ?>

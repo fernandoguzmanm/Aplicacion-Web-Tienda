@@ -12,15 +12,17 @@ define('BD_PASS', 'awpass');
  * Parámetros de configuración utilizados para generar las URLs y las rutas a ficheros en la aplicación
  */
 define('RAIZ_APP', dirname(__DIR__));
-define('RUTA_APP', '/Proyecto1/');
-define('RUTA_INCLUDES', RUTA_APP . 'includes/');
-define('RUTA_CSS', RUTA_APP . 'css/');
-define('RUTA_JS', RUTA_APP . 'js/');
-define('RUTA_IMGS', RUTA_APP . 'img/');
+define('RUTA_APP', '/AW/Proyecto1/');
+define('URL_BASE', 'http://localhost' . RUTA_APP); // URL base del proyecto
+define('RUTA_INCLUDES', URL_BASE . 'includes/');
+define('RUTA_CSS', URL_BASE . 'css/');
+define('RUTA_JS', URL_BASE . 'js/');
+define('RUTA_IMGS', URL_BASE . 'img/');
 define('RUTA_CONTROLADORES', RUTA_INCLUDES . 'controladores/');
 define('RUTA_MODELOS', RUTA_INCLUDES . 'modelos/');
 define('RUTA_VISTAS', RUTA_INCLUDES . 'vistas/');
 define('RUTA_MYSQL', RUTA_INCLUDES . 'mysql/');
+
 /**
  * Configuración del soporte de UTF-8, localización (idioma y país) y zona horaria
  */

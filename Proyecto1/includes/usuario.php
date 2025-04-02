@@ -1,14 +1,12 @@
 <?php
 
-//namespace es\ucm\fdi\aw;
-include_once 'aplicacion.php';
+require_once './includes/config.php';
+require_once RUTA_INCLUDES . 'aplicacion.php';
 
 class Usuario
 {
     public const ADMIN_ROLE = 1;
-
     public const USER_ROLE = 2;
-
     public const VENDEDOR_ROLE = 3;
 
     public static function login($correo, $password)
@@ -67,43 +65,18 @@ class Usuario
         return password_hash($password, PASSWORD_DEFAULT);
     }
 
-    private static function cargaRoles($usuario) //esto no se si deberia ser diferente
+    private static function cargaRoles($usuario)
     {
-        /*
-        $roles=[];
-            
-        $conn = Aplicacion::getInstance()->getConexionBd();
-        $query = sprintf("SELECT RU.rol FROM RolesUsuario RU WHERE RU.usuario=%d"
-            , $usuario->id
-        );
-        $rs = $conn->query($query);
-        if ($rs) {
-            $roles = $rs->fetch_all(MYSQLI_ASSOC);
-            $rs->free();
-
-            $usuario->roles = [];
-            foreach($roles as $rol) {
-                $usuario->roles[] = $rol['rol'];
-            }
-            return $usuario;
-
-        } else {
-            error_log("Error BD ({$conn->errno}): {$conn->error}");
-        }
-        return false;*/
         if ($usuario->tipo_usuario == "admin") {
             $_SESSION["esAdmin"] = true;
-            header("Location: admin.php");
+            header("Location: " . RUTA_APP . "admin.php");
             exit();
         } else if ($usuario->tipo_usuario == "vendedor") {
             $_SESSION["vendedor"] = true;
-            header("Location: login.php");
+            header("Location: " . RUTA_APP . "login.php");
             exit();
-        }
-        else {
+        } else {
             $_SESSION["cliente"] = true;
-            //header("Location: login.php");
-            //exit();
         }
     }
     
@@ -111,91 +84,49 @@ class Usuario
     {
         $result = false;
         $conn = Aplicacion::getInstance()->getConexionBd();
-        $query=sprintf("INSERT INTO usuarios (nombre, email, contraseña, tipo_usuario, puntos_fidelidad) VALUES ('%s', '%s', '%s', '%s', '%s')"
-            , $conn->real_escape_string($usuario->nombre)
-            , $conn->real_escape_string($usuario->email)
-            , $conn->real_escape_string($usuario->password)
-            , $conn->real_escape_string($usuario->tipo_usuario)
-            , $conn->real_escape_string($usuario->puntos_fidelidad)
+        $query = sprintf(
+            "INSERT INTO usuarios (nombre, email, contraseña, tipo_usuario, puntos_fidelidad) VALUES ('%s', '%s', '%s', '%s', '%s')",
+            $conn->real_escape_string($usuario->nombre),
+            $conn->real_escape_string($usuario->email),
+            $conn->real_escape_string($usuario->password),
+            $conn->real_escape_string($usuario->tipo_usuario),
+            $conn->real_escape_string($usuario->puntos_fidelidad)
         );
-        if ( $conn->query($query) ) {
+        if ($conn->query($query)) {
             $usuario->id = $conn->insert_id;
-            //$result = self::insertaRoles($usuario);
         } else {
             error_log("Error BD ({$conn->errno}): {$conn->error}");
         }
         return $result;
     }
-   
-    private static function insertaRoles($usuario)
-    {
-        $conn = Aplicacion::getInstance()->getConexionBd();
-        foreach($usuario->roles as $rol) {
-            $query = sprintf("INSERT INTO RolesUsuario(usuario, rol) VALUES (%d, %d)"
-                , $usuario->id
-                , $rol
-            );
-            if ( ! $conn->query($query) ) {
-                error_log("Error BD ({$conn->errno}): {$conn->error}");
-                return false;
-            }
-        }
-        return $usuario;
-    }
-    /**/
+
     private static function actualiza($usuario)
     {
         $result = false;
         $conn = Aplicacion::getInstance()->getConexionBd();
-        $query=sprintf("UPDATE Usuarios U SET nombreUsuario = '%s', nombre='%s', password='%s' WHERE U.id=%d"
-            , $conn->real_escape_string($usuario->nombreUsuario)
-            , $conn->real_escape_string($usuario->nombre)
-            , $conn->real_escape_string($usuario->password)
-            , $usuario->id
+        $query = sprintf(
+            "UPDATE Usuarios U SET nombreUsuario = '%s', nombre='%s', password='%s' WHERE U.id=%d",
+            $conn->real_escape_string($usuario->nombreUsuario),
+            $conn->real_escape_string($usuario->nombre),
+            $conn->real_escape_string($usuario->password),
+            $usuario->id
         );
-        if ( $conn->query($query) ) {
-            $result = self::borraRoles($usuario);
-            if ($result) {
-                $result = self::insertaRoles($usuario);
-            }
+        if ($conn->query($query)) {
+            $result = true;
         } else {
             error_log("Error BD ({$conn->errno}): {$conn->error}");
         }
-        
         return $result;
     }
-   
-    private static function borraRoles($usuario)
-    {
-        $conn = Aplicacion::getInstance()->getConexionBd();
-        $query = sprintf("DELETE FROM RolesUsuario RU WHERE RU.usuario = %d"
-            , $usuario->id
-        );
-        if ( ! $conn->query($query) ) {
-            error_log("Error BD ({$conn->errno}): {$conn->error}");
-            return false;
-        }
-        return $usuario;
-    }
-    
-    private static function borra($usuario)
-    {
-        return self::borraPorId($usuario->id);
-    }
-    
+
     private static function borraPorId($idUsuario)
     {
         if (!$idUsuario) {
             return false;
-        } 
-        /* Los roles se borran en cascada por la FK
-         * $result = self::borraRoles($usuario) !== false;
-         */
+        }
         $conn = Aplicacion::getInstance()->getConexionBd();
-        $query = sprintf("DELETE FROM Usuarios U WHERE U.id = %d"
-            , $idUsuario
-        );
-        if ( ! $conn->query($query) ) {
+        $query = sprintf("DELETE FROM Usuarios U WHERE U.id = %d", $idUsuario);
+        if (!$conn->query($query)) {
             error_log("Error BD ({$conn->errno}): {$conn->error}");
             return false;
         }
@@ -203,15 +134,10 @@ class Usuario
     }
 
     private $id_usuario;
-
     private $nombre;
-
     private $email;
-
     private $password;
-
     private $tipo_usuario;
-
     private $puntos_fidelidad;
 
     private function __construct($id_usuario, $nombre, $email, $password, $tipo_usuario, $puntos_fidelidad)
@@ -226,12 +152,7 @@ class Usuario
 
     public function getId()
     {
-        return $this->id;
-    }
-
-    public function getNombreUsuario()
-    {
-        return $this->nombreUsuario;
+        return $this->id_usuario;
     }
 
     public function getNombre()
@@ -239,34 +160,11 @@ class Usuario
         return $this->nombre;
     }
 
-    public function añadeRol($role)
-    {
-        $this->roles[] = $role;
-    }
-
-    public function getRoles()
-    {
-        return $this->roles;
-    }
-
-    public function tieneRol($role)
-    {
-        if ($this->roles == null) {
-            self::cargaRoles($this);
-        }
-        return array_search($role, $this->roles) !== false;
-    }
-
     public function compruebaPassword($password)
     {
-        return (password_verify($password, $this->password) || $password == $this-> password);
+        return password_verify($password, $this->password);
     }
 
-    public function cambiaPassword($nuevoPassword)
-    {
-        $this->password = self::hashPassword($nuevoPassword);
-    }
-    
     public function guarda()
     {
         if ($this->id_usuario !== null) {
@@ -274,11 +172,11 @@ class Usuario
         }
         return self::inserta($this);
     }
-    
+
     public function borrate()
     {
         if ($this->id_usuario !== null) {
-            return self::borra($this);
+            return self::borraPorId($this->id_usuario);
         }
         return false;
     }

@@ -1,15 +1,10 @@
 <?php
-require_once __DIR__.'/formularios.php';
-//require_once __DIR__.'/producto.php';
-//namespace es\ucm\fdi\aw;
-
-//use es\ucm\fdi\aw\Usuario;
-//use es\ucm\fdi\aw\Formulario;
+require_once RUTA_INCLUDES . 'formularios.php';
 
 class formularioprecio extends formularios
 {
     public function __construct() {
-        parent::__construct('formPrecio', ['urlRedireccion' => 'header.php']);
+        parent::__construct('formPrecio', ['urlRedireccion' => RUTA_APP . 'buscar.php']);
     }
 
     protected function generaCamposFormulario(&$datos)
@@ -66,7 +61,14 @@ class formularioprecio extends formularios
         }
 
         if (count($this->errores) === 0) {
-            header("Location: controller.php?controller=busqueda&action=mostrarBusqueda&min_precio=$min_precio&max_precio=$max_precio");
+            $queryString = http_build_query([
+                'controller' => 'busqueda',
+                'action' => 'mostrarBusqueda',
+                'min_precio' => $min_precio,
+                'max_precio' => $max_precio
+            ]);
+
+            header("Location: " . RUTA_APP . "controller.php?$queryString");
             exit();
         }
     }

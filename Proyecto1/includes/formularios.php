@@ -4,11 +4,10 @@
  * Clase base para la gestión de formularios.
  */
 
-//namespace es\ucm\fdi\aw;
+require_once './includes/config.php'; // Incluir config.php para usar las constantes definidas
 
 abstract class formularios
 {
-
     /**
      * Genera la lista de mensajes de errores globales (no asociada a un campo) a incluir en el formulario.
      */
@@ -38,7 +37,7 @@ abstract class formularios
      */
     protected static function createMensajeError($errores = [], $idError = '', $htmlElement = 'span', $atts = [])
     {
-        if (! isset($errores[$idError])) {
+        if (!isset($errores[$idError])) {
             return '';
         }
 
@@ -51,53 +50,23 @@ abstract class formularios
         return $html;
     }
 
-    protected static function generaErroresCampos($campos, $errores, $htmlElement = 'span', $atts = []) {
+    protected static function generaErroresCampos($campos, $errores, $htmlElement = 'span', $atts = [])
+    {
         $erroresCampos = [];
-        foreach($campos as $campo) {
+        foreach ($campos as $campo) {
             $erroresCampos[$campo] = self::createMensajeError($errores, $campo, $htmlElement, $atts);
         }
         return $erroresCampos;
     }
 
-    /**
-     * @var string Identificador único utilizado para &quot;id&quot; de la etiqueta &lt;form&gt; y para comprobar que se ha enviado el formulario.
-     */
     protected $formId;
-
-    /**
-     * @var string Método HTTP utilizado para enviar el formulario.
-     */
     protected $method;
-
-    /**
-     * @var string URL asociada al atributo "action" de la etiqueta &lt;form&gt; del fomrulario y que procesará el 
-     * envío del formulario.
-     */
     protected $action;
-
-    /**
-     * @var string Valor del atributo "class" de la etiqueta &lt;form&gt; asociada al formulario. Si este parámetro incluye la cadena "nocsrf" no se generá el token CSRF para este formulario.
-     */
     protected $classAtt;
-
-    /**
-     * @var string Valor del parámetro enctype del formulario.
-     */
     protected $enctype;
-
-    /**
-     * @var string Url a la que redirigir en caso de que el formulario se procese exitosamente.
-     */
     protected $urlRedireccion;
-
-    /**
-     * @param string[] Array con los mensajes de error de validación y/o procesamiento del formulario.
-     */
     protected $errores;
 
-    /**
-     * Crea un nuevo formulario.
-     */
     public function __construct($formId, $opciones = array())
     {
         $this->formId = $formId;
@@ -108,7 +77,7 @@ abstract class formularios
         $this->action = $opciones['action'];
         $this->method = $opciones['method'];
         $this->classAtt = $opciones['class'];
-        $this->enctype  = $opciones['enctype'];
+        $this->enctype = $opciones['enctype'];
         $this->urlRedireccion = $opciones['urlRedireccion'];
 
         if (!$this->action) {
@@ -116,27 +85,24 @@ abstract class formularios
         }
     }
 
-    /**
-     * Se encarga de orquestar todo el proceso de gestión de un formulario.
-     */
     public function gestiona()
     {
         $datos = &$_POST;
-        
+
         if (strcasecmp('GET', $this->method) == 0) {
             $datos = &$_GET;
         }
         $this->errores = [];
-        
+
         if (!$this->formularioEnviado($datos)) {
             return $this->generaFormulario();
         }
-        
+
         $this->procesaFormulario($datos);
-        
+
         $esValido = count($this->errores) === 0;
 
-        if (! $esValido ) {
+        if (!$esValido) {
             return $this->generaFormulario($datos);
         }
 
@@ -146,32 +112,20 @@ abstract class formularios
         }
     }
 
-    /**
-     * Genera el HTML necesario para presentar los campos del formulario.
-     */
     protected function generaCamposFormulario(&$datos)
     {
         return '';
     }
 
-    /**
-     * Procesa los datos del formulario.
-     */
     protected function procesaFormulario(&$datos)
     {
     }
 
-    /**
-     * Función que verifica si el usuario ha enviado el formulario.
-     */
     protected function formularioEnviado(&$datos)
     {
         return isset($datos['formId']) && $datos['formId'] == $this->formId;
     }
 
-    /**
-     * Función que genera el HTML necesario para el formulario.
-     */
     protected function generaFormulario(&$datos = array())
     {
         $htmlCamposFormularios = $this->generaCamposFormulario($datos);
@@ -179,7 +133,7 @@ abstract class formularios
         $classAtt = $this->classAtt != null ? "class=\"{$this->classAtt}\"" : '';
 
         $enctypeAtt = $this->enctype != null ? "enctype=\"{$this->enctype}\"" : '';
-        
+
         $htmlForm = <<<EOS
         <form method="{$this->method}" action="{$this->action}" id="{$this->formId}" {$classAtt} {$enctypeAtt}>
             <input type="hidden" name="formId" value="{$this->formId}" />

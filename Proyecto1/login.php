@@ -1,6 +1,6 @@
 <?php 
 
-require_once './includes/formulariologin.php';
+require_once RUTA_INCLUDES . 'formulariologin.php';
 require_once './includes/config.php';
 
 $form = new formulariologin();
@@ -13,4 +13,4 @@ $tituloPagina = 'Login';
     <?= $htmlFormLogin ?>
 </body>
 
-<?php require $_SERVER['DOCUMENT_ROOT'] . '/AW/Proyecto1/includes/vistas/plantillas/plantilla3.php'; ?>
+<?php require RUTA_VISTAS . 'plantillas/plantilla3.php'; ?>

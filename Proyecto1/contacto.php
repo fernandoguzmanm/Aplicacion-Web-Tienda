@@ -1,7 +1,7 @@
 <?php 
 
-require_once './includes/formulariocontacto.php';
 require_once './includes/config.php';
+require_once RUTA_INCLUDES . 'formulariocontacto.php';
 
 $form = new formulariocontacto();
 $htmlFormContacto = $form->gestiona();
@@ -9,10 +9,10 @@ $htmlFormContacto = $form->gestiona();
 $tituloPagina = 'Contacto';
 ?>
 <body>
-    <h2> Formulario de Contacto</h2>
+    <h2>Formulario de Contacto</h2>
     <?= $htmlFormContacto ?>
 </body>
-<?php require './includes/vistas/plantillas/plantilla3.php'; 
+<?php require RUTA_VISTAS . 'plantillas/plantilla3.php'; ?>
 
 /*
 <body>

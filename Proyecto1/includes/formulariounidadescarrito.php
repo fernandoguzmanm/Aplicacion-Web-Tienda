@@ -1,24 +1,17 @@
 <?php
-require_once __DIR__.'/formularios.php';
-//require_once __DIR__.'/producto.php';
-//namespace es\ucm\fdi\aw;
-
-//use es\ucm\fdi\aw\Usuario;
-//use es\ucm\fdi\aw\Formulario;
+require_once RUTA_INCLUDES . 'formularios.php';
 
 class formulariounidadescarrito extends formularios
 {
     private $id_producto;
 
     public function __construct($id_producto) {
-        
-        parent::__construct('formUdsCarrito', ['urlRedireccion' => 'carrito.php']);
+        parent::__construct('formUdsCarrito', ['urlRedireccion' => RUTA_APP . 'carrito.php']);
         $this->id_producto = $id_producto;
     }
 
     protected function generaCamposFormulario(&$datos)
     {
-        //$id_producto = $datos['id'] ?? '';
         $id_producto = $this->id_producto;
         $numero_unidades = $datos['numero_unidades'] ?? '';
         
@@ -64,9 +57,8 @@ class formulariounidadescarrito extends formularios
                 'numero_unidades' => $numero_unidades
             ]);
 
-            header("Location: controller.php?$queryString");
+            header("Location: " . RUTA_APP . "controller.php?$queryString");
             exit();
         }
     }
-
 }

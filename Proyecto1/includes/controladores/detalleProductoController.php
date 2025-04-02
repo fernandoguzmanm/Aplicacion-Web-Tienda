@@ -1,6 +1,6 @@
 <?php
-require_once 'includes/modelos/producto.php';
-//use aw\proyecto1\producto;
+require_once RUTA_MODELOS . 'producto.php';
+
 class DetalleProductoController {
     private $producto;
 
@@ -13,7 +13,7 @@ class DetalleProductoController {
         $producto = $this->producto->obtenerProductoPorId($id_producto);
         
         if (!$producto) {
-            header("Location: tienda.php");
+            header("Location: " . RUTA_APP . "tienda.php");
             exit();
         }
         
@@ -22,7 +22,7 @@ class DetalleProductoController {
     
     public function mostrarDetalle($id_producto) {
         $producto = $this->obtenerDetalleProducto($id_producto);
-        include 'detalleProducto.php';
+        include RUTA_VISTAS . 'detalleProducto.php';
     }
 }
 ?>

@@ -1,13 +1,11 @@
 <?php
-//use es\ucm\fdi\aw\Usuario; 
-//use es\ucm\fdi\aw\formularios;
-require_once 'usuario.php';
-require_once 'formularios.php';
+require_once RUTA_INCLUDES . 'usuario.php';
+require_once RUTA_INCLUDES . 'formularios.php';
 
 class formulariologin extends formularios
 {
     public function __construct() {
-        parent::__construct('formLogin', ['urlRedireccion' => 'index.php']);
+        parent::__construct('formLogin', ['urlRedireccion' => RUTA_APP . 'index.php']);
     }
     
     protected function generaCamposFormulario(&$datos)
@@ -60,7 +58,6 @@ class formulariologin extends formularios
             if (!$usuario) {
                 $this->errores[] = "El correo o la contraseña no coinciden";
             } else {
-                var_dump("adios adios");
                 $_SESSION['login'] = true;
                 $_SESSION['nombre'] = $usuario->getNombre();
             }

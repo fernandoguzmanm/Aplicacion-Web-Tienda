@@ -1,15 +1,11 @@
 <?php
-require_once __DIR__.'/formularios.php';
-require_once __DIR__.'/usuario.php';
-//namespace es\ucm\fdi\aw;
-
-//use es\ucm\fdi\aw\Usuario;
-//use es\ucm\fdi\aw\Formulario;
+require_once RUTA_INCLUDES . 'formularios.php';
+require_once RUTA_INCLUDES . 'usuario.php';
 
 class formularioregistro extends formularios
 {
     public function __construct() {
-        parent::__construct('formRegistro', ['urlRedireccion' => 'index.php']);
+        parent::__construct('formRegistro', ['urlRedireccion' => RUTA_APP . 'index.php']);
     }
     
     protected function generaCamposFormulario(&$datos)
@@ -84,7 +80,7 @@ class formularioregistro extends formularios
 
         if (count($this->errores) === 0) {
             $usuario = Usuario::buscaUsuario($correo);
-	
+    
             if ($usuario) {
                 $this->errores[] = "El usuario ya existe";
             } else {

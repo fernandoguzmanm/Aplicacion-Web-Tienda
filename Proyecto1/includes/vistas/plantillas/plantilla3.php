@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title><?= $tituloPagina ?></title>
-    <link rel="stylesheet" type="text/css" href='/AW/Proyecto1/css/cssFormularios.css?v=9' />
+    <link rel="stylesheet" type="text/css" href="<?= RUTA_CSS . 'cssFormularios.css?v=9' ?>" />
 </head>
 <body>
 <?php
-require(__DIR__ . '/../comun/header.php');
-require(__DIR__ . '/../comun/pie.php');
+require RUTA_VISTAS . 'comun/header.php';
+require RUTA_VISTAS . 'comun/pie.php';
 ?>

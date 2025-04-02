@@ -1,13 +1,14 @@
 <?php
-require_once './includes/mysql/conexion.php';
-require_once './includes/controladores/tiendaController.php';
-require_once './includes/controladores/detallesController.php';
-require_once './includes/controladores/bocetosController.php';
-require_once './includes/controladores/miembrosController.php';
-require_once './includes/controladores/planificacionController.php';
-require_once './includes/controladores/busquedaController.php';
-require_once './includes/controladores/carritoController.php';
-require_once './includes/controladores/detalleProductoController.php';
+require_once './includes/config.php'; // Incluir config.php para usar las constantes definidas
+require_once RUTA_MYSQL . 'conexion.php';
+require_once RUTA_CONTROLADORES . 'tiendaController.php';
+require_once RUTA_CONTROLADORES . 'detallesController.php';
+require_once RUTA_CONTROLADORES . 'bocetosController.php';
+require_once RUTA_CONTROLADORES . 'miembrosController.php';
+require_once RUTA_CONTROLADORES . 'planificacionController.php';
+require_once RUTA_CONTROLADORES . 'busquedaController.php';
+require_once RUTA_CONTROLADORES . 'carritoController.php';
+require_once RUTA_CONTROLADORES . 'detalleProductoController.php';
 
 $controlador = isset($_GET['controller']) ? $_GET['controller'] : 'tienda';
 $accion = isset($_GET['action']) ? $_GET['action'] : 'mostrarTienda';
@@ -44,6 +45,7 @@ switch ($controlador) {
             $cantidad = isset($_GET['numero_unidades']) ? intval($_GET['numero_unidades']) : 1;
             $controller->añadirProducto($_GET['id'], $cantidad);
         }
+        break;
     case 'detalle':
         $controller = new DetalleProductoController();
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {

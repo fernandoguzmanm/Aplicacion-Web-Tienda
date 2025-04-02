@@ -1,6 +1,6 @@
 <?php
-require_once 'includes/modelos/producto.php';
-//use aw\proyecto1\producto;
+require_once RUTA_MODELOS . 'producto.php';
+
 class TiendaController {
     private $producto;
 
@@ -11,7 +11,7 @@ class TiendaController {
 
     public function mostrarTienda() {
         $productos = $this->producto->obtenerProductos();
-        require 'tienda.php';
+        require RUTA_VISTAS . 'tienda.php';
     }
 }
 ?>

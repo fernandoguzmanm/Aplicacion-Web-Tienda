@@ -1,6 +1,6 @@
 <?php
-require_once 'includes/modelos/Producto.php';
-//use aw\proyecto1\producto;
+require_once RUTA_MODELOS . 'producto.php';
+
 class BusquedaController {
 
     private $productoModel;
@@ -18,7 +18,7 @@ class BusquedaController {
 
         $resultados = $this->productoModel->buscarProductos($query, $categoria, $min_precio, $max_precio);
 
-        require 'buscar.php';
+        require RUTA_VISTAS . 'buscar.php';
     }
 }
 ?>

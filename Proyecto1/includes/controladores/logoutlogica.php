@@ -7,5 +7,5 @@ $sesionIniciada = isset($_SESSION["login"]);
 
 session_destroy();
 
-header("Location: /AW/Proyecto1/logout.php?sesion=" . ($sesionIniciada ? "true" : "false"));
+header("Location: " . RUTA_APP . "logout.php?sesion=" . ($sesionIniciada ? "true" : "false"));
 exit();

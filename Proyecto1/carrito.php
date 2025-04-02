@@ -1,4 +1,5 @@
-<?php $tituloPagina = "Carrito";
+<?php 
+$tituloPagina = "Carrito";
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -22,8 +23,12 @@ if (session_status() == PHP_SESSION_NONE) {
             <?php $total = 0; ?>
             <?php foreach ($_SESSION['carrito'] as $id => $producto): ?>
                 <tr>
-                    <td><img src="img/productos/<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>" class="carrito-img"></td>
-                    <td><?php echo ucfirst($producto['nombre']); ?></td>
+                    <td>
+                        <img src="<?php echo RUTA_IMGS . 'productos/' . htmlspecialchars($producto['imagen']); ?>" 
+                             alt="<?php echo htmlspecialchars($producto['nombre']); ?>" 
+                             class="carrito-img">
+                    </td>
+                    <td><?php echo ucfirst(htmlspecialchars($producto['nombre'])); ?></td>
                     <td>$<?php echo number_format($producto['precio'], 2); ?></td>
                     <td><?php echo $producto['cantidad']; ?></td>
                     <td>$<?php echo number_format($producto['precio'] * $producto['cantidad'], 2); ?></td>
@@ -36,16 +41,14 @@ if (session_status() == PHP_SESSION_NONE) {
                             <button type="submit" class="btn">Eliminar</button>
                         </form>
                     </td>
-
                 </tr>
                 <?php $total += $producto['precio'] * $producto['cantidad']; ?>
             <?php endforeach; ?>
         </table>
         <h3>Total: $<?php echo number_format($total, 2); ?></h3>
         <a href="controller.php?controller=carrito&action=vaciarCarrito" class="btn">Vaciar Carrito</a>
-        <a href="checkout.php" class="btn">Finalizar Compra</a>
+        <a href="<?php echo RUTA_APP . 'checkout.php'; ?>" class="btn">Finalizar Compra</a>
     <?php endif; ?>
 </main>
 
-<?php require './includes/vistas/plantillas/plantilla2.php'; ?>
-
+<?php require RUTA_VISTAS . 'plantillas/plantilla2.php'; ?>

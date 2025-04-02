@@ -1,6 +1,5 @@
 <?php
-//namespace aw\proyecto1;
-require_once 'includes/mysql/conexion.php';
+require_once RUTA_MYSQL . 'conexion.php'; // Usar la constante RUTA_MYSQL para incluir la conexión a la base de datos
 
 class Producto {
     private $conn;
@@ -45,7 +44,6 @@ class Producto {
     
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    
 
     public function obtenerProductoPorId($id_producto) {
         $stmt = $this->conn->prepare("SELECT id_producto, nombre, precio, imagen, descripcion, stock FROM productos WHERE id_producto = ?");
@@ -62,9 +60,10 @@ class Producto {
     
         return $stmt->affected_rows > 0;
     }
+
     public function aumentarStock($id_producto, $cantidad) {
-        $stmt = $this->conn->prepare("UPDATE productos SET stock = stock + ? WHERE id_producto = ? AND stock >= ?");
-        $stmt->bind_param("iii", $cantidad, $id_producto, $cantidad);
+        $stmt = $this->conn->prepare("UPDATE productos SET stock = stock + ? WHERE id_producto = ?");
+        $stmt->bind_param("ii", $cantidad, $id_producto);
         $stmt->execute();
     
         return $stmt->affected_rows > 0;

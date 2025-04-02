@@ -1,11 +1,11 @@
 <?php
-require 'C:\xampp\htdocs\AW\Proyecto1\includes\formulariobuscar.php';
+require_once RUTA_INCLUDES . 'formulariobuscar.php';
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
 $carrito_count = isset($_SESSION['carrito']) ? array_sum(array_column($_SESSION['carrito'], 'cantidad')) : 0;
-$base_url = "/AW/Proyecto1/";
 ?>
 
 <!DOCTYPE html>
@@ -15,20 +15,20 @@ $base_url = "/AW/Proyecto1/";
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="<?=$base_url ?>css/cssHeader.css?v=6">
+    <link rel="stylesheet" href="<?= RUTA_CSS . 'cssHeader.css?v=6' ?>">
 </head>
 
 <header>
-    <h1> <?php echo ucfirst($tituloPagina); ?> </h1>
+    <h1> <?= ucfirst($tituloPagina); ?> </h1>
     <div class="header-container">
         <nav>
             <ul>
-                <li><a href="<?=$base_url ?>index.php">Inicio</a></li>
-                <li><a href="controller.php?controller=tienda&action=mostrarTienda">Tienda</a></li>
-                <li><a href="controller.php?controller=detalles&action=mostrarDetalles">Detalles</a></li>
-                <li><a href="controller.php?controller=bocetos&action=mostrarBocetos">Bocetos</a></li>
-                <li><a href="controller.php?controller=miembros&action=mostrarMiembros">Miembros</a></li>
-                <li><a href="controller.php?controller=planificacion&action=mostrarPlanificacion">Planificacion</a></li>
+                <li><a href="<?= RUTA_APP . 'index.php' ?>">Inicio</a></li>
+                <li><a href="<?= RUTA_APP . 'controller.php?controller=tienda&action=mostrarTienda' ?>">Tienda</a></li>
+                <li><a href="<?= RUTA_APP . 'controller.php?controller=detalles&action=mostrarDetalles' ?>">Detalles</a></li>
+                <li><a href="<?= RUTA_APP . 'controller.php?controller=bocetos&action=mostrarBocetos' ?>">Bocetos</a></li>
+                <li><a href="<?= RUTA_APP . 'controller.php?controller=miembros&action=mostrarMiembros' ?>">Miembros</a></li>
+                <li><a href="<?= RUTA_APP . 'controller.php?controller=planificacion&action=mostrarPlanificacion' ?>">Planificación</a></li>
             </ul>
         </nav>
 
@@ -42,15 +42,15 @@ $base_url = "/AW/Proyecto1/";
         <div class="right-section">
             <div id="login-container">
                 <?php if (isset($_SESSION['login'])) : ?>
-                    <p>Bienvenido, <?php echo htmlspecialchars($_SESSION['nombre']); ?></p>
-                    <p><a href="includes/controladores/logoutlogica.php">Cerrar sesión</a></p>
+                    <p>Bienvenido, <?= htmlspecialchars($_SESSION['nombre']); ?></p>
+                    <p><a href="<?= RUTA_APP . 'includes/controladores/logoutlogica.php' ?>">Cerrar sesión</a></p>
                 <?php else : ?>
-                    <p><a href="login.php">Iniciar sesión</a></p>
+                    <p><a href="<?= RUTA_APP . 'login.php' ?>">Iniciar sesión</a></p>
                 <?php endif; ?>
             </div>
 
             <div id="carrito-container">
-                <a href="carrito.php" class="carrito-btn">
+                <a href="<?= RUTA_APP . 'carrito.php' ?>" class="carrito-btn">
                     🛒 Carrito <?php if ($carrito_count > 0) echo "($carrito_count)"; ?>
                 </a>
             </div>

@@ -1,11 +1,15 @@
 <?php
+require './includes/config.php';
 
 $tituloPagina = 'Portada';
+
+// La ruta completa de la imagen ya está definida en RUTA_IMGS
+$rutaLogotipo = RUTA_IMGS . 'logotipo.jpeg';
 
 $contenidoPrincipal = <<<EOS
     <h2>Bienvenido a ShopEasy</h2>
     <div class="logo-container">
-        <img src="./img/logotipo.jpeg" alt="Logotipo de ShopEasy" class="logo">
+        <img src="{$rutaLogotipo}" alt="Logotipo de ShopEasy" class="logo">
     </div>
     <h3>Breve descripción</h3>
     <p class="text">

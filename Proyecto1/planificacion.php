@@ -1,3 +1,9 @@
+<?php
+require_once './includes/config.php';
+
+$tituloPagina = 'Planificación';
+?>
+
 <main>
     <section>
         <h2>Plan de Desarrollo</h2>
@@ -7,9 +13,13 @@
     <section>
         <h2>Tareas y Responsabilidades</h2>
         <ul>
-            <?php foreach ($tareas as $titulo => $descripcion): ?>
-                <li><strong><?= htmlspecialchars($titulo) ?>:</strong> <?= htmlspecialchars($descripcion) ?></li>
-            <?php endforeach; ?>
+            <?php if (!empty($tareas)): ?>
+                <?php foreach ($tareas as $titulo => $descripcion): ?>
+                    <li><strong><?= htmlspecialchars($titulo) ?>:</strong> <?= htmlspecialchars($descripcion) ?></li>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <li>No hay tareas definidas en este momento.</li>
+            <?php endif; ?>
         </ul>
     </section>
 
@@ -21,15 +31,21 @@
                 <th>Descripción</th>
                 <th>Fecha de Finalización</th>
             </tr>
-            <?php foreach ($hitos as $hito): ?>
+            <?php if (!empty($hitos)): ?>
+                <?php foreach ($hitos as $hito): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($hito[0]) ?></td>
+                        <td><?= htmlspecialchars($hito[1]) ?></td>
+                        <td><?= htmlspecialchars($hito[2]) ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
                 <tr>
-                    <td><?= htmlspecialchars($hito[0]) ?></td>
-                    <td><?= htmlspecialchars($hito[1]) ?></td>
-                    <td><?= htmlspecialchars($hito[2]) ?></td>
+                    <td colspan="3">No hay hitos definidos en este momento.</td>
                 </tr>
-            <?php endforeach; ?>
+            <?php endif; ?>
         </table>
     </section>
 </main>
 
-<?php require './includes/vistas/plantillas/plantilla2.php'; ?>
+<?php require RUTA_VISTAS . 'plantillas/plantilla2.php'; ?>
