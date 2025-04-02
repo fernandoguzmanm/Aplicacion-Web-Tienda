@@ -1,213 +1,214 @@
-/* Header principal: estilo fijo superior, fondo azul y contenido centrado con flexbox */
+/* Estilos para el header fijo superior */
 header {
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 80px;
-    max-height: 80px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 10;
+    background-color: #007BFF;       /* Fondo azul tipo Bootstrap */
+    color: white;                    /* Texto en blanco */
+    padding: 10px 20px;              /* Espaciado interno arriba/abajo: 10px, izquierda/derecha: 20px */
+    display: flex;                   /* Usa flexbox para alinear elementos */
+    justify-content: space-between; /* Distribuye el contenido con espacio entre ellos */
+    align-items: center;            /* Centra verticalmente los elementos */
+    min-height: 80px;               /* Altura mínima del header */
+    max-height: 80px;               /* Altura máxima para mantener tamaño fijo */
+    position: fixed;                /* Posición fija en la parte superior */
+    top: 0;                          /* Pegado al borde superior */
+    left: 0;                         /* Alineado al borde izquierdo */
+    width: 100%;                    /* Ocupa todo el ancho de la ventana */
+    box-sizing: border-box;         /* Incluye padding y borde dentro del ancho total */
+    z-index: 10;                    /* Asegura que el header esté sobre otros elementos */
 }
 
-/* Footer con estilo azul oscuro y alineación con flexbox */
+/* Estilos para el footer */
 footer {
-    background-color: #003772;
-    color: white;
-    min-height: 80px;
-    max-height: 80px;
-    margin-top: 20px;
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
+    background-color: #003772;      /* Fondo azul oscuro */
+    color: white;                   /* Texto en blanco */
+    min-height: 80px;               /* Altura mínima del footer */
+    max-height: 80px;               /* Altura máxima para que no crezca más */
+    margin-top: 20px;               /* Separación respecto al contenido anterior */
+    align-items: center;            /* Alineación vertical centrada */
+    display: flex;                  /* Flexbox */
+    justify-content: space-between;/* Distribuye contenido con espacio entre ellos */
 }
 
-/* Título dentro del header: evita desbordamiento y mantiene alineación */
+/* Estilo específico del título h1 dentro del header */
 header h1 {
-    width: 250px;  
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-align: left;
+    width: 250px;                   /* Ancho fijo */
+    white-space: nowrap;           /* Impide salto de línea */
+    overflow: hidden;              /* Oculta el texto que sobrepase */
+    text-align: left;              /* Alineación a la izquierda */
 }
 
-/* Contenedor general del header: separación interna y distribución del contenido */
+/* Contenedor del contenido dentro del header */
 .header-container {
-    display: flex;
-    width: calc(100% - 100px);
-    justify-content: space-between;
-    align-items: center;
-    left: 0;
-    padding-left: 100px;
+    display: flex;                 /* Flexbox para disposición horizontal */
+    width: calc(100% - 100px);    /* Ancho relativo al 100% menos 100px */
+    justify-content: space-between;/* Distribución equitativa entre elementos */
+    align-items: center;          /* Centrado vertical */
+    left: 0;                      /* Posicionado a la izquierda */
+    padding-left: 100px;          /* Espaciado a la izquierda */
 }
 
-/* Navegación: elimina estilos de lista y distribuye enlaces en línea */
+/* Estilo base para la lista de navegación */
 nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 30px;
+    list-style: none;             /* Elimina viñetas */
+    padding: 0;                   /* Elimina padding */
+    margin: 0;                    /* Elimina margen */
+    display: flex;                /* Flexbox para navegación horizontal */
+    gap: 30px;                    /* Separación entre los elementos */
 }
 
-/* Elementos de la lista sin margen extra */
+/* Estilo de los <li> de navegación */
 nav ul li {
-    margin: 0;
+    margin: 0;                    /* Sin margen */
 }
 
-/* Estilo de los enlaces del menú */
+/* Enlaces dentro de los ítems de navegación */
 nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
+    color: white;                 /* Texto blanco */
+    text-decoration: none;       /* Elimina subrayado */
+    font-weight: bold;           /* Negrita */
+    font-size: 16px;             /* Tamaño del texto */
 }
 
-/* Subrayado al pasar el ratón por los enlaces del menú */
+/* Hover de enlaces de navegación */
 nav ul li a:hover {
-    text-decoration: underline;
+    text-decoration: underline;  /* Aplica subrayado al pasar el mouse */
 }
 
-/* Sección derecha del header (carrito + login): alineación horizontal */
+/* Sección derecha del header (login, carrito, etc.) */
 .right-section {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+    display: flex;               /* Flexbox horizontal */
+    align-items: center;        /* Centrado vertical */
+    gap: 20px;                  /* Separación entre elementos */
 }
 
-/* Contenedor del carrito: estilo tipo tarjeta */
+/* Contenedor del carrito en la página */
 #carrito-container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;          /* Ancho máximo */
+    margin: auto;               /* Centrado horizontal */
+    padding: 20px;              /* Relleno interior */
+    background-color: white;   /* Fondo blanco */
+    border-radius: 12px;        /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
-/* Botón del carrito: estilo azul y centrado */
+/* Botón del carrito */
 .carrito-btn {
-    color: #007BFF;
-    text-decoration: none;
-    font-weight: bold;
-    align-items: center;
-    justify-content: center;
+    color: #007BFF;             /* Azul */
+    text-decoration: none;      /* Sin subrayado */
+    font-weight: bold;          /* Texto en negrita */
+    align-items: center;        /* Alineación vertical */
+    justify-content: center;    /* Alineación horizontal */
 }
 
-/* Efecto hover para el botón del carrito */
+/* Hover sobre el botón del carrito */
 .carrito-btn:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Subrayado al pasar el ratón */
 }
 
-/* Contenedor de login: columna derecha con estilo compacto */
+/* Contenedor del login en la cabecera */
 #login-container {
-    min-width: 200px;
-    max-width: 200px;
-    display: flex;
-    overflow: hidden;
-    text-align: right;
-    align-items: flex-end;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0;
+    min-width: 200px;           /* Ancho mínimo */
+    max-width: 200px;           /* Ancho máximo */
+    display: flex;              /* Flexbox */
+    overflow: hidden;           /* Oculta contenido que sobresalga */
+    text-align: right;          /* Alineación a la derecha */
+    align-items: flex-end;      /* Alineación vertical al fondo */
+    flex-direction: column;     /* Elementos apilados en columna */
+    justify-content: center;    /* Centrado vertical */
+    gap: 0;                     /* Sin separación vertical entre hijos */
 }
 
-/* Texto dentro del contenedor de login */
+/* Texto dentro del login */
 #login-container p {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    margin: 0;
+    color: white;               /* Texto blanco */
+    text-decoration: none;      /* Sin subrayado */
+    font-weight: bold;          /* Negrita */
+    font-size: 16px;            /* Tamaño del texto */
+    margin: 0;                  /* Sin márgenes */
 }
 
-/* Enlaces del login (como cerrar sesión o perfil) */
+/* Enlaces del login */
 #login-container a {
-    color: white;
+    color: white;               /* Texto blanco */
 }
 
-/* Redefinición de carrito-container con tamaño mínimo y máximo fijo */
+/* Redefinición del contenedor del carrito con ancho mínimo/fijo */
 #carrito-container {
-    min-width: 120px;
-    max-width: 120px;
-    overflow: hidden;
+    min-width: 120px;           /* Ancho mínimo */
+    max-width: 120px;           /* Ancho máximo */
+    overflow: hidden;           /* Oculta el contenido excedente */
 }
 
-/* Redefinición de h1 en header: tamaño grande y alineado con el alto del header */
+/* Redefinición de título h1 dentro del header */
 header h1 {
-    font-size: 2em;
-    margin: 0;
-    line-height: 80px;
+    font-size: 2em;             /* Tamaño de fuente grande */
+    margin: 0;                  /* Sin margen */
+    line-height: 80px;          /* Altura de línea igual a la altura del header */
 }
 
-/* Espaciado vertical uniforme para todos los elementos del header */
+/* Espaciado común para todos los elementos dentro del header */
 header div, header nav, #login-container, #carrito-container {
-    margin: 0;
-    padding: 5px 0;
+    margin: 0;                  /* Sin margen externo */
+    padding: 5px 0;             /* Padding vertical de 5px */
 }
 
-/* Fuerza el scroll vertical aunque el contenido no lo necesite */
+/* Fuerza el scroll vertical aunque no sea necesario */
 html {
-    overflow-y: scroll;
+    overflow-y: scroll;         /* Siempre muestra barra de scroll */
 }
 
-/* Contenedor de la barra de búsqueda: centrado vertical y horizontal */
+/* Contenedor del formulario de búsqueda */
 .busqueda-container {
-    display: flex;
-    justify-content: center;  
-    align-items: center;    
+    display: flex;              /* Flexbox */
+    justify-content: center;    /* Centra horizontalmente */
+    align-items: center;        /* Centra verticalmente */
 }
 
-/* Formulario de búsqueda: estilo de caja redondeada y alineación horizontal */
+/* Formulario de búsqueda con estilo de tarjeta */
 .busqueda-form {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background-color: #f8f9fa;
-    padding: 5px;
-    border-radius: 6px;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-    width: 234px;
+    display: flex;              /* Flexbox horizontal */
+    align-items: center;        /* Centrado vertical */
+    gap: 5px;                   /* Espacio entre campos */
+    background-color: #f8f9fa; /* Fondo gris claro */
+    padding: 5px;               /* Espaciado interno */
+    border-radius: 6px;         /* Bordes redondeados */
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    width: 234px;               /* Ancho fijo */
 }
 
-/* Input de búsqueda por nombre del producto */
+/* Campo de entrada para el nombre del producto */
 .busqueda-form input[type="product-name"] {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 12px;
-    width: 94px;
-    outline: none;
+    padding: 5px;               /* Relleno interno */
+    border: 1px solid #ccc;     /* Borde gris claro */
+    border-radius: 4px;         /* Bordes redondeados */
+    font-size: 12px;            /* Tamaño de fuente pequeño */
+    width: 94px;                /* Ancho fijo */
+    outline: none;              /* Elimina borde azul al seleccionar */
 }
 
-/* Selector de categorías en la búsqueda */
+/* Selector de categoría */
 .busqueda-form select[name = "categorias"] {
-    padding: 4px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 12px;
-    background-color: white;
-    cursor: pointer;
-    width: 65px;
+    padding: 4px;               /* Relleno interno */
+    border: 1px solid #ccc;     /* Borde gris */
+    border-radius: 4px;         /* Bordes redondeados */
+    font-size: 12px;            /* Texto pequeño */
+    background-color: white;    /* Fondo blanco */
+    cursor: pointer;            /* Cursor de mano al pasar el mouse */
+    width: 65px;                /* Ancho fijo */
 }
 
-/* Botón de búsqueda */
+/* Botón de envío del formulario */
 .busqueda-form button[type="submit-product"] {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 5px 8px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 12px;
+    background-color: #007BFF;  /* Azul Bootstrap */
+    color: white;               /* Texto blanco */
+    border: none;               /* Sin borde */
+    padding: 5px 8px;           /* Espaciado interno */
+    border-radius: 4px;         /* Bordes redondeados */
+    cursor: pointer;            /* Cursor tipo puntero */
+    font-size: 12px;            /* Texto pequeño */
 }
 
 /* Hover para botón de búsqueda */
 .busqueda-form button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3;  /* Azul más oscuro */
 }
+
