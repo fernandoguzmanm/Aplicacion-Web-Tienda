@@ -1,124 +1,125 @@
-/* Estilos base del body: fondo blanco, centrado y padding superior */
+/* Estilos base del body */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff;
-    text-align: center;
-    padding-top: 80px;
+    font-family: Arial, sans-serif;      /* Fuente limpia y legible */
+    margin: 0;                           /* Sin márgenes por defecto */
+    padding: 0;                          /* Sin relleno por defecto */
+    background-color: #ffffff;           /* Fondo blanco */
+    text-align: center;                  /* Centra el contenido horizontalmente */
+    padding-top: 80px;                   /* Espacio superior para separar de header fijo */
 }
 
-/* Contenedor del formulario con estilo de tarjeta */
+/* Contenedor principal del formulario */
 #contenedor,
 .formulario-form {
-    background: white;
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background: white;                   /* Fondo blanco para destacar el formulario */
+    max-width: 500px;                    /* Ancho máximo */
+    margin: 20px auto;                   /* Centrado horizontal con separación vertical */
+    padding: 20px;                       /* Relleno interno */
+    border-radius: 12px;                 /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidad */
 }
 
 /* Título del formulario */
 h2 {
-    color: #007BFF;
-    text-align: center;
-    margin-top: 20px;
+    color: #007BFF;                      /* Azul Bootstrap */
+    text-align: center;                  /* Texto centrado */
+    margin-top: 20px;                    /* Espaciado superior */
 }
 
-/* Etiquetas alineadas a la izquierda y en negrita */
+/* Estilo para etiquetas */
 label {
-    font-weight: bold;
-    margin: 10px 0 5px;
-    display: block;
-    text-align: left;
-    width: 100%;
+    font-weight: bold;                   /* Texto en negrita */
+    margin: 10px 0 5px;                  /* Margen superior, sin laterales, inferior de 5px */
+    display: block;                      /* Ocupa toda la línea */
+    text-align: left;                    /* Alineado a la izquierda */
+    width: 100%;                         /* Ocupa todo el ancho disponible */
 }
 
-/* Inputs y textarea con estilo uniforme */
+/* Campos de entrada y área de texto */
 input[type="text"],
 input[type="email"],
 input[type="password"],
 textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1em;
+    width: 100%;                         /* Ancho completo */
+    padding: 10px;                       /* Espacio interno */
+    margin-bottom: 15px;                /* Separación inferior entre campos */
+    border: 1px solid #ccc;             /* Borde gris claro */
+    border-radius: 6px;                 /* Bordes redondeados */
+    font-size: 1em;                      /* Tamaño de texto estándar */
 }
 
-/* Botones con estilo azul y efecto hover */
+/* Botones y botones de envío */
 button,
 input[type="submit-button"] {
-    background-color: #007BFF;
-    color: rgb(255, 255, 255);
-    border: none;
-    padding: 12px;
-    width: 100%;
-    border-radius: 6px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    text-align: center;
+    background-color: #007BFF;          /* Azul Bootstrap */
+    color: rgb(255, 255, 255);           /* Texto blanco */
+    border: none;                        /* Sin borde */
+    padding: 12px;                       /* Espaciado interno uniforme */
+    width: 100%;                         /* Ancho completo */
+    border-radius: 6px;                  /* Bordes redondeados */
+    font-size: 1.1em;                    /* Letra ligeramente más grande */
+    cursor: pointer;                     /* Cursor tipo puntero al pasar el mouse */
+    transition: background 0.3s ease;    /* Transición suave del color de fondo */
+    text-align: center;                  /* Centrado del texto */
 }
 
-/* Efecto hover para botones: cambia a azul más oscuro */
+/* Efecto hover para botones */
 button:hover,
 input[type="submit-button"]:hover {
-    background-color: #0056b3;
+    background-color: #0056b3;          /* Azul más oscuro al pasar el cursor */
 }
 
-/* Estilo de enlaces */
+/* Estilos generales para enlaces */
 a {
-    color: #007BFF;
-    text-decoration: none;
-    display: inline-block;
+    color: #007BFF;                     /* Color azul Bootstrap */
+    text-decoration: none;             /* Sin subrayado por defecto */
+    display: inline-block;             /* Permite aplicar márgenes o padding como bloque */
 }
 
-/* Efecto hover en enlaces: aparece subrayado */
+/* Hover para enlaces */
 a:hover {
-    text-decoration: underline;
+    text-decoration: underline;        /* Subrayado al pasar el ratón */
 }
 
-/* Estilo para radios y checkboxes */
+/* Estilo para radio buttons y checkboxes */
 input[type="radio"],
 input[type="checkbox"] {
-    margin-right: 5px;
+    margin-right: 5px;                 /* Espacio entre el input y su etiqueta */
 }
 
-/* Permitir redimensionar solo en vertical */
+/* Permitir que el textarea solo se redimensione verticalmente */
 textarea {
-    resize: vertical;
+    resize: vertical;                  /* Solo redimensionable en altura */
 }
 
 /* Estilos para tablas */
 table {
-    border-collapse: collapse;
-    margin-top: 20px;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    border-collapse: collapse;         /* Une bordes adyacentes de las celdas */
+    margin-top: 20px;                  /* Separación superior */
+    width: 80%;                        /* Anchura relativa */
+    margin-left: auto;                 /* Centrado horizontal */
+    margin-right: auto;                /* Centrado horizontal */
 }
 
-/* Establece borde para la tabla y sus celdas */
+/* Bordes para tabla y celdas */
 table, th, td {
-    border: 1px solid #ccc;
+    border: 1px solid #ccc;            /* Borde gris claro */
 }
 
-/* Espaciado y alineación de celdas */
+/* Espaciado y alineación del contenido de celdas */
 th, td {
-    padding: 10px;
-    text-align: center;
+    padding: 10px;                     /* Espacio interno */
+    text-align: center;                /* Texto centrado */
 }
 
-/* Estilo de la cabecera de tabla: fondo azul y texto blanco */
+/* Estilo de cabecera de tabla */
 th {
-    background: #007BFF;
-    color: white;
+    background: #007BFF;               /* Fondo azul */
+    color: white;                      /* Texto blanco */
 }
 
-/* Color de fondo alterno para filas pares (efecto zebra) */
+/* Estilo de filas pares en la tabla (efecto zebra) */
 tr:nth-child(even) {
-    background: #f9f9f9;
+    background: #f9f9f9;               /* Fondo gris claro */
 }
+
