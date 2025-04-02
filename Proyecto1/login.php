@@ -1,6 +1,5 @@
 <?php 
 require_once './includes/config.php';
-
 require_once RUTA_INCLUDES . 'formulariologin.php';
 
 $form = new formulariologin();

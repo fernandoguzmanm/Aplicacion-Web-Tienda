@@ -56,7 +56,7 @@ $carrito_count = isset($_SESSION['carrito']) ? array_sum(array_column($_SESSION[
                 <a href="<?= RUTA_APP . 'carrito.php' ?>" class="carrito-btn">
                     🛒 Carrito <?php if ($carrito_count > 0) echo "($carrito_count)"; ?>
                 </a>
-            <?php endif; ?>
+            <?php endif;?>
             </div>
         </div>
     </div>

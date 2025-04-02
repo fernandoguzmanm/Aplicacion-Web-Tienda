@@ -92,6 +92,7 @@ abstract class formularios
         if (strcasecmp('GET', $this->method) == 0) {
             $datos = &$_GET;
         }
+        
         $this->errores = [];
 
         if (!$this->formularioEnviado($datos)) {
@@ -123,7 +124,6 @@ abstract class formularios
 
     protected function formularioEnviado(&$datos)
     {
-        var_dump($datos['formId']);
         return isset($datos['formId']) && $datos['formId'] == $this->formId;
     }
 

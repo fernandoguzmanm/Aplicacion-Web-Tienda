@@ -20,7 +20,6 @@ class formularioregistro extends formularios
         $html = <<<EOF
         $htmlErroresGlobales
         <fieldset>
-            <legend>Datos para el registro</legend>
             <div>
                 <label for="nombre">Nombre:</label>
                 <input id="nombre" type="text" name="nombre" value="$nombre" />
