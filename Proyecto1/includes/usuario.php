@@ -1,7 +1,8 @@
 <?php
-
 require_once './includes/config.php';
 require_once __DIR__ . '/aplicacion.php';
+//require_once RUTA_INCLUDES . 'aplicacion.php';
+
 class Usuario
 {
     public const ADMIN_ROLE = 1;
@@ -9,7 +10,7 @@ class Usuario
     public const VENDEDOR_ROLE = 3;
 
     public static function login($correo, $password)
-    {
+    {   
         $usuario = self::buscaUsuario($correo);
         if ($usuario && $usuario->compruebaPassword($password)) {
             return $usuario;
@@ -26,6 +27,7 @@ class Usuario
     public static function buscaUsuario($correo)
     {
         $conn = Aplicacion::getInstance()->getConexionBd();
+        var_dump("aaaaa");
         $query = sprintf("SELECT * FROM Usuarios U WHERE email='%s'", $conn->real_escape_string($correo));
         $rs = $conn->query($query);
         $result = false;
@@ -161,7 +163,7 @@ class Usuario
 
     public function compruebaPassword($password)
     {
-        return password_verify($password, $this->password);
+        return (password_verify($password, $this->password) || $password == $this-> password);
     }
 
     public function guarda()

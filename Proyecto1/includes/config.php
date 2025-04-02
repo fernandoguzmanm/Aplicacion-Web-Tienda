@@ -2,11 +2,15 @@
 
 /**
  * Parámetros de conexión a la BD
- */
+ 
 define('BD_HOST', 'localhost');
 define('BD_NAME', 'awp2');
 define('BD_USER', 'awp2');
-define('BD_PASS', 'awpass');
+define('BD_PASS', 'awpass');*/
+define('BD_HOST', 'localhost');
+define('BD_NAME', 'tienda');
+define('BD_USER', 'rishi');
+define('BD_PASS', 'contrasenarishi');
 
 /**
  * Parámetros de configuración utilizados para generar las URLs y las rutas a ficheros en la aplicación

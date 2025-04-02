@@ -1,5 +1,6 @@
 <?php
-require_once RUTA_MYSQL . 'conexion.php'; // Usar la constante RUTA_MYSQL para incluir la conexión a la base de datos
+//require_once RUTA_MYSQL . 'conexion.php'; // Usar la constante RUTA_MYSQL para incluir la conexión a la base de datos
+require_once './includes/config.php';
 
 class Producto {
     private $conn;

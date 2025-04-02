@@ -22,7 +22,7 @@ class DetalleProductoController {
     
     public function mostrarDetalle($id_producto) {
         $producto = $this->obtenerDetalleProducto($id_producto);
-        include RUTA_VISTAS . 'detalleProducto.php';
+        include RAIZ_APP . 'detalleProducto.php';
     }
 }
 ?>

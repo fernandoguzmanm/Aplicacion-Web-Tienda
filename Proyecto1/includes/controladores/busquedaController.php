@@ -18,7 +18,7 @@ class BusquedaController {
 
         $resultados = $this->productoModel->buscarProductos($query, $categoria, $min_precio, $max_precio);
 
-        require RUTA_VISTAS . 'buscar.php';
+        require RAIZ_APP . 'buscar.php';
     }
 }
 ?>

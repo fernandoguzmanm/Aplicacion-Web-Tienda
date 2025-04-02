@@ -1,8 +1,8 @@
 <?php 
 $tituloPagina = 'Tienda';
 
-require_once RUTA_INCLUDES . 'formulariounidadescarrito.php';
 require_once './includes/config.php';
+require_once RUTA_INCLUDES . 'formulariounidadescarrito.php';
 ?>
 
 <main>

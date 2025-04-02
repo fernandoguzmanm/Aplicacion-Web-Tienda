@@ -86,7 +86,7 @@ abstract class formularios
     }
 
     public function gestiona()
-    {
+    {   
         $datos = &$_POST;
 
         if (strcasecmp('GET', $this->method) == 0) {
@@ -97,7 +97,7 @@ abstract class formularios
         if (!$this->formularioEnviado($datos)) {
             return $this->generaFormulario();
         }
-
+        
         $this->procesaFormulario($datos);
 
         $esValido = count($this->errores) === 0;

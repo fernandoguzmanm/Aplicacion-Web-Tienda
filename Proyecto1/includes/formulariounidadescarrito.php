@@ -48,7 +48,7 @@ class formulariounidadescarrito extends formularios
         if (empty($numero_unidades) || !ctype_digit($numero_unidades) || (int)$numero_unidades < 1) {
             $this->errores['numero_unidades'] = 'Debe ingresar un número válido de unidades (mínimo 1).';
         }
-
+        
         if (count($this->errores) === 0) {
             $queryString = http_build_query([
                 'controller' => 'carrito',

@@ -5,7 +5,7 @@ require_once RUTA_INCLUDES . 'formularios.php';
 class formulariologin extends formularios
 {
     public function __construct() {
-        parent::__construct('formLogin', ['urlRedireccion' => RUTA_APP . 'index.php']);
+        parent::__construct('formLogin', ['urlRedireccion' => RUTA_APP . 'login.php']);
     }
     
     protected function generaCamposFormulario(&$datos)
@@ -53,11 +53,14 @@ class formulariologin extends formularios
         if ( ! $password || empty($password) ) {
             $this->errores['password'] = 'La contraseña no puede estar vacía';
         }
+        
         if (count($this->errores) === 0) {
             $usuario = Usuario::login($correo, $password);
+            
             if (!$usuario) {
                 $this->errores[] = "El correo o la contraseña no coinciden";
             } else {
+                
                 $_SESSION['login'] = true;
                 $_SESSION['nombre'] = $usuario->getNombre();
             }

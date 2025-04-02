@@ -1,12 +1,13 @@
 <?php
-
+require_once RUTA_MYSQL . 'conexion.php';
 /**
  * Clase que mantiene el estado global de la aplicación.
  */
 
 class Aplicacion
 {
-    private static $instancia;
+    private static $instance;
+    private $conn;
 
     /**
      * Devuelve una instancia de {@see Aplicacion}.
@@ -14,10 +15,10 @@ class Aplicacion
      * @return Aplicacion Obtiene la única instancia de la <code>Aplicacion</code>
      */
     public static function getInstance() {
-        if (!self::$instancia instanceof self) {
-            self::$instancia = new static();
+        if (!self::$instance) {
+            self::$instance = new Aplicacion();
         }
-        return self::$instancia;
+        return self::$instance;
     }
 
     /**
@@ -33,15 +34,14 @@ class Aplicacion
     private $inicializada = false;
 
     /**
-     * @var \mysqli Conexión de BD.
-     */
-    private $conn;
-
-    /**
      * Evita que se pueda instanciar la clase directamente.
      */
     private function __construct()
     {
+        $this->conn = new mysqli(BD_HOST, BD_USER, BD_PASS, BD_NAME);
+        if ($this->conn->connect_error) {
+            die("Error de conexión a la base de datos: " . $this->conn->connect_error);
+        }
     }
 
     /**
@@ -66,8 +66,7 @@ class Aplicacion
      */
     public function shutdown()
     {
-        $this->compruebaInstanciaInicializada();
-        if ($this->conn !== null && !$this->conn->connect_errno) {
+        if ($this->conn) {
             $this->conn->close();
         }
     }
@@ -89,25 +88,7 @@ class Aplicacion
      * @return \mysqli Conexión a MySQL.
      */
     public function getConexionBd()
-    {
-        $this->compruebaInstanciaInicializada();
-        if (!$this->conn) {
-            $bdHost = $this->bdDatosConexion['host'];
-            $bdUser = $this->bdDatosConexion['user'];
-            $bdPass = $this->bdDatosConexion['pass'];
-            $bd = $this->bdDatosConexion['bd'];
-
-            $conn = new \mysqli($bdHost, $bdUser, $bdPass, $bd);
-            if ($conn->connect_errno) {
-                echo "Error de conexión a la BD ({$conn->connect_errno}): {$conn->connect_error}";
-                exit();
-            }
-            if (!$conn->set_charset("utf8mb4")) {
-                echo "Error al configurar la BD ({$conn->errno}): {$conn->error}";
-                exit();
-            }
-            $this->conn = $conn;
-        }
+    {   
         return $this->conn;
     }
 }

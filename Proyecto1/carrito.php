@@ -1,4 +1,5 @@
 <?php 
+require './includes/config.php';
 $tituloPagina = "Carrito";
 if (session_status() == PHP_SESSION_NONE) {
     session_start();

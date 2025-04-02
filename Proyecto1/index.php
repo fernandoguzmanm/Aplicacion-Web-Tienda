@@ -24,4 +24,4 @@ $contenidoPrincipal = <<<EOS
     </p>
 EOS;
 
-require './includes/vistas/plantillas/plantilla.php';
+require RUTA_VISTAS . '/plantillas/plantilla.php';

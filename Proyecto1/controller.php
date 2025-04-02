@@ -45,6 +45,7 @@ switch ($controlador) {
             $cantidad = isset($_GET['numero_unidades']) ? intval($_GET['numero_unidades']) : 1;
             $controller->añadirProducto($_GET['id'], $cantidad);
         }
+        header("Location: carrito.php");
         break;
     case 'detalle':
         $controller = new DetalleProductoController();

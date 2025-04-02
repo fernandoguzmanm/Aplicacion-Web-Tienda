@@ -1,6 +1,6 @@
 <?php 
 $tituloPagina = 'Búsqueda';
-require_once './includes/config.php'; // Incluir config.php para usar las constantes definidas
+require_once './includes/config.php';
 require_once RUTA_INCLUDES . 'formularioprecio.php';
 ?>
 
