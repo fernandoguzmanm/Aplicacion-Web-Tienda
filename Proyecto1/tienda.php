@@ -2,12 +2,21 @@
 $tituloPagina = 'Tienda';
 
 require_once './includes/config.php';
+require_once RUTA_INCLUDES . 'formulariobuscar.php';
 require_once RUTA_INCLUDES . 'formulariounidadescarrito.php';
 ?>
 
 <main>
     <h2>Nuestros Productos</h2>
     
+    <div class="busqueda-container">
+        <?php
+        $form = new formulariobuscar();
+        $htmlFormBuscar = $form->gestiona();
+        ?>
+        <?= $htmlFormBuscar ?>
+    </div>
+
     <div class="productos-container">
         <?php if (!empty($productos)): ?>
             <?php foreach ($productos as $producto): ?>

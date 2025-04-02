@@ -1,16 +1,17 @@
 <?php 
 $tituloPagina = 'Búsqueda';
 require_once './includes/config.php';
-require_once RUTA_INCLUDES . 'formularioprecio.php';
+require_once RUTA_INCLUDES . 'formulariobuscar.php';
 ?>
 
 <body>
     <h2>Resultados de búsqueda</h2>
-    <?php 
-    $form = new formularioprecio();
-    $htmlFormPrecio = $form->gestiona();
-    ?>
-    <?= $htmlFormPrecio ?>
+    <?php
+        $form = new formulariobuscar();
+        $htmlFormBuscar = $form->gestiona();
+        ?>
+        <?= $htmlFormBuscar ?>
+    </div>
 
     <div class="productos-container">
         <?php if (empty($resultados)): ?>

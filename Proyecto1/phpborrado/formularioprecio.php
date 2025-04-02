@@ -18,8 +18,6 @@ class formularioprecio extends formularios
 
         $html = <<<EOF
         $htmlErroresGlobales
-        <fieldset>
-            <legend>Filtrar por precio</legend>
             <div>
                 <label for="min_precio">Precio Mínimo:</label>
                 <input type="number" id="min_precio" name="min_precio" step="0.01" value="$min_precio" placeholder="Mínimo">
@@ -35,7 +33,6 @@ class formularioprecio extends formularios
             <div>
                 <button type="submit">Filtrar</button>
             </div>
-        </fieldset>
         EOF;
         return $html;
     }

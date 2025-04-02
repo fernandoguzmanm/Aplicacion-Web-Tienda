@@ -1,6 +1,4 @@
 <?php
-require_once RUTA_INCLUDES . 'formulariobuscar.php';
-
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -32,13 +30,6 @@ $carrito_count = isset($_SESSION['carrito']) ? array_sum(array_column($_SESSION[
             </ul>
         </nav>
 
-        <div class="busqueda-container">
-            <?php
-            $form = new formulariobuscar();
-            $htmlFormBuscar = $form->gestiona();
-            ?>
-            <?= $htmlFormBuscar ?>
-        </div>
         <div class="right-section">
             <div id="login-container">
                 <?php if (isset($_SESSION['login'])) : ?>
