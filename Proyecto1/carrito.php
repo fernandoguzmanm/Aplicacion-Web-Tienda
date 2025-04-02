@@ -1,5 +1,6 @@
 <?php 
 require './includes/config.php';
+require_once RUTA_INCLUDES . 'formularioeliminarcarrito.php';
 $tituloPagina = "Carrito";
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -34,13 +35,11 @@ if (session_status() == PHP_SESSION_NONE) {
                     <td><?php echo $producto['cantidad']; ?></td>
                     <td>$<?php echo number_format($producto['precio'] * $producto['cantidad'], 2); ?></td>
                     <td>
-                        <form action="controller.php" method="get">
-                            <input type="hidden" name="id" value="<?php echo $id; ?>">
-                            <input type="number" id="numero_unidades" name="numero_unidades" step="1" min="1" value="<?php echo isset($_GET['numero_unidades']) ? $_GET['numero_unidades'] : ''; ?>" placeholder="Número">
-                            <input type="hidden" name="controller" value="carrito">
-                            <input type="hidden" name="action" value="eliminarProducto">
-                            <button type="submit" class="btn">Eliminar</button>
-                        </form>
+                        <?php
+                        $form = new formularioeliminarcarrito($producto['id_producto']);                   
+                        $htmlFormEliminarCarrito = $form->gestiona();
+                        ?> 
+                        <?= $htmlFormEliminarCarrito ?>
                     </td>
                 </tr>
                 <?php $total += $producto['precio'] * $producto['cantidad']; ?>

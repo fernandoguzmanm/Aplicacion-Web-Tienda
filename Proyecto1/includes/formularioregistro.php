@@ -12,10 +12,11 @@ class formularioregistro extends formularios
     {
         $correo = $datos['correo'] ?? '';
         $nombre = $datos['nombre'] ?? '';
+        $tipoUsuario = $datos['tipo_usuario'] ?? 'cliente'; // Valor predeterminado: cliente
 
         // Se generan los mensajes de error si existen.
         $htmlErroresGlobales = self::generaListaErroresGlobales($this->errores);
-        $erroresCampos = self::generaErroresCampos(['correo', 'nombre', 'password', 'password2'], $this->errores, 'span', array('class' => 'error'));
+        $erroresCampos = self::generaErroresCampos(['correo', 'nombre', 'password', 'password2', 'tipo_usuario'], $this->errores, 'span', array('class' => 'error'));
 
         $html = <<<EOF
         $htmlErroresGlobales
@@ -41,13 +42,20 @@ class formularioregistro extends formularios
                 {$erroresCampos['password2']}
             </div>
             <div>
+                <label for="tipo_usuario">Tipo de cuenta:</label>
+                <select id="tipo_usuario" name="tipo_usuario">
+                    <option value="cliente" {$this->seleccionado($tipoUsuario, 'cliente')}>Cliente</option>
+                    <option value="vendedor" {$this->seleccionado($tipoUsuario, 'vendedor')}>Vendedor</option>
+                </select>
+                {$erroresCampos['tipo_usuario']}
+            </div>
+            <div>
                 <button type="submit" name="registro">Registrar</button>
             </div>
         </fieldset>
         EOF;
         return $html;
     }
-    
 
     protected function procesaFormulario(&$datos)
     {
@@ -77,16 +85,27 @@ class formularioregistro extends formularios
             $this->errores['password2'] = 'Las contraseñas deben coincidir';
         }
 
+        $tipoUsuario = $datos['tipo_usuario'] ?? 'cliente';
+        if (!in_array($tipoUsuario, ['cliente', 'vendedor'])) {
+            $this->errores['tipo_usuario'] = 'El tipo de cuenta seleccionado no es válido.';
+        }
+
         if (count($this->errores) === 0) {
             $usuario = Usuario::buscaUsuario($correo);
     
             if ($usuario) {
                 $this->errores[] = "El usuario ya existe";
             } else {
-                $usuario = Usuario::crea($correo, $password, $nombre);
+                $usuario = Usuario::crea($correo, $password, $nombre, $tipoUsuario);
                 $_SESSION['login'] = true;
                 $_SESSION['nombre'] = $nombre;
+                $_SESSION['tipo_usuario'] = $tipoUsuario;
             }
         }
+    }
+
+    private function seleccionado($valor, $opcion)
+    {
+        return $valor === $opcion ? 'selected' : '';
     }
 }

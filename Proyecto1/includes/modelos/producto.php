@@ -1,5 +1,6 @@
 <?php
-//require_once RUTA_MYSQL . 'conexion.php'; // Usar la constante RUTA_MYSQL para incluir la conexión a la base de datos
+//
+//  // Usar la constante RUTA_MYSQL para incluir la conexión a la base de datos
 require_once './includes/config.php';
 
 class Producto {
@@ -13,6 +14,20 @@ class Producto {
         $sql = "SELECT id_producto, nombre, precio, imagen, descripcion, stock FROM productos";
         $result = $this->conn->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function obtenerProductosPorVendedor($id_vendedor) {
+        $query = "SELECT * FROM productos WHERE id_vendedor = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $id_vendedor);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $productos = [];
+        while ($fila = $result->fetch_assoc()) {
+            $productos[] = $fila;
+        }
+        $stmt->close();
+        return $productos;
     }
 
     public function buscarProductos($query, $categoria, $min_precio = null, $max_precio = null) {

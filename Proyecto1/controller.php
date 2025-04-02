@@ -18,9 +18,6 @@ switch ($controlador) {
     case 'tienda':
         $controller = new TiendaController();
         break;
-    case 'vendedor':
-        $controller = new VendedorController();
-        break;
     case 'detalles':
         $controller = new DetallesController();
         break;
@@ -41,15 +38,39 @@ switch ($controlador) {
         if (isset($_GET['action']) && $_GET['action'] == 'eliminarProducto' && isset($_GET['id'])) {
             $cantidad = isset($_GET['numero_unidades']) ? intval($_GET['numero_unidades']) : 1;
             $controller->eliminarProducto($_GET['id'], $cantidad);
+            exit();
         }
         else if (isset($_GET['action']) && $_GET['action'] == 'vaciarCarrito') {
             $controller->vaciarCarrito();
+            exit();
         }
         else if (isset($_GET['action']) && $_GET['action'] == 'añadirProducto' && isset($_GET['id'])) {
             $cantidad = isset($_GET['numero_unidades']) ? intval($_GET['numero_unidades']) : 1;
             $controller->añadirProducto($_GET['id'], $cantidad);
+            exit();
         }
         header("Location: carrito.php");
+        break;
+    case 'vendedor':
+        $controller = new VendedorController();
+        if (isset($_GET['action']) && $_GET['action'] == 'mostrarVendedor') {
+            $controller->mostrarVendedor();
+            header("Location: index.php");
+            exit();
+        }
+        else if (isset($_GET['action']) && $_GET['action'] == 'eliminarStock' && isset($_GET['id'])) {
+            $cantidad = isset($_GET['numero_unidades']) ? intval($_GET['numero_unidades']) : 1;
+            $controller->eliminarStock($_GET['id'], $cantidad);
+            header("Location: index.php");
+            exit();
+        }
+        else if (isset($_GET['action']) && $_GET['action'] == 'añadirStock' && isset($_GET['id'])) {
+            $cantidad = isset($_GET['numero_unidades']) ? intval($_GET['numero_unidades']) : 1;
+            $controller->añadirStock($_GET['id'], $cantidad);
+            header("Location: index.php");
+            exit();
+        }
+        header("Location: vendedor.php");
         break;
     case 'detalle':
         $controller = new DetalleProductoController();

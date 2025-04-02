@@ -50,7 +50,7 @@ $carrito_count = isset($_SESSION['carrito']) ? array_sum(array_column($_SESSION[
             </div>
             
             <div id="carrito-container">
-            <?php if (isset($_SESSION['login']) && $_SESSION['vendedor'] === true): ?>
+            <?php if (isset($_SESSION['login']) && $_SESSION['rol'] === 'vendedor'): ?>
                 <a href="<?= RUTA_APP . 'controller.php?controller=vendedor&action=mostrarVendedor' ?>" class="carrito-btn">Vendedor</a>
             <?php else : ?>
                 <a href="<?= RUTA_APP . 'carrito.php' ?>" class="carrito-btn">

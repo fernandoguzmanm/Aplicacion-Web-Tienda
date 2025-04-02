@@ -5,10 +5,6 @@ require_once __DIR__ . '/aplicacion.php';
 
 class Usuario
 {
-    public const ADMIN_ROLE = 1;
-    public const USER_ROLE = 2;
-    public const VENDEDOR_ROLE = 3;
-
     public static function login($correo, $password)
     {   
         $usuario = self::buscaUsuario($correo);
@@ -18,10 +14,11 @@ class Usuario
         return false;
     }
     
-    public static function crea($correo, $password, $nombre)
+    public static function crea($correo, $password, $nombre, $tipoUsuario)
     {
-        $user = new Usuario(null, $nombre, $correo, self::hashPassword($password), "cliente", 0);
-        return $user->guarda();
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        $usuario = new Usuario(null, $nombre, $correo, $passwordHash, $tipoUsuario, 0);
+        return $usuario->guarda();
     }
 
     public static function buscaUsuario($correo)
@@ -66,46 +63,19 @@ class Usuario
         return password_hash($password, PASSWORD_DEFAULT);
     }
 
-    private static function cargaRoles($usuario) //esto no se si deberia ser diferente
-     {
-         /*
-         $roles=[];
-             
-         $conn = Aplicacion::getInstance()->getConexionBd();
-         $query = sprintf("SELECT RU.rol FROM RolesUsuario RU WHERE RU.usuario=%d"
-             , $usuario->id
-         );
-         $rs = $conn->query($query);
-         if ($rs) {
-             $roles = $rs->fetch_all(MYSQLI_ASSOC);
-             $rs->free();
- 
-             $usuario->roles = [];
-             foreach($roles as $rol) {
-                 $usuario->roles[] = $rol['rol'];
-             }
-             return $usuario;
- 
-         } else {
-             error_log("Error BD ({$conn->errno}): {$conn->error}");
-         }
-         return false;*/
+    private static function cargaRol($usuario)
+    {
          if ($usuario->tipo_usuario == "admin") {
-             $_SESSION["esAdmin"] = true;
-             header("Location: admin.php");
-             exit();
-         } else if ($usuario->tipo_usuario == "vendedor") {
-             $_SESSION["vendedor"] = true;
-             header("Location: login.php");
-             exit();
-         }
-         else {
-             $_SESSION["usuario"] = true;
-             $_SESSION["cliente"] = true;
-             //header("Location: login.php");
-             //exit();
-         }
-     }
+            $_SESSION["rol"] = 'admin';
+            exit();
+        } else if ($usuario->tipo_usuario == "vendedor") {
+            $_SESSION["rol"] = 'vendedor';
+            exit();
+        } else {
+            $_SESSION['rol'] = 'cliente';
+            exit();
+        }
+    }
     
     private static function inserta($usuario)
     {
@@ -185,6 +155,11 @@ class Usuario
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    public function getTipoUsuario()
+    {
+        return $this->tipo_usuario;
     }
 
     public function compruebaPassword($password)
