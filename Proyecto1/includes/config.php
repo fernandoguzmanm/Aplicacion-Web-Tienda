@@ -15,7 +15,6 @@ define('RAIZ_APP', dirname(__DIR__) . '/'); // Ruta absoluta del sistema de arch
 define('RUTA_APP', '/AW/Proyecto1/'); // Ruta relativa para URLs
 define('URL_BASE', 'http://localhost' . RUTA_APP); // URL base del proyecto
 
-// Rutas del sistema de archivos
 define('RUTA_INCLUDES', RAIZ_APP . 'includes/');
 define('RUTA_CSS', RAIZ_APP . 'css/');
 define('RUTA_JS', RAIZ_APP . 'js/');
