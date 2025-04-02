@@ -1,334 +1,319 @@
 /* Estilo general del body: fuente base, fondo blanco, contenido centrado y espaciado superior */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #ffffff;
-    text-align: center;
-    padding-top: 80px;
-    flex: 1;
+    font-family: Arial, sans-serif;        /* Usa fuente Arial o sans-serif como alternativa */
+    margin: 0;                             /* Elimina margen por defecto */
+    padding: 0;                            /* Elimina relleno por defecto */
+    background-color: #ffffff;            /* Fondo blanco */
+    text-align: center;                   /* Centra el texto horizontalmente */
+    padding-top: 80px;                    /* Espacio superior, útil si hay un header fijo */
+    flex: 1;                               /* Flexibilidad para usar dentro de un contenedor flex */
 }
 
 /* Estilo base para los enlaces: azul sin subrayado */
 a {
-    color: #007BFF;
-    text-decoration: none;
+    color: #007BFF;                       /* Azul Bootstrap */
+    text-decoration: none;               /* Elimina subrayado por defecto */
 }
 
 /* Hover en enlaces: aparece subrayado */
 a:hover {
-    text-decoration: underline; 
-}
-/*
-button, .btn {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    text-decoration: none;
+   text-decoration: underline;          /* Agrega subrayado al pasar el cursor */
 }
 
-button:hover, .btn:hover {
-    background-color: #0056b3;
-}
-*/
 
 /* Títulos centrados con margen y color principal */
 h2, h3 {
-    text-align: center;
-    color: #007BFF;
-    margin-top: 20px;
+   text-align: center;                  /* Centrado del texto */
+    color: #007BFF;                      /* Azul principal */
+    margin-top: 20px;                    /* Margen superior */
 }
 /* Tamaño de fuente para h2 */
 h2 {
-    font-size: 1.5em;
+    font-size: 1.5em;                    /* Tamaño mediano para h2 */
 }
 
 /* Contenedores de secciones: ancho fijo, centrado, fondo blanco y sombreado */
 .container, .admin-container, .member, .references {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;                   /* Ancho máximo */
+    margin: auto;                        /* Centrado horizontal */
+    padding: 20px;                       /* Relleno interno */
+    background-color: white;            /* Fondo blanco */
+    border-radius: 12px;                /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
 
 /* Tablas con diseño colapsado y centrado */
 table {
-    border-collapse: collapse;
-    margin-top: 20px;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+     border-collapse: collapse;          /* Une los bordes de las celdas */
+    margin-top: 20px;                   /* Margen superior */
+    width: 80%;                         /* Anchura relativa */
+    margin-left: auto;                  /* Centrado horizontal */
+    margin-right: auto;                 /* Centrado horizontal */
 }
 
 /* Borde para toda la tabla y celdas */
 table, th, td {
-    border: 1px solid #ccc;
+    border: 1px solid #ccc;             /* Borde gris claro */
 }
 
 /* Celdas centradas y con relleno */
 th, td {
-    padding: 10px;
-    text-align: center;
+     padding: 10px;                      /* Espaciado interno */
+    text-align: center;                 /* Contenido centrado */
 }
 
 /* Encabezados de tabla con fondo azul y texto blanco */
 th {
-    background: #007BFF;
-    color: white;
+   background: #007BFF;                /* Fondo azul */
+    color: white;                       /* Texto blanco */
 }
 
 /* Filas pares con fondo gris claro */
 tr:nth-child(even) {
-    background: #f9f9f9;
+    background: #f9f9f9;                /* Color alterno para legibilidad */    
 }
 
 /* Imagen de bocetos: centrada, con tamaño máximo y bordes redondeados */
 .bocetos-img {
-    display: block;
-    margin: 20px auto;
-    max-width: 100%;
-    height: auto;
-    width: 80%;
-    max-width: 600px;
-    height: auto;
-    border-radius: 8px;
+    display: block;                     /* Se comporta como bloque */
+    margin: 20px auto;                  /* Espaciado y centrado */
+    max-width: 100%;                    /* No sobrepasa el contenedor */
+    height: auto;                       /* Altura automática */
+    width: 80%;                         /* Anchura relativa */
+    max-width: 600px;                   /* Límite máximo de ancho */
+    height: auto;                       /* Se repite por redundancia */
+    border-radius: 8px;                 /* Bordes redondeados */
 }
 
 /* Efecto hover para imagen de bocetos: zoom y sombra */
 .bocetos-img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+   transform: scale(1.05);             /* Hace un pequeño zoom */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
 }
 
 /* Estilo general para imágenes: centradas, tamaño fijo, bordes redondeados y sombra */
 img {
-    display: block;
-    width: 300px;
-    height: 200px;
-    margin: 20px auto;
-    border-radius: 10%;
-    object-fit: cover;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: block;                     /* Ocupa toda la línea */
+    width: 300px;                       /* Ancho fijo */
+    height: 200px;                      /* Alto fijo */
+    margin: 20px auto;                  /* Centrado con margen */
+    border-radius: 10%;                 /* Bordes redondeados en porcentaje */
+    object-fit: cover;                  /* Rellena sin distorsionar */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 /* Miembros y referencias: estilo en bloque, colores claros y borde */
 .references, .member {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-    padding: 10px 15px;
-    border: 1px solid #007BFF;
-    background-color: #E3F2FD;
-    border-radius: 5px;
-    color: #000000;
-    text-decoration: none;
-    font-weight: normal;
+    display: flex;                      /* Flexbox para disposición horizontal */
+    gap: 15px;                          /* Espacio entre elementos */
+    margin-top: 20px;                   /* Separación superior */
+    padding: 10px 15px;                 /* Relleno interno */
+    border: 1px solid #007BFF;          /* Borde azul */
+    background-color: #E3F2FD;          /* Fondo azul claro */
+    border-radius: 5px;                 /* Bordes redondeados */
+    color: #000000;                     /* Texto negro */
+    text-decoration: none;              /* Sin subrayado */
+    font-weight: normal;                /* Peso normal de fuente */
 }
 
 /* Contenedor grid para productos: tres columnas, espaciado y centrado */
 .productos-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: auto;
+  display: grid;                      /* Usa grid layout */
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas iguales */
+    gap: 20px;                          /* Separación entre tarjetas */
+    padding: 20px;                      /* Espaciado interno */
+    max-width: 1200px;                  /* Ancho máximo */
+    margin: auto;                       /* Centrado horizontal */
 }
 
 /* Tarjeta individual de producto */
 .producto {
-    background-color: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.2s;
+   background-color: white;           /* Fondo blanco */
+    padding: 15px;                      /* Relleno */
+    border-radius: 8px;                 /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    text-align: center;                 /* Centrado de texto */
+    transition: transform 0.2s;         /* Animación suave al hacer hover */
 }
 
 /* Efecto zoom al pasar por encima del producto */
 .producto:hover {
-    transform: scale(1.05);
+     transform: scale(1.05);            /* Agranda ligeramente */
 }
 
 /* Imagen del producto: tamaño fijo, centrada y redondeada */
 .producto img {
-    width: 320px;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
-    display: block;
-    margin: 0 auto;
+    width: 320px;                       /* Ancho fijo */
+    height: 250px;                      /* Alto fijo */
+    object-fit: cover;                  /* Mantiene proporción sin deformar */
+    border-radius: 8px;                 /* Bordes redondeados */
+    display: block;                     /* Comportamiento en bloque */
+    margin: 0 auto;                     /* Centrado */
 }
 
 /* Título del producto con color principal */
 .producto h3 {
-    color: #007BFF;
-    font-size: 1.2em;
+    color: #007BFF;                     /* Azul */
+    font-size: 1.2em;                   /* Tamaño medio */
 }
 
 /* Precio del producto: énfasis en negrita */
 .precio {
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #333;
+    font-size: 1.1em;                   /* Tamaño del texto */
+    font-weight: bold;                 /* Negrita */
+    color: #333;                        /* Gris oscuro */
 }
 
 /* Estilo de párrafos: justificados, con márgenes y espaciado */
 p {
-    line-height: 1.6;
-    font-size: 1.1em;
-    text-align: justify;
-    padding: 10px;
-    margin: 0 auto 20px;
-    max-width: 80%;
+   line-height: 1.6;                   /* Altura de línea */
+    font-size: 1.1em;                   /* Tamaño de fuente */
+    text-align: justify;                /* Justificación de texto */
+    padding: 10px;                      /* Espaciado interno */
+    margin: 0 auto 20px;                /* Margen inferior y centrado */
+    max-width: 80%;                     /* Anchura máxima */
 }
 
 /* Listas centradas y sin viñetas */
 ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
+    list-style-type: none;              /* Elimina viñetas */
+    padding: 0;                         /* Elimina relleno */
+    margin: 0;                          /* Elimina margen */
+    text-align: center;                 /* Centrado horizontal */
 }
 
 /* Contenedor del filtro de precios: estilo de tarjeta centrada */
 .filtro-precio {
-    background-color: #ffffff;
-    padding: 15px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 400px;
-    margin: 20px auto;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+   background-color: #ffffff;          /* Fondo blanco */
+    padding: 15px;                      /* Espaciado interno */
+    border: 2px solid #ddd;             /* Borde gris claro */
+    border-radius: 8px;                 /* Bordes redondeados */
+    width: 100%;                        /* Anchura completa */
+    max-width: 400px;                   /* Ancho máximo */
+    margin: 20px auto;                  /* Centrado y separación vertical */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
 
 /* Etiquetas del filtro: negrita y espaciado superior */
 .filtro-precio label {
-    font-weight: bold;
-    display: block;
-    margin-top: 10px;
-    color: #333;
+    font-weight: bold;                 /* Negrita */
+    display: block;                    /* Comportamiento en bloque */
+    margin-top: 10px;                  /* Espacio superior */
+    color: #333;                       /* Gris oscuro */
 }
 
 /* Campos de entrada del filtro */
 .filtro-precio input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-    box-sizing: border-box;
+    width: 100%;                       /* Ocupa todo el ancho */
+    padding: 8px;                      /* Relleno interno */
+    margin-top: 5px;                   /* Separación superior */
+    border: 1px solid #ccc;            /* Borde gris claro */
+    border-radius: 5px;                /* Bordes redondeados */
+    font-size: 14px;                   /* Tamaño del texto */
+    box-sizing: border-box;            /* Incluye padding y border en el ancho total */
+
 }
 
 /* Botón del filtro: estilo azul y adaptado al ancho */
 .filtro-precio button {
-    display: block;
-    width: 100%;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: background-color 0.3s ease;
+   display: block;                    /* Botón como bloque */
+    width: 100%;                       /* Ancho completo */
+    background-color: #007BFF;         /* Fondo azul */
+    color: white;                      /* Texto blanco */
+    border: none;                      /* Sin borde */
+    padding: 10px;                     /* Relleno interno */
+    border-radius: 5px;                /* Bordes redondeados */
+    font-size: 16px;                   /* Tamaño del texto */
+    cursor: pointer;                   /* Cursor de puntero */
+    margin-top: 15px;                  /* Separación superior */
+    transition: background-color 0.3s ease; /* Transición suave del fondo */
 }
 
 /* Hover del botón del filtro */
 .filtro-precio button:hover {
-    background-color: #0056b3;
+   background-color: #0056b3;         /* Azul más oscuro */
 }
 
 /* Estilo general de botones con clase .btn */
 .btn {
-    display: inline-block;
-    background-color: #007BFF;
-    color: white;
-    padding: 8px 12px;
-    margin-top: 10px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background 0.3s;
+    display: inline-block;             /* Bloque en línea */
+    background-color: #007BFF;         /* Azul */
+    color: white;                      /* Texto blanco */
+    padding: 8px 12px;                 /* Relleno */
+    margin-top: 10px;                  /* Margen superior */
+    text-decoration: none;             /* Sin subrayado */
+    border-radius: 5px;                /* Bordes redondeados */
+    font-weight: bold;                 /* Negrita */
+    transition: background 0.3s;       /* Transición suave */
 }
 
 /* Hover del botón */
 .btn:hover {
-    background-color: #0056b3;
+     background-color: #0056b3;         /* Azul más oscuro */
 }
 
 /* Contenedor del detalle del producto */
 .detalle-container {
-    max-width: 600px;
-    margin: 40px auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;                  /* Ancho máximo */
+    margin: 40px auto;                 /* Centrado y margen vertical */
+    background-color: white;           /* Fondo blanco */
+    padding: 20px;                     /* Relleno */
+    border-radius: 12px;               /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
 
 
 /* Imagen del producto */
 .detalle-imagen {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
+    width: 100%;                       /* Ocupa todo el ancho disponible */
+    height: auto;                      /* Ajuste automático de altura */
+    border-radius: 8px;                /* Bordes redondeados */
 }
 
 
 /* Estilos generales para el formulario */
 form {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    margin: 10px auto;
+    background-color: #f9f9f9;      /* Color de fondo gris muy claro */
+    padding: 20px;                  /* Espacio interno en todos los lados del formulario */
+    border-radius: 8px;             /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil para resaltar el formulario */
+    width: 300px;                   /* Ancho fijo del formulario */
+    margin: 10px auto;              /* Margen superior e inferior de 10px, y centrado horizontalmente */
 }
 
 /* Estilos para los campos de entrada */
 form input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: #fff;
+     width: 100%;                    /* El campo ocupa todo el ancho del formulario */
+    padding: 10px;                  /* Espaciado interno en todos los lados */
+    margin: 10px 0;                 /* Margen superior e inferior de 10px, sin margen horizontal */
+    border: 1px solid #ccc;         /* Borde gris claro de 1px */
+    border-radius: 4px;             /* Bordes redondeados del input */
+    font-size: 16px;                /* Tamaño de texto moderado */
+    background-color: #fff;         /* Fondo blanco para el input */
 }
 
 /* Estilo para los mensajes de error */
 form span.error {
-    color: red;
-    font-size: 12px;
-    margin-top: 5px;
-    display: block;
+   color: red;                      /* Color del texto en rojo para destacar el error */
+    font-size: 12px;                 /* Tamaño de fuente pequeño */
+    margin-top: 5px;                 /* Espacio superior para separarlo del campo */
+    display: block;                  /* Se muestra como bloque (ocupa todo el ancho disponible) */
 }
 
 /* Estilos para el botón */
 form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    width: 100%;                     /* El botón ocupa todo el ancho del formulario */
+    padding: 10px;                   /* Espaciado interno uniforme */
+    background-color: #007bff;       /* Fondo azul (Bootstrap blue) */
+    color: white;                    /* Texto blanco */
+    border: none;                    /* Elimina el borde por defecto */
+    border-radius: 4px;              /* Bordes redondeados suaves */
+    font-size: 16px;                 /* Tamaño del texto del botón */
+    cursor: pointer;                 /* Cambia el cursor a "mano" al pasar por encima */
+    transition: background-color 0.3s ease; /* Transición suave del color de fondo al hacer hover */
 }
 
 /* Cambio de color al pasar el ratón sobre el botón */
 form button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3;       /* Azul más oscuro al hacer hover */
 }
