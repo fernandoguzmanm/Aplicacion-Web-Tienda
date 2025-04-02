@@ -1,8 +1,7 @@
 <?php
 
 require_once './includes/config.php';
-require_once RUTA_INCLUDES . 'aplicacion.php';
-
+require_once __DIR__ . '/aplicacion.php';
 class Usuario
 {
     public const ADMIN_ROLE = 1;

@@ -13,7 +13,7 @@ class MiembrosController {
         $miembros = $this->miembros;
         $datos_miembros = $this->datosMiembros;
 
-        require RUTA_VISTAS . 'miembros.php';
+        require RAIZ_APP . 'miembros.php';
     }
 
     private function obtenerMiembros() {
@@ -29,25 +29,25 @@ class MiembrosController {
         return [
             "fernando_guzman" => [
                 "nombre" => "Fernando Guzmán Muñoz",
-                "imagen" => RUTA_IMG . 'fernando_guzman.jpeg',
+                "imagen" => URL_IMGS . 'fernando_guzman.jpeg',
                 "correo" => "feguzm01@ucm.es",
                 "descripcion" => "Apasionado por la inteligencia artificial y la ciberseguridad. En su tiempo libre, disfruta del deporte y los videojuegos."
             ],
             "fernando_vieites" => [
                 "nombre" => "Fernando Vieites Moreira",
-                "imagen" => RUTA_IMG . 'fernando_vieites.jpeg',
+                "imagen" => URL_IMGS . 'fernando_vieites.jpeg',
                 "correo" => "fvieites@ucm.es",
                 "descripcion" => "Entusiasta de la robótica y el desarrollo web. Le encanta viajar y probar nuevas gastronomías."
             ],
             "rishi" => [
                 "nombre" => "Rishi Pursnani Mirpuri",
-                "imagen" => RUTA_IMG . 'rishi.jpeg',
+                "imagen" => URL_IMGS . 'rishi.jpeg',
                 "correo" => "ripursna@ucm.es",
                 "descripcion" => "Interesado en la programación competitiva y el análisis de datos. Disfruta de la lectura y el ajedrez."
             ],
             "guillermo" => [
                 "nombre" => "Guillermo Guzmán González Ortiz",
-                "imagen" => RUTA_IMG . 'guillermo.JPG',
+                "imagen" => URL_IMGS . 'guillermo.JPG',
                 "correo" => "guilgo08@ucm.es",
                 "descripcion" => "Le apasiona el desarrollo de videojuegos y la realidad virtual. También hace fútbol en su tiempo libre."
             ]

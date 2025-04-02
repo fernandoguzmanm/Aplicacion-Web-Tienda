@@ -1,10 +1,12 @@
 <?php
 require_once __DIR__.'/includes/config.php';
 require_once __DIR__.'/includes/modelos/producto.php';
+require_once RUTA_CONTROLADORES . 'vendedorController.php';
 
 $tituloPagina = 'Gestión de Productos';
 
-$productos = \es\ucm\fdi\aw\Producto::obtenerProductos();
+$vendedor = new VendedorController();
+
 
 require_once __DIR__.'/includes/vistas/comun/header.php';
 ?>

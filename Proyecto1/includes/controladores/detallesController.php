@@ -13,7 +13,7 @@ class DetallesController {
         $usuarios = $this->usuarios;
         $funcionalidades = $this->funcionalidades;
 
-        require RUTA_VISTAS . 'detalles.php';
+        require RAIZ_APP . 'detalles.php';
     }
 
     private function obtenerUsuarios() {

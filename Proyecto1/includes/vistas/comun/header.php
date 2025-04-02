@@ -15,7 +15,7 @@ $carrito_count = isset($_SESSION['carrito']) ? array_sum(array_column($_SESSION[
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="<?= RUTA_CSS . 'cssHeader.css?v=6' ?>">
+    <link rel="stylesheet" href="<?= URL_CSS . 'cssHeader.css?v=6' ?>">
 </head>
 
 <header>

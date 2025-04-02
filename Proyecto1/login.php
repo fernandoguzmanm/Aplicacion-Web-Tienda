@@ -1,7 +1,7 @@
 <?php 
+require_once './includes/config.php';
 
 require_once RUTA_INCLUDES . 'formulariologin.php';
-require_once './includes/config.php';
 
 $form = new formulariologin();
 $htmlFormLogin = $form->gestiona();

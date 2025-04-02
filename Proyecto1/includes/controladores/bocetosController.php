@@ -37,7 +37,7 @@ class BocetosController {
     public function mostrarBocetos() {
         $tituloPagina = 'Bocetos';
         $bocetos = $this->obtenerBocetos();
-        require RUTA_VISTAS . 'bocetos.php';
+        require RAIZ_APP . 'bocetos.php';
     }
 }
 ?>

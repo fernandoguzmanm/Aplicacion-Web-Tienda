@@ -1,5 +1,5 @@
 <?php
-require_once RUTA_INCLUDES . 'config.php';
+require_once './includes/config.php';
 require_once RUTA_INCLUDES . 'formularioregistro.php';
 
 $form = new FormularioRegistro();
