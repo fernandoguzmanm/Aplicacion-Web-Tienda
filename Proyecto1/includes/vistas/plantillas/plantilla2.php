@@ -8,5 +8,5 @@
 
 <?php
 require RUTA_VISTAS . 'comun/header.php';
-//require RUTA_VISTAS . 'comun/pie.php';
+require RUTA_VISTAS . 'comun/pie.php';
 ?>

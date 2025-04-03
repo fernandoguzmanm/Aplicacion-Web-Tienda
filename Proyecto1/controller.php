@@ -76,6 +76,7 @@ switch ($controlador) {
         $controller = new DetalleProductoController();
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $controller->mostrarDetalle($_GET['id']);
+            exit();
         } else {
             header("Location: tienda.php");
             exit();
