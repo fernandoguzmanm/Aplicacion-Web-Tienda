@@ -1,6 +1,5 @@
 <?php
 require_once './includes/config.php'; // Incluir config.php para usar las constantes definidas
-require_once RUTA_MYSQL . 'conexion.php';
 require_once RUTA_CONTROLADORES . 'tiendaController.php';
 require_once RUTA_CONTROLADORES . 'detallesController.php';
 require_once RUTA_CONTROLADORES . 'bocetosController.php';
@@ -38,15 +37,18 @@ switch ($controlador) {
         if (isset($_GET['action']) && $_GET['action'] == 'eliminarProducto' && isset($_GET['id'])) {
             $cantidad = isset($_GET['numero_unidades']) ? intval($_GET['numero_unidades']) : 1;
             $controller->eliminarProducto($_GET['id'], $cantidad);
+            header("Location: carrito.php");
             exit();
         }
         else if (isset($_GET['action']) && $_GET['action'] == 'vaciarCarrito') {
             $controller->vaciarCarrito();
+            header("Location: carrito.php");
             exit();
         }
         else if (isset($_GET['action']) && $_GET['action'] == 'añadirProducto' && isset($_GET['id'])) {
             $cantidad = isset($_GET['numero_unidades']) ? intval($_GET['numero_unidades']) : 1;
             $controller->añadirProducto($_GET['id'], $cantidad);
+            header("Location: carrito.php");
             exit();
         }
         header("Location: carrito.php");

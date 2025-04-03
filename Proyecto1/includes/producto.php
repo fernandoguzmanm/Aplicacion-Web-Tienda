@@ -2,6 +2,7 @@
 //
 //  // Usar la constante RUTA_MYSQL para incluir la conexión a la base de datos
 require_once './includes/config.php';
+require_once __DIR__ . '/aplicacion.php';
 
 class Producto {
     private $id_producto;

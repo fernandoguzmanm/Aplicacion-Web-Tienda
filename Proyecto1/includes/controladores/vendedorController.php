@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../config.php'; 
-require_once RUTA_MODELOS . 'producto.php';
+require_once RUTA_INCLUDES . 'producto.php';
 
 class VendedorController {
     private $producto;

@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once RUTA_MODELOS . 'producto.php';
+require_once RUTA_INCLUDES . 'producto.php';
 
 class CarritoController {
     private $producto;
