@@ -55,7 +55,6 @@ switch ($controlador) {
         $controller = new VendedorController();
         if (isset($_GET['action']) && $_GET['action'] == 'mostrarVendedor') {
             $controller->mostrarVendedor();
-            header("Location: index.php");
             exit();
         }
         else if (isset($_GET['action']) && $_GET['action'] == 'eliminarStock' && isset($_GET['id'])) {

@@ -17,7 +17,7 @@ class BusquedaController {
         $max_precio = isset($_GET['max_precio']) ? $_GET['max_precio'] : null;
 
         $resultados = $this->productoModel->buscarProductos($query, $categoria, $min_precio, $max_precio);
-
+        
         require RAIZ_APP . 'buscar.php';
     }
 }

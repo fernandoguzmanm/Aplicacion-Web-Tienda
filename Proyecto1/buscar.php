@@ -19,12 +19,12 @@ require_once RUTA_INCLUDES . 'formulariobuscar.php';
         <?php else: ?>
             <?php foreach ($resultados as $producto): ?>
                 <div class="producto">
-                    <img src="<?php echo RUTA_IMGS . 'productos/' . (!empty($producto['imagen']) ? $producto['imagen'] : 'default.png'); ?>" 
-                         alt="<?php echo htmlspecialchars($producto['nombre']); ?>">
-                    <h3><?php echo ucfirst(htmlspecialchars($producto['nombre'])); ?></h3>
-                    <p class="precio">$<?php echo number_format($producto['precio'], 2); ?></p>
-                    <a href="controller.php?controller=detalle&action=mostrarDetalle&id=<?php echo $producto['id_producto']; ?>" class="btn">Ver detalles</a>
-                    <a href="<?php echo RUTA_APP . 'carrito.php?add=' . $producto['id_producto']; ?>" class="btn">Añadir al carrito</a>
+                    <img src="<?php echo RUTA_IMGS . 'productos/' . (!empty($producto->getImagen()) ? $producto->getImagen() : 'default.png'); ?>" 
+                         alt="<?php echo htmlspecialchars($producto->getNombre()); ?>">
+                    <h3><?php echo ucfirst(htmlspecialchars($producto->getNombre())); ?></h3>
+                    <p class="precio">$<?php echo number_format($producto->getPrecio(), 2); ?></p>
+                    <a href="controller.php?controller=detalle&action=mostrarDetalle&id=<?php echo $producto->getIdProducto(); ?>" class="btn">Ver detalles</a>
+                    <a href="<?php echo RUTA_APP . 'carrito.php?add=' . $producto->getIdProducto(); ?>" class="btn">Añadir al carrito</a>
                 </div>
             <?php endforeach; ?>
         <?php endif; ?>

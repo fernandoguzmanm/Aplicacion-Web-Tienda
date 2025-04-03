@@ -17,7 +17,7 @@ define('BD_PASS', 'contrasenarishi');
  */
 define('RAIZ_APP', dirname(__DIR__) . '/'); // Ruta absoluta del sistema de archivos con barra al final
 define('RUTA_APP', '/AW/Proyecto1/'); // Ruta relativa para URLs
-define('URL_BASE', 'http://localhost' . RUTA_APP); // URL base del proyecto
+define('URL_BASE',  RUTA_APP); // URL base del proyecto
 
 define('RUTA_BASE', RAIZ_APP); // Define RUTA_BASE como la ruta absoluta del sistema de archivos
 define('RUTA_INCLUDES', RAIZ_APP . 'includes/');
