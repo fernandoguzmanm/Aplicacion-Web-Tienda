@@ -118,11 +118,11 @@ INSERT INTO `productos` (`id_producto`, `nombre`, `descripcion`, `precio`, `stoc
 (7, 'yogur', 'lacteo', 2.39, 20, 3, 3, 'yogur.png'),
 (8, 'queso', 'lacteo', 1.59, 20, 3, 3, 'queso.png'),
 (9, 'chocolate', 'dulce', 1.79, 20, 2, 4, 'chocolate.png')
-(10, 'manzana', 'fruta fresca y crujiente', 2.29, 30, 1, 1, 'manzana.jpg'),
-(11, 'pan integral', 'cereal saludable', 1.99, 25, 2, 2, 'pan_integral.jpg'),
-(12, 'mantequilla', 'producto lácteo para untar', 2.49, 20, 3, 3, 'mantequilla.png'),
-(13, 'galletas', 'dulces caseras de chocolate', 1.89, 40, 2, 4, 'galletas.jpg'),
-(14, 'limonada', 'refresco natural de limón', 1.59, 50, 1, 5, 'limonada.jpg');
+(10, 'manzana', 'fruta', 2.29, 30, 1, 1, 'manzana.jpg'),
+(11, 'pan integral', 'cereales', 1.99, 25, 2, 2, 'pan_integral.jpg'),
+(12, 'mantequilla', 'lacteo', 2.49, 20, 3, 3, 'mantequilla.png'),
+(13, 'galletas', 'dulce', 1.89, 40, 2, 4, 'galletas.jpg'),
+(14, 'limonada', 'refresco', 1.59, 50, 1, 5, 'limonada.jpg');
 
 -- --------------------------------------------------------
 
