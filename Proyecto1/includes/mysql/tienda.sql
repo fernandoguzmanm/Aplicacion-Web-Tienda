@@ -117,12 +117,22 @@ INSERT INTO `productos` (`id_producto`, `nombre`, `descripcion`, `precio`, `stoc
 (6, 'leche', 'lacteo', 0.89, 20, 3, 3, 'leche.png'),
 (7, 'yogur', 'lacteo', 2.39, 20, 3, 3, 'yogur.png'),
 (8, 'queso', 'lacteo', 1.59, 20, 3, 3, 'queso.png'),
-(9, 'chocolate', 'dulce', 1.79, 20, 2, 4, 'chocolate.png')
+(9, 'chocolate', 'dulce', 1.79, 20, 2, 4, 'chocolate.png'),
 (10, 'manzana', 'fruta', 2.29, 30, 1, 1, 'manzana.jpg'),
 (11, 'pan integral', 'cereales', 1.99, 25, 2, 2, 'pan_integral.jpg'),
 (12, 'mantequilla', 'lacteo', 2.49, 20, 3, 3, 'mantequilla.png'),
 (13, 'galletas', 'dulce', 1.89, 40, 2, 4, 'galletas.jpg'),
-(14, 'limonada', 'refresco', 1.59, 50, 1, 5, 'limonada.jpg');
+(14, 'limonada', 'refresco', 1.59, 50, 1, 5, 'limonada.jpg'),
+(15, 'sandía', 'fruta', 3.49, 15, 1, 1, 'sandia.jpg'),
+(16, 'kiwi', 'fruta', 2.19, 20, 1, 1, 'kiwi.jpg'),
+(17, 'copos de avena', 'cereales', 2.59, 30, 2, 2, 'avena.jpg'),
+(18, 'cornflakes', 'cereales', 2.99, 25, 2, 2, 'cornflakes.jpg'),
+(19, 'nata', 'lacteo', 1.49, 18, 3, 3, 'nata.png'),
+(20, 'batido de chocolate', 'lacteo', 1.99, 20, 3, 3, 'batido.jpg'),
+(21, 'tarta de queso', 'dulce', 4.99, 10, 2, 4, 'tarta_queso.jpg'),
+(22, 'caramelos', 'dulce', 1.25, 100, 2, 4, 'caramelos.jpg'),
+(23, 'cola', 'refresco', 1.50, 60, 1, 5, 'cola.jpg'),
+(24, 'agua con gas', 'refresco', 0.95, 80, 1, 5, 'agua_gas.jpg');
 
 -- --------------------------------------------------------
 
@@ -173,7 +183,12 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `email`, `contraseña`, `tipo_usuario`, `puntos_fidelidad`) VALUES
 (1, 'Vendedor1', 'vendedor1@gmail.com', 'v1', 'vendedor', 0),
 (2, 'Vendedor2', 'vendedor2@gmail.com', 'v2', 'vendedor', 0),
-(3, 'fer', 'fer@gmail.com', '1234', 'vendedor', 0);
+(3, 'fer', 'fer@gmail.com', '1234', 'vendedor', 0),
+(4, 'Cliente1', 'cliente1@gmail.com', 'c1', 'cliente', 10),
+(5, 'Cliente2', 'cliente2@gmail.com', 'c2', 'cliente', 20),
+(6, 'Admin1', 'admin1@gmail.com', 'admin123', 'administrador', 0),
+(7, 'Vendedor3', 'vendedor3@gmail.com', 'v3', 'vendedor', 0),
+(8, 'Cliente3', 'cliente3@gmail.com', 'c3', 'cliente', 15);
 
 --
 -- Indexes for dumped tables
