@@ -186,9 +186,8 @@ INSERT INTO `usuarios` (`id_usuario`, `nombre`, `email`, `contraseña`, `tipo_us
 (3, 'fer', 'fer@gmail.com', '1234', 'vendedor', 0),
 (4, 'Cliente1', 'cliente1@gmail.com', 'c1', 'cliente', 10),
 (5, 'Cliente2', 'cliente2@gmail.com', 'c2', 'cliente', 20),
-(6, 'Admin1', 'admin1@gmail.com', 'admin123', 'administrador', 0),
-(7, 'Vendedor3', 'vendedor3@gmail.com', 'v3', 'vendedor', 0),
-(8, 'Cliente3', 'cliente3@gmail.com', 'c3', 'cliente', 15);
+(6, 'Vendedor3', 'vendedor3@gmail.com', 'v3', 'vendedor', 0),
+(7, 'Cliente3', 'cliente3@gmail.com', 'c3', 'cliente', 15);
 
 --
 -- Indexes for dumped tables
