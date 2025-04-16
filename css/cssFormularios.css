@@ -1,0 +1,125 @@
+/* Estilos base del body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    text-align: center;
+    padding-top: 80px; /* Separación del header fijo */
+}
+
+/* Contenedor principal del formulario */
+#contenedor,
+.formulario-form {
+    background: white;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Opcional: contenedor general para centrar todo */
+.wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Título del formulario */
+h2 {
+    color: #007BFF;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Estilo para etiquetas */
+label {
+    font-weight: bold;
+    margin: 10px 0 5px;
+    display: block;
+    text-align: left;
+    width: 100%;
+}
+
+/* Campos de entrada y área de texto */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+/* Botones y botones de envío */
+button,
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-align: center;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos generales para enlaces */
+a {
+    color: #007BFF;
+    text-decoration: none;
+    display: inline-block;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para radio buttons y checkboxes */
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Permitir que el textarea solo se redimensione verticalmente */
+textarea {
+    resize: vertical;
+}
+
+/* Estilos para tablas */
+table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #007BFF;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f9f9f9;
+}

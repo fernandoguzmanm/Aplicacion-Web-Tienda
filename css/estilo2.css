@@ -1,0 +1,302 @@
+/* Estilo general del body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    text-align: center;
+    padding-top: 80px; /* Separación del header fijo */
+    flex: 1;
+}
+
+/* Estilo base para los enlaces */
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Títulos */
+h2, h3 {
+    text-align: center;
+    color: #007BFF;
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+/* Estilo de párrafos: justificados, con márgenes y espaciado */
+p {
+    line-height: 1.6;                   /* Altura de línea */
+     font-size: 1.1em;                   /* Tamaño de fuente */
+     text-align: justify;                /* Justificación de texto */
+     padding: 10px;                      /* Espaciado interno */
+     margin: 0 auto 20px;                /* Margen inferior y centrado */
+     max-width: 80%;                     /* Anchura máxima */
+ }
+
+/* Contenedores de secciones: ancho fijo, centrado, fondo blanco y sombreado */
+.container, .admin-container, .member, .references {
+    max-width: 1200px;                   /* Ancho máximo */
+    margin: auto;                        /* Centrado horizontal */
+    padding: 20px;                       /* Relleno interno */
+    background-color: white;            /* Fondo blanco */
+    border-radius: 12px;                /* Bordes redondeados */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+
+/* Miembros y referencias: estilo en bloque, colores claros y borde */
+.references, .member {
+    display: flex;                      /* Flexbox para disposición horizontal */
+    gap: 15px;                          /* Espacio entre elementos */
+    margin-top: 20px;                   /* Separación superior */
+    padding: 10px 15px;                 /* Relleno interno */
+    border: 1px solid #007BFF;          /* Borde azul */
+    background-color: #E3F2FD;          /* Fondo azul claro */
+    border-radius: 5px;                 /* Bordes redondeados */
+    color: #000000;                     /* Texto negro */
+    text-decoration: none;              /* Sin subrayado */
+    font-weight: normal;                /* Peso normal de fuente */
+}
+
+/* Contenedores generales */
+.container, .admin-container, #contenedor, .formulario-form {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tablas */
+table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: #007BFF;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Header */
+header {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 80px;
+    max-height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+header h1 {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: left;
+    font-size: 2em;
+    margin: 0;
+    line-height: 80px;
+}
+
+.header-container {
+    display: flex;
+    width: calc(100% - 100px);
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 100px;
+}
+
+ul {
+    list-style-type: none;              /* Elimina viñetas */
+    padding: 0;                         /* Elimina relleno */
+    margin: 0;                          /* Elimina margen */
+    text-align: center;                 /* Centrado horizontal */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Footer */
+footer {
+    background-color: #003772;
+    color: white;
+    min-height: 80px;
+    max-height: 80px;
+    margin-top: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+img {
+    display: block;                     /* Ocupa toda la línea */
+    width: 300px;                       /* Ancho fijo */
+    height: 200px;                      /* Alto fijo */
+    margin: 20px auto;                  /* Centrado con margen */
+    border-radius: 10%;                 /* Bordes redondeados en porcentaje */
+    object-fit: cover;                  /* Rellena sin distorsionar */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Formularios */
+form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin: 10px auto;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+form span.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+form button,
+input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-align: center;
+}
+
+form button:hover,
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Productos */
+.productos-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.producto {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.producto:hover {
+    transform: scale(1.05);
+}
+
+.producto img {
+    width: 320px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
+.producto h3 {
+    color: #007BFF;
+    font-size: 1.2em;
+}
+
+.precio {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+}
+
+.bocetos-img {
+    display: block;                     /* Se comporta como bloque */
+    margin: 20px auto;                  /* Espaciado y centrado */
+    max-width: 100%;                    /* No sobrepasa el contenedor */
+    height: auto;                       /* Altura automática */
+    width: 80%;                         /* Anchura relativa */
+    max-width: 600px;                   /* Límite máximo de ancho */
+    height: auto;                       /* Se repite por redundancia */
+    border-radius: 8px;                 /* Bordes redondeados */
+}
+
+/* Efecto hover para imagen de bocetos: zoom y sombra */
+.bocetos-img:hover {
+   transform: scale(1.05);             /* Hace un pequeño zoom */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+}
