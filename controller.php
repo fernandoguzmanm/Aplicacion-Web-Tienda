@@ -18,6 +18,7 @@ $controladores = [
     'detalle' => 'detalleProductoController',
     'vendedor' => 'vendedorController',
     'logout' => 'logoutlogica',
+    'checkout' => 'checkoutController',
 ];
 
 // Obtener controlador y acción desde la URL

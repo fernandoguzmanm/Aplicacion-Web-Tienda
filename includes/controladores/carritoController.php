@@ -105,8 +105,8 @@ class CarritoController {
                 </table>
                 <h3>Total: $<?= number_format($total, 2); ?></h3>
                 <a href="<?= RUTA_APP . "carrito.php?action=clear"; ?>" class="btn">Vaciar Carrito</a>
-                <a href="<?= RUTA_APP . "checkout.php"; ?>" class="btn">Finalizar Compra</a>
-            <?php endif; ?>
+                <a href="<?php echo RUTA_APP . 'controller.php?controller=checkout&action=mostrarCheckout'; ?>" class="btn">Finalizar Compra</a>
+                <?php endif; ?>
         </main>
         <?php
     }

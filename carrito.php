@@ -47,7 +47,7 @@ if (session_status() == PHP_SESSION_NONE) {
         </table>
         <h3>Total: $<?php echo number_format($total, 2); ?></h3>
         <a href="controller.php?controller=carrito&action=vaciarCarrito" class="btn">Vaciar Carrito</a>
-        <a href="<?php echo RUTA_APP . 'checkout.php'; ?>" class="btn">Finalizar Compra</a>
+        <a href="<?php echo RUTA_APP . 'controller.php?controller=checkout&action=mostrarCheckout'; ?>" class="btn">Finalizar Compra</a>
     <?php endif; ?>
 </main>
 
