@@ -205,7 +205,7 @@ form {
 form input[type="text"],
 form input[type="email"],
 form input[type="password"],
-form input[type="number"],
+form input[type="number"],  
 textarea {
     width: 100%;
     padding: 10px;
@@ -239,6 +239,32 @@ input[type="submit"] {
 form button:hover,
 input[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+/* Estilo personalizado para los select dentro de un form */
+form select {
+    appearance: none; /* Elimina el estilo por defecto */
+    -webkit-appearance: none; /* Compatibilidad con navegadores WebKit */
+    -moz-appearance: none; /* Compatibilidad con Firefox */
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 1em;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23007BFF"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    margin-bottom: 15px;
+}
+
+form select:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 /* Productos */
