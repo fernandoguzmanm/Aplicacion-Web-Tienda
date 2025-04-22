@@ -99,8 +99,44 @@ class formulariocheckout extends formularios
         }
 
         if (count($this->errores) === 0) {
-            // Aun no se q poner q haga despues de esto, de momento va a pagina de ocnfirmacion
-            return RUTA_APP . 'confirmacion.php';
+            // Calcular el total del carrito
+            $total = 0;
+            foreach ($_SESSION['carrito'] as $producto) {
+                $total += $producto['precio'] * $producto['cantidad'];
+            }
+
+            // Crear el pedido
+            require_once RUTA_INCLUDES . 'pedido.php';
+            require_once RUTA_INCLUDES . 'detallespedido.php';
+            $conn = Aplicacion::getInstance()->getConexionBd();
+            $pedido = new Pedido($conn);
+
+            $id_usuario = $_SESSION['id_usuario']; // ID del usuario logueado
+            $estado = "pendiente";
+
+            if ($pedido->crearPedido($id_usuario, $estado, $total)) {
+                $id_pedido = $pedido->getIdPedido(); // Obtén el ID del pedido recién creado
+
+                $detallesPedido = new DetallesPedido($conn);
+                foreach ($_SESSION['carrito'] as $producto) {
+                    $id_producto = $producto['id_producto'];
+                    $cantidad = $producto['cantidad'];
+                    $precio_unidad = $producto['precio'];
+
+                    if (!$detallesPedido->agregarDetalle($id_pedido, $id_producto, $cantidad, $precio_unidad)) {
+                        $this->errores['general'] = 'No se pudo agregar un detalle del pedido. Por favor, inténtalo de nuevo.';
+                        return;
+                    }
+                }
+
+                // Vaciar el carrito después de crear el pedido
+                unset($_SESSION['carrito']);
+
+                // Redirigir a la página de confirmación
+                return RUTA_APP . 'confirmacion.php';
+            } else {
+                $this->errores['general'] = 'No se pudo procesar el pedido. Por favor, inténtalo de nuevo.';
+            }
         }
     }
 }
