@@ -63,25 +63,27 @@ class formularioregistro extends formularios
 
         $nombre = trim($datos['nombre'] ?? '');
         $nombre = filter_var($nombre, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        if ( ! $nombre || mb_strlen($nombre) < 5) {
+        if (!$nombre || mb_strlen($nombre) < 5) {
             $this->errores['nombre'] = 'El nombre tiene que tener una longitud de al menos 5 caracteres.';
+        } elseif (mb_strlen($nombre) > 20) {
+            $this->errores['nombre'] = 'El nombre no puede tener más de 20 caracteres.';
         }
 
         $correo = trim($datos['correo'] ?? '');
         $correo = filter_var($correo, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        if ( ! $correo || empty($correo) ) {
+        if (!$correo || empty($correo)) {
             $this->errores['correo'] = 'El correo del usuario no puede estar vacío';
         }
 
         $password = trim($datos['password'] ?? '');
         $password = filter_var($password, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        if ( ! $password || mb_strlen($password) < 5 ) {
+        if (!$password || mb_strlen($password) < 5) {
             $this->errores['password'] = 'La contraseña tiene que tener una longitud de al menos 5 caracteres.';
         }
 
         $password2 = trim($datos['password2'] ?? '');
         $password2 = filter_var($password2, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        if ( ! $password2 || $password != $password2 ) {
+        if (!$password2 || $password != $password2) {
             $this->errores['password2'] = 'Las contraseñas deben coincidir';
         }
 
@@ -92,7 +94,7 @@ class formularioregistro extends formularios
 
         if (count($this->errores) === 0) {
             $usuario = Usuario::buscaUsuario($correo);
-    
+
             if ($usuario) {
                 $this->errores[] = "El usuario ya existe";
             } else {

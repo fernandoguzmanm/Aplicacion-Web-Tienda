@@ -106,8 +106,8 @@ nav ul li a:hover {
 
 /* Contenedor del login en la cabecera */
 #login-container {
-    min-width: 300px;           /* Ancho mínimo */
-    max-width: 300px;           /* Ancho máximo */
+    min-width: 350px;           /* Ancho mínimo */
+    max-width: 350px;           /* Ancho máximo */
     display: flex;              /* Flexbox */
     overflow: hidden;           /* Oculta contenido que sobresalga */
     text-align: right;          /* Alineación a la derecha */

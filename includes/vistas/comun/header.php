@@ -10,7 +10,7 @@ $carrito_count = isset($_SESSION['carrito']) ? array_sum(array_column($_SESSION[
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="<?= URL_CSS . 'cssHeader.css?v=7' ?>">
+    <link rel="stylesheet" href="<?= URL_CSS . 'cssHeader.css?v=8' ?>">
 </head>
 <body>
 

@@ -91,6 +91,18 @@ class formulariocheckout extends formularios
         $fechaVencimiento = trim($datos['fecha_vencimiento'] ?? '');
         if (!preg_match('/^(0[1-9]|1[0-2])\/\d{2}$/', $fechaVencimiento)) {
             $this->errores['fecha_vencimiento'] = 'La fecha de vencimiento debe tener el formato MM/AA.';
+        } else {
+            // Validar que la tarjeta no esté caducada
+            $partesFecha = explode('/', $fechaVencimiento);
+            $mes = intval($partesFecha[0]);
+            $anio = intval('20' . $partesFecha[1]); // Convertir el año a formato completo (por ejemplo, "25" a "2025")
+
+            $mesActual = intval(date('m'));
+            $anioActual = intval(date('Y'));
+
+            if ($anio < $anioActual || ($anio === $anioActual && $mes < $mesActual)) {
+                $this->errores['fecha_vencimiento'] = 'La tarjeta está caducada.';
+            }
         }
 
         $cvv = trim($datos['cvv'] ?? '');
