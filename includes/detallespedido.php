@@ -21,6 +21,22 @@ class DetallesPedido {
         }
     }
 
+    public function getIdPedido() {
+        return $this->id_pedido;
+    }
+
+    public function getIdProducto() {
+        return $this->id_producto;
+    }
+
+    public function getCantidad() {
+        return $this->cantidad;
+    }
+
+    public function getPrecioUnidad() {
+        return $this->precio_unidad;
+    }
+
     public function agregarDetalle($id_pedido, $id_producto, $cantidad, $precio_unidad) {
         $query = "INSERT INTO detalles_pedido (id_pedido, id_producto, cantidad, precio_unidad) VALUES (?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);

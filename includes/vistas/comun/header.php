@@ -25,6 +25,9 @@ $carrito_count = isset($_SESSION['carrito']) ? array_sum(array_column($_SESSION[
                 <li><a href="<?= RUTA_APP . 'controller.php?controller=bocetos&action=mostrarBocetos' ?>">Bocetos</a></li>
                 <li><a href="<?= RUTA_APP . 'controller.php?controller=miembros&action=mostrarMiembros' ?>">Miembros</a></li>
                 <li><a href="<?= RUTA_APP . 'controller.php?controller=planificacion&action=mostrarPlanificacion' ?>">Planificación</a></li>
+                <?php if (isset($_SESSION['login']) && $_SESSION['rol'] === 'cliente'): ?>
+                    <li><a href="<?= RUTA_APP . 'mispedidos.php' ?>">Mis Pedidos</a></li>
+                <?php endif;?>
             </ul>
         </nav>
 

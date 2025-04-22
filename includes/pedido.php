@@ -17,7 +17,7 @@ class Pedido {
         if ($data) {
             $this->id_pedido = $data['id_pedido'] ?? null;
             $this->id_usuario = $data['id_usuario'] ?? null;
-            $this->fecha = $data['fecha'] ?? null;
+            $this->fecha = $data['fecha_pedido'] ?? null;
             $this->estado = $data['estado'] ?? null;
             $this->total = $data['total'] ?? null;
         }
