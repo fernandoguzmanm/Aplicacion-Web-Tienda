@@ -49,5 +49,18 @@ class DetallesPedido {
             return false;
         }
     }
+
+    public function eliminarDetallePedido($id_pedido) {
+        $query = "DELETE FROM detalles_pedido WHERE id_pedido = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $id_pedido);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            error_log("Error BD ({$this->conn->errno}): {$this->conn->error}");
+            return false;
+        }
+    }
 }
 ?>

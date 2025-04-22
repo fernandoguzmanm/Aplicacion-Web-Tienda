@@ -61,5 +61,18 @@ class Pedido {
             return false;
         }
     }
+
+    public function eliminarPedido($id_pedido) {
+        $queryPedido = "DELETE FROM pedidos WHERE id_pedido = ?";
+        $stmtPedido = $this->conn->prepare($queryPedido);
+        $stmtPedido->bind_param("i", $id_pedido);
+
+        if ($stmtPedido->execute()) {
+            return true;
+        } else {
+            error_log("Error al eliminar pedido ({$this->conn->errno}): {$this->conn->error}");
+            return false;
+        }
+    }
 }
 ?>
