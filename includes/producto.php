@@ -118,11 +118,16 @@ class Producto {
     }
 
     public function obtenerProductoPorId($id_producto) {
-        $stmt = $this->conn->prepare("SELECT id_producto, nombre, precio, imagen, descripcion, stock FROM productos WHERE id_producto = ?");
+        $query = "SELECT id_producto, nombre, precio, imagen, stock, id_vendedor FROM productos WHERE id_producto = ?";
+        $stmt = $this->conn->prepare($query);
         $stmt->bind_param("i", $id_producto);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_assoc();
+
+        if ($result->num_rows === 1) {
+            return $result->fetch_assoc();
+        }
+        return null;
     }
 
     public function reducirStock($id_producto, $cantidad) {

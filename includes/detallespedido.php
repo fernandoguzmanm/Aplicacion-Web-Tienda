@@ -7,6 +7,8 @@ class DetallesPedido {
     private $id_producto;
     private $cantidad;
     private $precio_unidad;
+    private $nombre;
+    private $id_vendedor;
 
     private $conn;
 
@@ -18,6 +20,8 @@ class DetallesPedido {
             $this->id_producto = $data['id_producto'] ?? null;
             $this->cantidad = $data['cantidad'] ?? null;
             $this->precio_unidad = $data['precio_unidad'] ?? null;
+            $this->nombre = $data['nombre'] ?? null;
+            $this->id_vendedor = $data['id_vendedor'] ?? null;
         }
     }
 
@@ -37,10 +41,18 @@ class DetallesPedido {
         return $this->precio_unidad;
     }
 
-    public function agregarDetalle($id_pedido, $id_producto, $cantidad, $precio_unidad) {
-        $query = "INSERT INTO detalles_pedido (id_pedido, id_producto, cantidad, precio_unidad) VALUES (?, ?, ?, ?)";
+    public function getNombre() {
+        return $this->nombre;
+    }   
+
+    public function getIdVendedor() {
+        return $this->id_vendedor;
+    }
+
+    public function agregarDetalle($id_pedido, $id_producto, $cantidad, $precio_unidad, $nombre, $id_vendedor) {
+        $query = "INSERT INTO detalles_pedido (id_pedido, id_producto, cantidad, precio_unidad, nombre, id_vendedor) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("iiid", $id_pedido, $id_producto, $cantidad, $precio_unidad);
+        $stmt->bind_param("iiidsi", $id_pedido, $id_producto, $cantidad, $precio_unidad, $nombre, $id_vendedor);
 
         if ($stmt->execute()) {
             return true;
@@ -61,6 +73,23 @@ class DetallesPedido {
             error_log("Error BD ({$this->conn->errno}): {$this->conn->error}");
             return false;
         }
+    }
+
+    public function obtenerProductosVendidosPorVendedor($id_vendedor) {
+        $query = "SELECT dp.id_pedido, dp.nombre, dp.cantidad, dp.precio_unidad 
+                  FROM detalles_pedido dp
+                  WHERE dp.id_vendedor = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $id_vendedor);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $productosVendidos = [];
+        while ($row = $result->fetch_assoc()) {
+            $productosVendidos[] = $row;
+        }
+
+        return $productosVendidos;
     }
 }
 ?>

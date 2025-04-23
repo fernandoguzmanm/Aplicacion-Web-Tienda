@@ -28,7 +28,8 @@ class CarritoController {
                     'nombre' => $producto['nombre'],
                     'precio' => $producto['precio'],
                     'imagen' => $producto['imagen'],
-                    'cantidad' => $cantidad
+                    'cantidad' => $cantidad,
+                    'id_vendedor' => $producto['id_vendedor']
                 ];
             }
         }

@@ -39,9 +39,9 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== true): ?>
 
         // Eliminar los detalles del pedido y el pedido
         if ($detallesPedido->eliminarDetallePedido($id_pedido) && $pedido->eliminarPedido($id_pedido)) {
-            echo "<p>Pedido #$id_pedido cancelado con éxito. El stock ha sido actualizado.</p>";
+            echo "<h3>Pedido #$id_pedido cancelado con éxito. El stock ha sido actualizado.</h3>";
         } else {
-            echo "<p>Error al cancelar el pedido #$id_pedido.</p>";
+            echo "<h3>Error al cancelar el pedido #$id_pedido.</h3>";
         }
 
         // Recargar los pedidos después de la eliminación

@@ -111,7 +111,6 @@ class formulariocheckout extends formularios
         }
 
         if (count($this->errores) === 0) {
-            // Calcular el total del carrito
             $total = 0;
             foreach ($_SESSION['carrito'] as $producto) {
                 $total += $producto['precio'] * $producto['cantidad'];
@@ -134,8 +133,10 @@ class formulariocheckout extends formularios
                     $id_producto = $producto['id_producto'];
                     $cantidad = $producto['cantidad'];
                     $precio_unidad = $producto['precio'];
+                    $nombre_producto = $producto['nombre'];
+                    $id_vendedor = $producto['id_vendedor'];
 
-                    if (!$detallesPedido->agregarDetalle($id_pedido, $id_producto, $cantidad, $precio_unidad)) {
+                    if (!$detallesPedido->agregarDetalle($id_pedido, $id_producto, $cantidad, $precio_unidad, $nombre_producto, $id_vendedor)) {
                         $this->errores['general'] = 'No se pudo agregar un detalle del pedido. Por favor, inténtalo de nuevo.';
                         return;
                     }

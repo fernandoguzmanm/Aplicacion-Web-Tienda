@@ -82,6 +82,8 @@ CREATE TABLE `detalles_pedido` (
 CREATE TABLE `pedidos` (
   `id_pedido` int(10) NOT NULL,
   `id_usuario` int(10) NOT NULL,
+  `id_vendedor` int(10) NOT NULL,
+  `nombre` varchar(25) NOT NULL,
   `fecha_pedido` date NOT NULL,
   `estado` enum('pendiente','enviado','entregado','cancelado') NOT NULL,
   `total` decimal(10,2) NOT NULL

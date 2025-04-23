@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../config.php'; 
 require_once RUTA_INCLUDES . 'producto.php';
+require_once RUTA_INCLUDES . 'detallespedido.php';
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }
@@ -9,10 +10,12 @@ if (session_status() == PHP_SESSION_NONE) {
 class VendedorController {
     private $producto;
     private $id_vendedor;
+    private $detallespedido;
 
     public function __construct($id_vendedor = null) {
         global $conn;
         $this->producto = new Producto($conn);
+        $this->detallespedido = new DetallesPedido($conn); // Inicializar DetallesPedido
 
         if ($id_vendedor === null && isset($_SESSION['id_usuario'])) {
             $this->id_vendedor = $_SESSION['id_usuario'];
@@ -50,6 +53,10 @@ class VendedorController {
 
     public function getIdVendedor() {
         return $this->id_vendedor;
+    }
+
+    public function obtenerProductosVendidos() {
+        return $this->detallespedido->obtenerProductosVendidosPorVendedor($this->id_vendedor);
     }
 }
 ?>
