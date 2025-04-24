@@ -57,6 +57,23 @@ class Usuario
         return $result;
     }
     
+    public static function obtenerTodosLosUsuarios() {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $query = "SELECT id_usuario, nombre, email, tipo_usuario FROM usuarios";
+        $result = $conn->query($query);
+
+        $usuarios = [];
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                $usuarios[] = $row;
+            }
+            $result->free();
+        } else {
+            error_log("Error BD ({$conn->errno}): {$conn->error}");
+        }
+        return $usuarios;
+    }
+
     private static function hashPassword($password)
     {
         return password_hash($password, PASSWORD_DEFAULT);

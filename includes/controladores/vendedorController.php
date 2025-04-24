@@ -15,7 +15,7 @@ class VendedorController {
     public function __construct($id_vendedor = null) {
         global $conn;
         $this->producto = new Producto($conn);
-        $this->detallespedido = new DetallesPedido($conn); // Inicializar DetallesPedido
+        $this->detallespedido = new DetallesPedido($conn);
 
         if ($id_vendedor === null && isset($_SESSION['id_usuario'])) {
             $this->id_vendedor = $_SESSION['id_usuario'];

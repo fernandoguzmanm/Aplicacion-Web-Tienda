@@ -17,6 +17,7 @@ $controladores = [
     'carrito' => 'carritoController',
     'detalle' => 'detalleProductoController',
     'vendedor' => 'vendedorController',
+    'admin' => 'adminController',
     'logout' => 'logoutlogica',
     'checkout' => 'checkoutController',
 ];
@@ -48,7 +49,6 @@ if (!class_exists($controladorClase)) {
 $controller = new $controladorClase();
 
 // Validar acciones específicas para algunos controladores
-
 
 if ($controlador === 'carrito') {
     if (isset($_GET['action'])) {
@@ -100,6 +100,43 @@ if ($controlador === 'vendedor') {
         }
     }
     header("Location: vendedor.php");
+    exit();
+}
+
+if ($controlador === 'admin') {
+    if (isset($_GET['action'])) {
+        switch ($_GET['action']) {
+            case 'mostrarAdmin':
+                $controller->mostrarAdmin();
+                exit();
+
+            case 'gestionarUsuarios':
+                $controller->gestionarUsuarios();
+                exit();
+
+            case 'gestionarProductos':
+                $controller->gestionarProductos();
+                exit();
+
+            case 'eliminarUsuario':
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                    $controller->eliminarUsuario($_GET['id']);
+                }
+                header("Location: controller.php?controller=admin&action=gestionarUsuarios");
+                exit();
+
+            case 'eliminarProducto':
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                    $controller->eliminarProducto($_GET['id']);
+                }
+                header("Location: controller.php?controller=admin&action=gestionarProductos");
+                exit();
+
+            default:
+                die('Error: Acción no válida para el administrador.');
+        }
+    }
+    header("Location: admin.php");
     exit();
 }
 

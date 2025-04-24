@@ -42,13 +42,15 @@ $carrito_count = isset($_SESSION['carrito']) ? array_sum(array_column($_SESSION[
             </div>
             
             <div id="carrito-container">
-            <?php if (isset($_SESSION['login']) && $_SESSION['rol'] === 'vendedor'): ?>
-                <a href="<?= RUTA_APP . 'controller.php?controller=vendedor&action=mostrarVendedor' ?>" class="carrito-btn">Vendedor</a>
-            <?php else : ?>
-                <a href="<?= RUTA_APP . 'carrito.php' ?>" class="carrito-btn">
-                    🛒 Carrito <?php if ($carrito_count > 0) echo "($carrito_count)"; ?>
-                </a>
-            <?php endif;?>
+                <?php if (isset($_SESSION['login']) && $_SESSION['rol'] === 'vendedor'): ?>
+                    <a href="<?= RUTA_APP . 'controller.php?controller=vendedor&action=mostrarVendedor' ?>" class="carrito-btn">Vendedor</a>
+                <?php elseif (isset($_SESSION['login']) && $_SESSION['rol'] === 'administrador'): ?>
+                    <a href="<?= RUTA_APP . 'controller.php?controller=admin&action=mostrarAdmin' ?>" class="carrito-btn">Administrador</a>
+                <?php else: ?>
+                    <a href="<?= RUTA_APP . 'carrito.php' ?>" class="carrito-btn">
+                        🛒 Carrito <?php if ($carrito_count > 0) echo "($carrito_count)"; ?>
+                    </a>
+                <?php endif; ?>
             </div>
         </div>
     </div>

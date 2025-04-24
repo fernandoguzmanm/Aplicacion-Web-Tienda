@@ -2,8 +2,12 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-require_once './includes/config.php'; // Incluir config.php para usar las constantes definidas
+require_once './includes/config.php';
+require_once RUTA_INCLUDES . 'controladores/adminController.php';
+
+$tituloPagina = 'Admin';
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,23 +21,17 @@ require_once './includes/config.php'; // Incluir config.php para usar las consta
         <?php include RUTA_VISTAS . 'comun/header.php'; ?>
 
         <div id="contenido">
-            <?php
-            if (!isset($_SESSION["nombre"])) {
-                echo "<h2>Acceso Denegado</h2>";
-                echo "<p>Por favor, <a href='" . RUTA_APP . "login.php'>inicia sesión</a>.</p>";
-            } elseif ($_SESSION["nombre"] == "Administrador") {
-                echo "<h1>Consola de Administración</h1>";
-                echo "<p>Hola Administrador</p>";
-                echo "<a href='" . RUTA_APP . "logout.php'>Cerrar sesión</a>";
-                echo "<a href='" . RUTA_APP . "index.php'>Volver a la página principal</a>";
-            } else {
-                echo "<h2>Acceso Denegado</h2>";
-                echo "<p>No tienes permisos para acceder a esta página.</p>";
-                echo "<a href='" . RUTA_APP . "index.php'>Volver a la página principal</a>";
-            }
-            ?>
-        </div>
+            <h1>Consola de Administración</h1>
+            <p>Bienvenido, <?= htmlspecialchars($_SESSION['nombre']); ?>.</p>
 
+            <ul>
+                <li><a href="<?= RUTA_APP . 'controller.php?controller=admin&action=gestionarUsuarios' ?>">Gestionar Usuarios</a></li>
+                <li><a href="<?= RUTA_APP . 'controller.php?controller=admin&action=gestionarProductos' ?>">Gestionar Productos</a></li>
+                <li><a href="<?= RUTA_APP . 'controller.php?controller=admin&action=mostrarAdmin' ?>">Volver al Panel</a></li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>
+
+<?php require './includes/vistas/plantillas/plantilla2.php'; ?>
