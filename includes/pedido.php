@@ -74,5 +74,17 @@ class Pedido {
             return false;
         }
     }
+
+    public function obtenerTodosLosPedidos() {
+        $sql = "SELECT id_pedido, id_usuario, fecha_pedido, estado, total FROM pedidos";
+        $result = $this->conn->query($sql);
+
+        $pedidos = [];
+        while ($fila = $result->fetch_assoc()) {
+            $pedidos[] = new Pedido($this->conn, $fila);
+        }
+
+        return $pedidos;
+    }
 }
 ?>

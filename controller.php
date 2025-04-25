@@ -118,6 +118,10 @@ if ($controlador === 'admin') {
                 $controller->gestionarProductos();
                 exit();
 
+            case 'gestionarPedidos':
+                $controller->gestionarPedidos();
+                exit();
+
             case 'eliminarUsuario':
                 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
                     $controller->eliminarUsuario($_GET['id']);

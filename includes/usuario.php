@@ -5,6 +5,16 @@ require_once __DIR__ . '/aplicacion.php';
 
 class Usuario
 {
+    private static $instance = null;
+    private $conn;
+
+    public static function getInstance($conn) {
+        if (self::$instance === null) {
+            self::$instance = new Usuario($conn);
+        }
+        return self::$instance;
+    }
+    
     public static function login($correo, $password)
     {   
         $usuario = self::buscaUsuario($correo);

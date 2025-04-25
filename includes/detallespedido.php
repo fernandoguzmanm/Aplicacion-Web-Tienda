@@ -91,5 +91,17 @@ class DetallesPedido {
 
         return $productosVendidos;
     }
+
+    public function obtenerTodosLosDetalles() {
+        $sql = "SELECT id_pedido, id_producto, cantidad, precio_unidad, nombre, id_vendedor FROM detalles_pedido";
+        $result = $this->conn->query($sql);
+
+        $detalles = [];
+        while ($fila = $result->fetch_assoc()) {
+            $detalles[] = new DetallesPedido($this->conn, $fila);
+        }
+
+        return $detalles;
+    }
 }
 ?>

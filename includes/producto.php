@@ -145,5 +145,19 @@ class Producto {
     
         return $stmt->affected_rows > 0;
     }
+
+    public function eliminarProducto($id_producto) {
+        $query = "DELETE FROM productos WHERE id_producto = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $id_producto);
+        $stmt->execute();
+
+        if ($stmt->affected_rows > 0) {
+            return true;
+        } else {
+            error_log("Error al eliminar producto ({$this->conn->errno}): {$this->conn->error}");
+            return false;
+        }
+    }
 }
 ?>

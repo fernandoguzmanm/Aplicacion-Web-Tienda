@@ -27,7 +27,7 @@ $tituloPagina = 'Admin';
             <ul>
                 <li><a href="<?= RUTA_APP . 'controller.php?controller=admin&action=gestionarUsuarios' ?>">Gestionar Usuarios</a></li>
                 <li><a href="<?= RUTA_APP . 'controller.php?controller=admin&action=gestionarProductos' ?>">Gestionar Productos</a></li>
-                <li><a href="<?= RUTA_APP . 'controller.php?controller=admin&action=mostrarAdmin' ?>">Volver al Panel</a></li>
+                <li><a href="<?= RUTA_APP . 'controller.php?controller=admin&action=gestionarPedidos' ?>">Gestionar Pedidos</a></li>
             </ul>
         </div>
     </div>
