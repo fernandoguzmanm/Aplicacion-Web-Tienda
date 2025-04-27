@@ -18,7 +18,7 @@ class AdminController {
     public function __construct() {
         global $conn;
         $this->producto = new Producto($conn);
-        //$this->usuario = Usuario::getInstance($conn); // Cambiado para usar el método 
+        $this->usuario = Usuario::getInstance($conn); // Cambiado para usar el método 
         $this->pedido = new Pedido($conn);
         $this->detallespedido = new DetallesPedido($conn);
 
@@ -34,7 +34,7 @@ class AdminController {
 
     public function gestionarUsuarios() {
         $usuarios = $this->usuario->obtenerTodosLosUsuarios();
-        require RUTA_VISTAS . 'gestionarUsuarios.php';
+        require 'gestionarUsuarios.php';
     }
 
     public function gestionarProductos() {
@@ -61,6 +61,14 @@ class AdminController {
             echo "Producto eliminado con éxito.";
         } else {
             echo "Error al eliminar el producto.";
+        }
+    }
+
+    public function cambiarEstadoPedido($id_pedido, $estado) {
+        if ($this->pedido->cambiarEstadoPedido($id_pedido, $estado)) {
+            echo "Estado del pedido actualizado con éxito.";
+        } else {
+            echo "Error al actualizar el estado del pedido.";
         }
     }
 }

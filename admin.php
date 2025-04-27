@@ -21,7 +21,7 @@ $tituloPagina = 'Admin';
         <?php include RUTA_VISTAS . 'comun/header.php'; ?>
 
         <div id="contenido">
-            <h1>Consola de Administración</h1>
+            <h2>Consola de Administración</h2>
             <p>Bienvenido, <?= htmlspecialchars($_SESSION['nombre']); ?>.</p>
 
             <ul>

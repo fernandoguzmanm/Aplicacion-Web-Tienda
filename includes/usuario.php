@@ -10,7 +10,8 @@ class Usuario
 
     public static function getInstance($conn) {
         if (self::$instance === null) {
-            self::$instance = new Usuario($conn);
+            self::$instance = new Usuario(null, null, null, null, null, null); // Crear una instancia vacía
+            self::$instance->conn = $conn; // Asignar la conexión manualmente
         }
         return self::$instance;
     }
@@ -82,6 +83,24 @@ class Usuario
             error_log("Error BD ({$conn->errno}): {$conn->error}");
         }
         return $usuarios;
+    }
+
+    public static function eliminarUsuario($id_usuario) {
+        if (!$id_usuario) {
+            return false; // Validación: el ID no puede ser nulo o vacío
+        }
+
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $query = "DELETE FROM usuarios WHERE id_usuario = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $id_usuario);
+
+        if ($stmt->execute()) {
+            return $stmt->affected_rows > 0; // Devuelve true si se eliminó el usuario
+        } else {
+            error_log("Error al eliminar usuario ({$conn->errno}): {$conn->error}");
+            return false; // Devuelve false si ocurrió un error
+        }
     }
 
     private static function hashPassword($password)

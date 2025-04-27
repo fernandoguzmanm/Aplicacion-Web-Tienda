@@ -5,7 +5,7 @@ require_once RUTA_INCLUDES . 'controladores/vendedorController.php';
 $tituloPagina = 'Admin';
 ?>
 <main>
-<h1>Gestión de Usuarios</h1>
+<h2>Gestión de Usuarios</h2>
     <table border="1">
         <thead>
             <tr>
@@ -22,7 +22,7 @@ $tituloPagina = 'Admin';
                     <td><?= htmlspecialchars($usuario['id_usuario']) ?></td>
                     <td><?= htmlspecialchars($usuario['nombre']) ?></td>
                     <td><?= htmlspecialchars($usuario['email']) ?></td>
-                    <td><?= htmlspecialchars($usuario['tipo_usuario']) ?></td>
+                    <td><?= ucfirst(htmlspecialchars($usuario['tipo_usuario'])) ?></td>
                     <td>
                         <a href="<?= RUTA_APP . 'controller.php?controller=admin&action=eliminarUsuario&id=' . $usuario['id_usuario'] ?>">Eliminar</a>
                     </td>

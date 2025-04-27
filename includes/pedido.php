@@ -86,5 +86,28 @@ class Pedido {
 
         return $pedidos;
     }
+
+    public function cambiarEstadoPedido($id_pedido, $nuevo_estado) {
+        // Lista de estados permitidos
+        $estados_permitidos = ['pendiente', 'enviado', 'entregado', 'cancelado'];
+
+        // Validar que el nuevo estado sea válido
+        if (!in_array($nuevo_estado, $estados_permitidos)) {
+            error_log("Estado no válido: $nuevo_estado");
+            return false;
+        }
+
+        // Actualizar el estado en la base de datos
+        $query = "UPDATE pedidos SET estado = ? WHERE id_pedido = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("si", $nuevo_estado, $id_pedido);
+
+        if ($stmt->execute()) {
+            return $stmt->affected_rows > 0; // Devuelve true si se actualizó el estado
+        } else {
+            error_log("Error al cambiar el estado del pedido ({$this->conn->errno}): {$this->conn->error}");
+            return false;
+        }
+    }
 }
 ?>
