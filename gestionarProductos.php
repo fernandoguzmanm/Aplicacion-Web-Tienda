@@ -21,6 +21,7 @@ if (session_status() == PHP_SESSION_NONE) {
                     <p class="stock">Stock disponible: <?php echo $producto->getStock(); ?></p>
                     
                     <a href="controller.php?controller=admin&action=eliminarProducto&id=<?php echo $producto->getIdProducto(); ?>" class="btn">Eliminar Producto</a>
+                    <a href="controller.php?controller=admin&action=modificarProducto&id=<?php echo $producto->getIdProducto(); ?>" class="btn">Modificar Producto</a>
 
                 </div>
             <?php endforeach; ?>

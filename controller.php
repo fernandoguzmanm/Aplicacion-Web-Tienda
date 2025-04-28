@@ -140,6 +140,12 @@ if ($controlador === 'admin') {
                 $controller->cambiarEstadoPedido($_POST['id_pedido'], $_POST['nuevo_estado']);
                 header("Location: controller.php?controller=admin&action=gestionarPedidos");
                 exit();
+            
+            case 'modificarProducto':
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                    $controller->modificarProducto($_GET['id']);
+                    exit();
+                }
 
             default:
                 die('Error: Acción no válida para el administrador.');

@@ -47,6 +47,15 @@ class AdminController {
         $detalles = $this->detallespedido->obtenerTodosLosDetalles();
         require 'gestionarPedidos.php';
     }
+    
+    public function modificarProducto($id_producto) {
+        $producto = $this->producto->obtenerProductoPorId($id_producto);
+        if ($producto) {
+            require 'modificarProducto.php';
+        } else {
+            echo "Producto no encontrado.";
+        }
+    }
 
     public function eliminarUsuario($id_usuario) {
         if ($this->usuario->eliminarUsuario($id_usuario)) {
