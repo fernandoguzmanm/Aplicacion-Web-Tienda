@@ -1,19 +1,20 @@
 <?php 
 require_once './includes/config.php';
+require_once RUTA_INCLUDES . 'formulariomodificarproducto.php';
+
 $tituloPagina = 'Admin';
 if (session_status() == PHP_SESSION_NONE) {
-	session_start();
+    session_start();
 }
+
+$form = new formulariomodificarproducto($producto);
+$htmlFormModificarProducto = $form->gestiona();
 ?>
 
 <main class="detalle-container">
-    <img src="<?php echo RUTA_IMGS . 'productos/' . htmlspecialchars($producto['imagen']); ?>" 
-         alt="<?php echo htmlspecialchars($producto['nombre']); ?>" 
-         class="detalle-imagen">
-    <h2><?php echo ucfirst(htmlspecialchars($producto['nombre'])); ?></h2>
-    <p class="precio">$<?php echo number_format($producto['precio'], 2); ?></p>
-
+    <h2>Detalles del Producto</h2>
+    <?= $htmlFormModificarProducto ?>
     <a href="controller.php?controller=admin&action=gestionarProductos" class="btn">Volver</a>
 </main>
 
-<?php require RUTA_VISTAS . 'plantillas/plantilla2.php'; ?>
+<?php require './includes/vistas/plantillas/plantilla2.php'; ?>

@@ -29,7 +29,10 @@ $tituloPagina = 'Admin';
                 </tr>
             <?php endforeach; ?>
         </tbody>
-    </table>    
+    </table>  
+    <div style="margin-top: 20px;">
+        <a href="<?= RUTA_APP . 'crearUsuario.php' ?>" class="btn">Crear Usuario</a>
+    </div>
 </main>
 
 <?php require './includes/vistas/plantillas/plantilla2.php'; ?>

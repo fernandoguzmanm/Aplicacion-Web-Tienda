@@ -118,7 +118,9 @@ class Producto {
     }
 
     public function obtenerProductoPorId($id_producto) {
-        $query = "SELECT id_producto, nombre, precio, imagen, stock, id_vendedor FROM productos WHERE id_producto = ?";
+        $query = "SELECT id_producto, nombre, descripcion, precio, stock, id_vendedor, id_categoria, imagen 
+                  FROM productos 
+                  WHERE id_producto = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("i", $id_producto);
         $stmt->execute();
@@ -157,6 +159,35 @@ class Producto {
         } else {
             error_log("Error al eliminar producto ({$this->conn->errno}): {$this->conn->error}");
             return false;
+        }
+    }
+
+    public function modificarProducto($id_producto, $nombre, $descripcion, $precio, $stock, $id_vendedor, $id_categoria, $imagen = null) {
+        $query = "UPDATE productos 
+                  SET nombre = ?, descripcion = ?, precio = ?, stock = ?, id_vendedor = ?, id_categoria = ?";
+        
+        // Si se proporciona una nueva imagen, también se actualiza
+        if ($imagen !== null) {
+            $query .= ", imagen = ?";
+        }
+        
+        $query .= " WHERE id_producto = ?";
+        
+        $stmt = $this->conn->prepare($query);
+        
+        if ($imagen !== null) {
+            $stmt->bind_param("ssdiiisi", $nombre, $descripcion, $precio, $stock, $id_vendedor, $id_categoria, $imagen, $id_producto);
+        } else {
+            $stmt->bind_param("ssdiiii", $nombre, $descripcion, $precio, $stock, $id_vendedor, $id_categoria, $id_producto);
+        }
+        
+        $stmt->execute();
+        
+        if ($stmt->affected_rows > 0) {
+            return true; // Producto modificado con éxito
+        } else {
+            error_log("Error al modificar producto ({$this->conn->errno}): {$this->conn->error}");
+            return false; // Error al modificar el producto
         }
     }
 }

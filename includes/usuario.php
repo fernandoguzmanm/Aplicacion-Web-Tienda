@@ -10,8 +10,8 @@ class Usuario
 
     public static function getInstance($conn) {
         if (self::$instance === null) {
-            self::$instance = new Usuario(null, null, null, null, null, null); // Crear una instancia vacía
-            self::$instance->conn = $conn; // Asignar la conexión manualmente
+            self::$instance = new Usuario(null, null, null, null, null, null);
+            self::$instance->conn = $conn;
         }
         return self::$instance;
     }
@@ -29,7 +29,11 @@ class Usuario
     {
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $usuario = new Usuario(null, $nombre, $correo, $passwordHash, $tipoUsuario, 0);
-        return $usuario->guarda();
+        if ($usuario->guarda()) {
+            return $usuario;
+        }
+    
+        return false;
     }
 
     public static function buscaUsuario($correo)
@@ -124,7 +128,6 @@ class Usuario
     
     private static function inserta($usuario)
     {
-        $result = false;
         $conn = Aplicacion::getInstance()->getConexionBd();
         $query = sprintf(
             "INSERT INTO usuarios (nombre, email, contraseña, tipo_usuario, puntos_fidelidad) VALUES ('%s', '%s', '%s', '%s', '%s')",
@@ -135,11 +138,12 @@ class Usuario
             $conn->real_escape_string($usuario->puntos_fidelidad)
         );
         if ($conn->query($query)) {
-            $usuario->id = $conn->insert_id;
+            $usuario->id_usuario = $conn->insert_id;
+            return true;
         } else {
             error_log("Error BD ({$conn->errno}): {$conn->error}");
+            return false;
         }
-        return $result;
     }
 
     private static function actualiza($usuario)

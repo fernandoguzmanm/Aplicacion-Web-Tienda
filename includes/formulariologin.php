@@ -51,33 +51,29 @@ class formulariologin extends formularios
     {
         $this->errores = [];
 
-        // Validar y sanitizar el correo
         $correo = trim($datos['correo'] ?? '');
         $correo = filter_var($correo, FILTER_SANITIZE_EMAIL);
         if (!$correo || empty($correo)) {
             $this->errores['correo'] = 'El correo no puede estar vacío.';
         }
 
-        // Validar la contraseña
         $password = trim($datos['password'] ?? '');
         if (!$password || empty($password)) {
             $this->errores['password'] = 'La contraseña no puede estar vacía.';
         }
 
-        // Si no hay errores, intentar iniciar sesión
         if (count($this->errores) === 0) {
             $usuario = Usuario::login($correo, $password);
             if (!$usuario) {
                 $this->errores[] = 'El correo o la contraseña no son correctos.';
             } else {
-                // Login exitoso: cargar roles y establecer variables de sesión
                 session_start();
                 $_SESSION['login'] = true;
                 $_SESSION['nombre'] = $usuario->getNombre();
                 $_SESSION['id_usuario'] = $usuario->getId();
-                $_SESSION['rol'] = $usuario->getTipoUsuario(); // Guardar los roles en la sesión
+                $_SESSION['rol'] = $usuario->getTipoUsuario();
 
-                $this->urlRedireccion = RUTA_APP . 'index.php'; // Cambia a la página deseada
+                $this->urlRedireccion = RUTA_APP . 'index.php';
             }
         }
     }

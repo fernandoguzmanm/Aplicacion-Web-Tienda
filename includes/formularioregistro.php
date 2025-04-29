@@ -18,6 +18,12 @@ class formularioregistro extends formularios
         $htmlErroresGlobales = self::generaListaErroresGlobales($this->errores);
         $erroresCampos = self::generaErroresCampos(['correo', 'nombre', 'password', 'password2', 'tipo_usuario'], $this->errores, 'span', array('class' => 'error'));
 
+        // Verificar si el usuario actual es administrador
+        $opcionAdministrador = '';
+        if (isset($_SESSION['login']) && $_SESSION['rol'] === 'administrador') {
+            $opcionAdministrador = '<option value="administrador" ' . $this->seleccionado($tipoUsuario, 'administrador') . '>Administrador</option>';
+        }
+
         $html = <<<EOF
         $htmlErroresGlobales
         <fieldset>
@@ -46,6 +52,7 @@ class formularioregistro extends formularios
                 <select id="tipo_usuario" name="tipo_usuario">
                     <option value="cliente" {$this->seleccionado($tipoUsuario, 'cliente')}>Cliente</option>
                     <option value="vendedor" {$this->seleccionado($tipoUsuario, 'vendedor')}>Vendedor</option>
+                    $opcionAdministrador
                 </select>
                 {$erroresCampos['tipo_usuario']}
             </div>
@@ -88,7 +95,7 @@ class formularioregistro extends formularios
         }
 
         $tipoUsuario = $datos['tipo_usuario'] ?? 'cliente';
-        if (!in_array($tipoUsuario, ['cliente', 'vendedor'])) {
+        if (!in_array($tipoUsuario, ['cliente', 'vendedor', 'administrador'])) {
             $this->errores['tipo_usuario'] = 'El tipo de cuenta seleccionado no es válido.';
         }
 
@@ -99,9 +106,17 @@ class formularioregistro extends formularios
                 $this->errores[] = "El usuario ya existe";
             } else {
                 $usuario = Usuario::crea($correo, $password, $nombre, $tipoUsuario);
-                $_SESSION['login'] = true;
-                $_SESSION['nombre'] = $nombre;
-                $_SESSION['tipo_usuario'] = $tipoUsuario;
+
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+
+                    $_SESSION['login'] = true;
+                    $_SESSION['nombre'] = $nombre;
+                    $_SESSION['id_usuario'] = $usuario->getId();
+                    $_SESSION['rol'] = $tipoUsuario;
+                }
+
+                $this->urlRedireccion = RUTA_APP . 'index.php';
             }
         }
     }
