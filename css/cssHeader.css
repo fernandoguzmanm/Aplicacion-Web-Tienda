@@ -16,17 +16,79 @@ header {
     z-index: 10;                    /* Asegura que el header esté sobre otros elementos */
 }
 
+
+
 /* Estilos para el footer */
-footer {
-    background-color: #003772;      /* Fondo azul oscuro */
-    color: white;                   /* Texto en blanco */
-    min-height: 80px;               /* Altura mínima del footer */
-    max-height: 80px;               /* Altura máxima para que no crezca más */
-    margin-top: 20px;               /* Separación respecto al contenido anterior */
-    align-items: center;            /* Alineación vertical centrada */
-    display: flex;                  /* Flexbox */
-    justify-content: space-between;/* Distribuye contenido con espacio entre ellos */
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
+
+main {
+    flex: 1;
+    padding-top: 80px; /* Igual que la altura del header */
+    padding-bottom: 80px; /* Evita que el contenido se esconda debajo del footer */
+}
+
+footer {
+    position: fixed;              /* Fija el footer en la ventana */
+    bottom: 0;                    /* Lo posiciona pegado al borde inferior */
+    left: 0;                      /* Lo alinea con el borde izquierdo */
+    width: 100%;                  /* Ocupa todo el ancho de la pantalla */
+    background-color: #003772;   /* Fondo azul oscuro */
+    color: white;                /* Texto en blanco */
+    height: 80px;                /* Altura fija del footer */
+    display: flex;               /* Flexbox para alinear contenido */
+    align-items: center;         /* Centra verticalmente los elementos */
+    justify-content: space-between; /* Distribuye elementos con espacio entre ellos */
+    padding: 0 20px;             /* Espacio horizontal interno */
+    z-index: 100;                /* Asegura que esté por encima del contenido */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-content nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.footer-content nav ul li a,
+.redes-sociales a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-content nav ul li a:hover,
+.redes-sociales a:hover {
+    text-decoration: underline;
+}
+
+.redes-sociales {
+    display: flex;
+    gap: 15px;
+}
+
+.redes-sociales a {
+    font-weight: bold;
+}
+
+.copyright {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+
 
 /* Estilo específico del título h1 dentro del header */
 header h1 {

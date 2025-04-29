@@ -16,8 +16,7 @@ require RUTA_VISTAS . 'comun/header.php';
         </article>
     </main>
 <?php
+require RUTA_VISTAS . 'comun/pie.php';
 ?>
 </body>
 </html>
-
-<?php require RUTA_VISTAS . 'comun/pie.php'; ?>

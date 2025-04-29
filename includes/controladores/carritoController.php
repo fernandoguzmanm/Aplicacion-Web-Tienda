@@ -33,6 +33,10 @@ class CarritoController {
                 ];
             }
         }
+
+        // Redirección a tienda después de añadir
+        header("Location: " . RUTA_APP . "controller.php?controller=tienda&action=mostrarTienda");
+        exit();
     }
 
     public function eliminarProducto($id_producto, $cantidad) {
