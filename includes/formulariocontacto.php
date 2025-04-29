@@ -91,7 +91,7 @@ class formulariocontacto extends formularios
 
         if (count($this->errores) === 0) {
 
-            $destinatario = "airamxl9@gmail.com"; //Correo de contacto
+            $destinatario = "fvieites@ucm.es";
             $asunto = "Consulta: $motivo";
             $cuerpo = "Nombre: $nombre\n\n";
             $cuerpo .= "Mensaje: $mensaje";

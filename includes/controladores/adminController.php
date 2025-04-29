@@ -18,7 +18,7 @@ class AdminController {
     public function __construct() {
         global $conn;
         $this->producto = new Producto($conn);
-        $this->usuario = Usuario::getInstance($conn); // Cambiado para usar el método 
+        $this->usuario = Usuario::getInstance($conn);
         $this->pedido = new Pedido($conn);
         $this->detallespedido = new DetallesPedido($conn);
 

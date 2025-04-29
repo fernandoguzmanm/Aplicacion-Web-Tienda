@@ -14,11 +14,9 @@ class formularioregistro extends formularios
         $nombre = $datos['nombre'] ?? '';
         $tipoUsuario = $datos['tipo_usuario'] ?? 'cliente'; // Valor predeterminado: cliente
 
-        // Se generan los mensajes de error si existen.
         $htmlErroresGlobales = self::generaListaErroresGlobales($this->errores);
         $erroresCampos = self::generaErroresCampos(['correo', 'nombre', 'password', 'password2', 'tipo_usuario'], $this->errores, 'span', array('class' => 'error'));
 
-        // Verificar si el usuario actual es administrador
         $opcionAdministrador = '';
         if (isset($_SESSION['login']) && $_SESSION['rol'] === 'administrador') {
             $opcionAdministrador = '<option value="administrador" ' . $this->seleccionado($tipoUsuario, 'administrador') . '>Administrador</option>';

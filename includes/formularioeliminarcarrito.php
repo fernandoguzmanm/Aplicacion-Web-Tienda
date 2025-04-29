@@ -15,7 +15,6 @@ class formularioeliminarcarrito extends formularios
         $id_producto = $this->id_producto;
         $numero_unidades = $datos['numero_unidades'] ?? '';
         
-        // Se generan los mensajes de error si existen.
         $htmlErroresGlobales = self::generaListaErroresGlobales($this->errores);
         $erroresCampos = self::generaErroresCampos(['numero_unidades'], $this->errores, 'span', array('class' => 'error'));
 

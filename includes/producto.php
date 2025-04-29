@@ -1,6 +1,4 @@
 <?php
-//
-//  // Usar la constante RUTA_MYSQL para incluir la conexión a la base de datos
 require_once './includes/config.php';
 require_once __DIR__ . '/aplicacion.php';
 
@@ -166,7 +164,6 @@ class Producto {
         $query = "UPDATE productos 
                   SET nombre = ?, descripcion = ?, precio = ?, stock = ?, id_vendedor = ?, id_categoria = ?";
         
-        // Si se proporciona una nueva imagen, también se actualiza
         if ($imagen !== null) {
             $query .= ", imagen = ?";
         }
@@ -184,10 +181,10 @@ class Producto {
         $stmt->execute();
         
         if ($stmt->affected_rows > 0) {
-            return true; // Producto modificado con éxito
+            return true;
         } else {
             error_log("Error al modificar producto ({$this->conn->errno}): {$this->conn->error}");
-            return false; // Error al modificar el producto
+            return false;
         }
     }
 }

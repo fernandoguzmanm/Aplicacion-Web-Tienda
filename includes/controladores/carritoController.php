@@ -71,7 +71,7 @@ class CarritoController {
         }
         return $total;
     }
-        
+    /*
     public function mostrarCarrito() {
         $total = $this->calcularTotal();
         include RUTA_VISTAS . 'comun/header.php';
@@ -110,7 +110,7 @@ class CarritoController {
                 <?php endif; ?>
         </main>
         <?php
-    }
+    }*/
 }
 
 $carrito = new CarritoController($conn);

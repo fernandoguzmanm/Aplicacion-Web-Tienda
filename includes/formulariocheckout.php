@@ -1,5 +1,7 @@
 <?php
 require_once RUTA_INCLUDES . 'formularios.php';
+require_once RUTA_INCLUDES . 'pedido.php';
+require_once RUTA_INCLUDES . 'detallespedido.php';
 
 class formulariocheckout extends formularios
 {
@@ -16,7 +18,6 @@ class formulariocheckout extends formularios
         $fechaVencimiento = $datos['fecha_vencimiento'] ?? '';
         $cvv = $datos['cvv'] ?? '';
 
-        // Se generan los mensajes de error si existen.
         $htmlErroresGlobales = self::generaListaErroresGlobales($this->errores);
         $erroresCampos = self::generaErroresCampos(['nombre', 'correo', 'direccion', 'numero_tarjeta', 'fecha_vencimiento', 'cvv'], $this->errores, 'span', array('class' => 'error'));
 
@@ -92,10 +93,9 @@ class formulariocheckout extends formularios
         if (!preg_match('/^(0[1-9]|1[0-2])\/\d{2}$/', $fechaVencimiento)) {
             $this->errores['fecha_vencimiento'] = 'La fecha de vencimiento debe tener el formato MM/AA.';
         } else {
-            // Validar que la tarjeta no esté caducada
             $partesFecha = explode('/', $fechaVencimiento);
             $mes = intval($partesFecha[0]);
-            $anio = intval('20' . $partesFecha[1]); // Convertir el año a formato completo (por ejemplo, "25" a "2025")
+            $anio = intval('20' . $partesFecha[1]);
 
             $mesActual = intval(date('m'));
             $anioActual = intval(date('Y'));
@@ -116,17 +116,15 @@ class formulariocheckout extends formularios
                 $total += $producto['precio'] * $producto['cantidad'];
             }
 
-            // Crear el pedido
-            require_once RUTA_INCLUDES . 'pedido.php';
-            require_once RUTA_INCLUDES . 'detallespedido.php';
+            
             $conn = Aplicacion::getInstance()->getConexionBd();
             $pedido = new Pedido($conn);
 
-            $id_usuario = $_SESSION['id_usuario']; // ID del usuario logueado
+            $id_usuario = $_SESSION['id_usuario'];
             $estado = "pendiente";
 
             if ($pedido->crearPedido($id_usuario, $estado, $total)) {
-                $id_pedido = $pedido->getIdPedido(); // Obtén el ID del pedido recién creado
+                $id_pedido = $pedido->getIdPedido();
 
                 $detallesPedido = new DetallesPedido($conn);
                 foreach ($_SESSION['carrito'] as $producto) {
@@ -142,10 +140,8 @@ class formulariocheckout extends formularios
                     }
                 }
 
-                // Vaciar el carrito después de crear el pedido
                 unset($_SESSION['carrito']);
 
-                // Redirigir a la página de confirmación
                 return RUTA_APP . 'confirmacion.php';
             } else {
                 $this->errores['general'] = 'No se pudo procesar el pedido. Por favor, inténtalo de nuevo.';
