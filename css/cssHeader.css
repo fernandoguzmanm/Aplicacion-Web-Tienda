@@ -27,8 +27,7 @@ html, body {
 
 main {
     flex: 1;
-    padding-top: 80px; /* Igual que la altura del header */
-    padding-bottom: 80px; /* Evita que el contenido se esconda debajo del footer */
+    padding-bottom: 100px; /* Evita que el contenido se esconda debajo del footer */
 }
 
 footer {
