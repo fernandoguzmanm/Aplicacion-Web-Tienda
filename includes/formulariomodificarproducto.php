@@ -64,6 +64,10 @@ class formulariomodificarproducto extends formularios
                 <input type="hidden" name="imagen_actual" value="$imagen">
                 {$erroresCampos['imagen']}
             </div>
+            <div>
+                <label for="imagen_url">URL de la imagen:</label>
+                <input type="url" id="imagen_url" name="imagen_url" placeholder="Introduce la URL de la imagen">
+            </div>
             <input type="hidden" name="id_producto" value="{$this->producto['id_producto']}">
             <button type="submit" class="btn">Guardar Cambios</button>
         </form>
@@ -111,14 +115,28 @@ class formulariomodificarproducto extends formularios
         }
 
         if (count($this->errores) === 0) {
-            if (!empty($datos['imagen'])) {
+            if (!empty($_POST['imagen_url'])) {
+                $urlImagen = $_POST['imagen_url'];
+                $nombreArchivo = basename(parse_url($urlImagen, PHP_URL_PATH)); // Obtiene el nombre del archivo
+                $rutaDestino = RUTA_IMGS . 'productos/' . $nombreArchivo;
+
+                // Descarga la imagen y guárdala en la carpeta
+                if (copy($urlImagen, $rutaDestino)) {
+                    $imagen = $nombreArchivo; // Usa la imagen descargada
+                } else {
+                    $this->errores['imagen'] = 'No se pudo descargar la imagen desde la URL proporcionada.';
+                }
+            } elseif (!empty($datos['imagen'])) {
+                // Procesa la imagen subida desde el ordenador
                 $rutaImagen = RUTA_IMGS . 'productos/' . basename($datos['imagen']);
                 /*
-                if (!move_uploaded_file($datos['imagen'], $rutaImagen)) {
+                if (move_uploaded_file($datos['imagen']['tmp_name'], $rutaImagen)) {
+                    $imagen = basename($datos['imagen']);
+                } else {
                     $this->errores['imagen'] = 'Error al subir la imagen.';
                 }*/
             } else {
-                $imagen = $datos['imagen_actual'];
+                $imagen = $datos['imagen_actual']; // Usa la imagen actual si no se proporciona una nueva
             }
 
             $productoModel = new Producto(Aplicacion::getInstance()->getConexionBd());
