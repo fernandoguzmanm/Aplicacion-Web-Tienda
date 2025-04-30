@@ -1,6 +1,7 @@
 <?php
 // filepath: c:\xampp\htdocs\AW\includes\formulariomodificarproducto.php
 require_once RUTA_INCLUDES . 'formularios.php';
+require_once './includes/config.php';
 
 class formulariomodificarproducto extends formularios
 {
@@ -61,9 +62,6 @@ class formulariomodificarproducto extends formularios
                 <label for="imagen">Imagen:</label>
                 <input type="file" id="imagen" name="imagen">
                 <input type="hidden" name="imagen_actual" value="$imagen">
-                <img src="<?php echo RUTA_IMGS . 'productos/' . htmlspecialchars($imagen); ?>" 
-                     alt="$nombre" 
-                     style="max-width: 100px; display: block; margin-top: 10px;">
                 {$erroresCampos['imagen']}
             </div>
             <input type="hidden" name="id_producto" value="{$this->producto['id_producto']}">
@@ -85,8 +83,8 @@ class formulariomodificarproducto extends formularios
         $stock = trim($datos['stock'] ?? '');
         $id_vendedor = trim($datos['id_vendedor'] ?? '');
         $id_categoria = trim($datos['id_categoria'] ?? '');
-        $imagen = $_FILES['imagen']['name'] ?? $datos['imagen_actual'];
-
+        $imagen = $datos['imagen'] ?? $datos['imagen_actual'];
+        
         // Validaciones
         if (!$nombre) {
             $this->errores['nombre'] = 'El nombre no puede estar vacío.';
@@ -113,11 +111,12 @@ class formulariomodificarproducto extends formularios
         }
 
         if (count($this->errores) === 0) {
-            if (!empty($_FILES['imagen']['name'])) {
-                $rutaImagen = RUTA_IMGS . 'productos/' . basename($_FILES['imagen']['name']);
-                if (!move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaImagen)) {
+            if (!empty($datos['imagen'])) {
+                $rutaImagen = RUTA_IMGS . 'productos/' . basename($datos['imagen']);
+                /*
+                if (!move_uploaded_file($datos['imagen'], $rutaImagen)) {
                     $this->errores['imagen'] = 'Error al subir la imagen.';
-                }
+                }*/
             } else {
                 $imagen = $datos['imagen_actual'];
             }

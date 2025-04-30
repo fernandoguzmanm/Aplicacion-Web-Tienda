@@ -17,20 +17,14 @@ $tituloPagina = 'Admin';
     <link rel="stylesheet" href="<?php echo RUTA_CSS . 'estilo.css'; ?>">
 </head>
 <body>
-    <div id="contenedor">
-        <?php include RUTA_VISTAS . 'comun/header.php'; ?>
+    <h2>Consola de Administración</h2>
+    <p>Bienvenido, <?= htmlspecialchars($_SESSION['nombre']); ?>.</p>
 
-        <div id="contenido">
-            <h2>Consola de Administración</h2>
-            <p>Bienvenido, <?= htmlspecialchars($_SESSION['nombre']); ?>.</p>
-
-            <ul>
-                <li><a href="<?= RUTA_APP . 'controller.php?controller=admin&action=gestionarUsuarios' ?>">Gestionar Usuarios</a></li>
-                <li><a href="<?= RUTA_APP . 'controller.php?controller=admin&action=gestionarProductos' ?>">Gestionar Productos</a></li>
-                <li><a href="<?= RUTA_APP . 'controller.php?controller=admin&action=gestionarPedidos' ?>">Gestionar Pedidos</a></li>
-            </ul>
-        </div>
-    </div>
+    <ul>
+        <li><a href="<?= RUTA_APP . 'controller.php?controller=admin&action=gestionarUsuarios' ?>">Gestionar Usuarios</a></li>
+        <li><a href="<?= RUTA_APP . 'controller.php?controller=admin&action=gestionarProductos' ?>">Gestionar Productos</a></li>
+        <li><a href="<?= RUTA_APP . 'controller.php?controller=admin&action=gestionarPedidos' ?>">Gestionar Pedidos</a></li>
+    </ul>
 </body>
 </html>
 
