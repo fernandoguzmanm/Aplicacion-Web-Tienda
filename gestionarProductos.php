@@ -27,6 +27,7 @@ if (session_status() == PHP_SESSION_NONE) {
             <p>No hay productos disponibles en este momento.</p>
         <?php endif; ?>
     </div>
+    <a href="<?= RUTA_APP . 'crearProducto.php' ?>" class="btn">Crear Producto</a>
 </main>
 
 <?php require './includes/vistas/plantillas/plantilla2.php'; ?>

@@ -187,5 +187,20 @@ class Producto {
             return false;
         }
     }
+
+    public function añadirProducto($nombre, $descripcion, $precio, $stock, $id_vendedor, $id_categoria, $imagen = null) {
+        $query = "INSERT INTO productos (nombre, descripcion, precio, stock, id_vendedor, id_categoria, imagen) 
+                  VALUES (?, ?, ?, ?, ?, ?, ?)";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("ssdiiis", $nombre, $descripcion, $precio, $stock, $id_vendedor, $id_categoria, $imagen);
+        
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            error_log("Error al añadir producto ({$this->conn->errno}): {$this->conn->error}");
+            return false;
+        }
+    }
 }
 ?>

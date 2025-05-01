@@ -88,8 +88,7 @@ class formulariomodificarproducto extends formularios
         $id_vendedor = trim($datos['id_vendedor'] ?? '');
         $id_categoria = trim($datos['id_categoria'] ?? '');
         $imagen = $datos['imagen'] ?? $datos['imagen_actual'];
-        
-        // Validaciones
+
         if (!$nombre) {
             $this->errores['nombre'] = 'El nombre no puede estar vacío.';
         }
@@ -114,29 +113,31 @@ class formulariomodificarproducto extends formularios
             $this->errores['id_categoria'] = 'El ID de la categoría no puede estar vacío.';
         }
 
+        if (!empty($_POST['imagen_url']) && !empty($datos['imagen'])) {
+            $this->errores['imagen'] = 'Solo puedes proporcionar una imagen: desde tu ordenador o mediante una URL.';
+        }
+
         if (count($this->errores) === 0) {
             if (!empty($_POST['imagen_url'])) {
                 $urlImagen = $_POST['imagen_url'];
-                $nombreArchivo = basename(parse_url($urlImagen, PHP_URL_PATH)); // Obtiene el nombre del archivo
+                $nombreArchivo = basename(parse_url($urlImagen, PHP_URL_PATH));
                 $rutaDestino = RUTA_IMGS . 'productos/' . $nombreArchivo;
 
-                // Descarga la imagen y guárdala en la carpeta
                 if (copy($urlImagen, $rutaDestino)) {
-                    $imagen = $nombreArchivo; // Usa la imagen descargada
+                    $imagen = $nombreArchivo;
                 } else {
                     $this->errores['imagen'] = 'No se pudo descargar la imagen desde la URL proporcionada.';
                 }
             } elseif (!empty($datos['imagen'])) {
-                // Procesa la imagen subida desde el ordenador
                 $rutaImagen = RUTA_IMGS . 'productos/' . basename($datos['imagen']);
                 /*
-                if (move_uploaded_file($datos['imagen']['tmp_name'], $rutaImagen)) {
+                if (move_uploaded_file($datos['imagen'], $rutaImagen)) {
                     $imagen = basename($datos['imagen']);
                 } else {
                     $this->errores['imagen'] = 'Error al subir la imagen.';
                 }*/
             } else {
-                $imagen = $datos['imagen_actual']; // Usa la imagen actual si no se proporciona una nueva
+                $imagen = $datos['imagen_actual'];
             }
 
             $productoModel = new Producto(Aplicacion::getInstance()->getConexionBd());

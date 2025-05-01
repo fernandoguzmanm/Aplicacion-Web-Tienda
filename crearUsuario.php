@@ -1,4 +1,3 @@
-<!-- filepath: c:\xampp\htdocs\AW\crearUsuario.php -->
 <?php
 require_once './includes/config.php';
 require_once RUTA_INCLUDES . 'formularioregistro.php';
