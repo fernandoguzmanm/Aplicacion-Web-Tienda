@@ -14,7 +14,6 @@ $htmlFormModificarProducto = $form->gestiona();
 <main class="detalle-container">
     <h2>Detalles del Producto</h2>
     <?= $htmlFormModificarProducto ?>
-    <a href="controller.php?controller=admin&action=gestionarProductos" class="btn">Volver</a>
 </main>
 
 <?php require './includes/vistas/plantillas/plantilla2.php'; ?>

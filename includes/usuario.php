@@ -57,13 +57,13 @@ class Usuario
     public static function buscaPorId($idUsuario)
     {
         $conn = Aplicacion::getInstance()->getConexionBd();
-        $query = sprintf("SELECT * FROM usuarios WHERE id=%d", $idUsuario);
+        $query = sprintf("SELECT * FROM usuarios WHERE id_usuario=%d", $idUsuario);
         $rs = $conn->query($query);
         $result = false;
         if ($rs) {
             $fila = $rs->fetch_assoc();
             if ($fila) {
-                $result = new Usuario($fila['nombreUsuario'], $fila['password'], $fila['nombre'], $fila['id']);
+                $result = new Usuario($fila['id_usuario'], $fila['nombre'], $fila['email'], $fila['contraseña'], $fila['tipo_usuario'], $fila['puntos_fidelidad']);
             }
             $rs->free();
         } else {
@@ -103,6 +103,34 @@ class Usuario
             return $stmt->affected_rows > 0;
         } else {
             error_log("Error al eliminar usuario ({$conn->errno}): {$conn->error}");
+            return false;
+        }
+    }
+
+    public static function modificarUsuario($id_usuario, $nombre, $email, $contraseña, $tipo_usuario, $puntos_fidelidad) {
+        $conn = Aplicacion::getInstance()->getConexionBd();
+        $query = "UPDATE usuarios 
+                  SET nombre = ?, email = ?, tipo_usuario = ?, puntos_fidelidad = ?";
+        
+        if (!empty($contraseña)) {
+            $query .= ", contraseña = ?";
+        }
+
+        $query .= " WHERE id_usuario = ?";
+
+        $stmt = $conn->prepare($query);
+
+        if (!empty($contraseña)) {
+            $contraseñaHash = password_hash($contraseña, PASSWORD_DEFAULT);
+            $stmt->bind_param("sssisi", $nombre, $email, $tipo_usuario, $puntos_fidelidad, $contraseñaHash, $id_usuario);
+        } else {
+            $stmt->bind_param("sssii", $nombre, $email, $tipo_usuario, $puntos_fidelidad, $id_usuario);
+        }
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            error_log("Error al modificar usuario ({$conn->errno}): {$conn->error}");
             return false;
         }
     }
@@ -204,6 +232,16 @@ class Usuario
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function getContraseña()
+    {
+        return $this->password;
     }
 
     public function getTipoUsuario()

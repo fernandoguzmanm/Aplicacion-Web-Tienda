@@ -65,6 +65,15 @@ class AdminController {
         }
     }
 
+    public function modificarUsuario($id_usuario) {
+        $usuario = $this->usuario->buscaPorId($id_usuario);
+        if ($usuario) {
+            require 'modificarUsuario.php';
+        } else {
+            echo "Usuario no encontrado.";
+        }
+    }
+
     public function eliminarProducto($id_producto) {
         if ($this->producto->eliminarProducto($id_producto)) {
             echo "Producto eliminado con éxito.";

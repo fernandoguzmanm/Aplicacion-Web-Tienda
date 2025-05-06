@@ -19,8 +19,10 @@ class formularionuevoproducto extends formularios
         $descripcion = $datos['descripcion'] ?? '';
         $precio = $datos['precio'] ?? '';
         $stock = $datos['stock'] ?? '';
-        $id_vendedor = $datos['id_vendedor'] ?? '';
         $id_categoria = $datos['id_categoria'] ?? '';
+
+        // Si el usuario es un vendedor, asigna automáticamente su id_usuario
+        $id_vendedor = ($_SESSION['rol'] === 'vendedor') ? $_SESSION['id_usuario'] : ($datos['id_vendedor'] ?? '');
 
         $htmlErroresGlobales = self::generaListaErroresGlobales($this->errores);
         $erroresCampos = self::generaErroresCampos(['nombre', 'descripcion', 'precio', 'stock', 'id_vendedor', 'id_categoria', 'imagen'], $this->errores, 'span', ['class' => 'error']);
@@ -48,11 +50,20 @@ class formularionuevoproducto extends formularios
                 <input id="stock" type="number" name="stock" value="$stock" required />
                 {$erroresCampos['stock']}
             </div>
+        EOF;
+
+        // Solo muestra el campo de ID Vendedor si el usuario no es un vendedor
+        if ($_SESSION['rol'] !== 'vendedor') {
+            $html .= <<<EOF
             <div>
                 <label for="id_vendedor">ID Vendedor:</label>
                 <input id="id_vendedor" type="number" name="id_vendedor" value="$id_vendedor" required />
                 {$erroresCampos['id_vendedor']}
             </div>
+            EOF;
+        }
+
+        $html .= <<<EOF
             <div>
                 <label for="id_categoria">ID Categoría:</label>
                 <input id="id_categoria" type="number" name="id_categoria" value="$id_categoria" required />
@@ -80,8 +91,10 @@ class formularionuevoproducto extends formularios
         $descripcion = trim($datos['descripcion'] ?? '');
         $precio = trim($datos['precio'] ?? '');
         $stock = trim($datos['stock'] ?? '');
-        $id_vendedor = trim($datos['id_vendedor'] ?? '');
         $id_categoria = trim($datos['id_categoria'] ?? '');
+
+        // Asigna automáticamente el id_usuario del vendedor si el rol es vendedor
+        $id_vendedor = ($_SESSION['rol'] === 'vendedor') ? $_SESSION['id_usuario'] : trim($datos['id_vendedor'] ?? '');
 
         if (!$nombre) {
             $this->errores['nombre'] = 'El nombre no puede estar vacío.';
@@ -120,10 +133,15 @@ class formularionuevoproducto extends formularios
 
         if (count($this->errores) === 0) {
             $productoModel = new Producto(Aplicacion::getInstance()->getConexionBd());
-            var_dump($imagen);
             $resultado = $productoModel->añadirProducto($nombre, $descripcion, $precio, $stock, $id_vendedor, $id_categoria, $imagen);
 
-            if (!$resultado) {
+            if ($resultado) {
+                if ($_SESSION['rol'] === 'vendedor') {
+                    $this->urlRedireccion = RUTA_APP . 'controller.php?controller=vendedor&action=mostrarVendedor';
+                } else {
+                    $this->urlRedireccion = RUTA_APP . 'controller.php?controller=admin&action=gestionarProductos';
+                }
+            } else {
                 $this->errores[] = 'Error al añadir el producto. Por favor, inténtalo de nuevo.';
             }
         }

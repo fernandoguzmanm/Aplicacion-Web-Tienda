@@ -97,6 +97,11 @@ if ($controlador === 'vendedor') {
                 }
                 header("Location: index.php");
                 exit();
+            case 'modificarProducto':
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                    $controller->modificarProducto($_GET['id']);
+                    exit();
+                }
         }
     }
     header("Location: vendedor.php");
@@ -128,6 +133,12 @@ if ($controlador === 'admin') {
                 }
                 header("Location: controller.php?controller=admin&action=gestionarUsuarios");
                 exit();
+
+            case 'modificarUsuario':
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                    $controller->modificarUsuario($_GET['id']);  
+                    exit();
+                }
 
             case 'eliminarProducto':
                 if (isset($_GET['id']) && is_numeric($_GET['id'])) {

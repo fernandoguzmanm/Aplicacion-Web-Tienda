@@ -51,6 +51,15 @@ class VendedorController {
         }
     }
 
+    public function modificarProducto($id_producto) {
+        $producto = $this->producto->obtenerProductoPorId($id_producto);
+        if ($producto) {
+            require 'modificarProducto.php';
+        } else {
+            echo "Producto no encontrado.";
+        }
+    }
+
     public function getIdVendedor() {
         return $this->id_vendedor;
     }

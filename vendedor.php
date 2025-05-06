@@ -40,6 +40,8 @@ $totalVendido = 0;
 
                             <?= $htmlFormAñadirStock ?>
                             <?= $htmlFormEliminarStock ?>
+
+                            <a href="controller.php?controller=vendedor&action=modificarProducto&id=<?php echo $producto->getIdProducto(); ?>" class="btn">Modificar Producto</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -50,6 +52,8 @@ $totalVendido = 0;
             <?php endif; ?>
         </tbody>
     </table>
+
+    <a href="<?= RUTA_APP . 'crearProducto.php' ?>" class="btn">Crear Producto</a>
 
     <h2>Productos Vendidos</h2>
     <table border="1">

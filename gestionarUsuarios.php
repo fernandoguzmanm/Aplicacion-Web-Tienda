@@ -25,6 +25,7 @@ $tituloPagina = 'Admin';
                     <td><?= ucfirst(htmlspecialchars($usuario['tipo_usuario'])) ?></td>
                     <td>
                         <a href="<?= RUTA_APP . 'controller.php?controller=admin&action=eliminarUsuario&id=' . $usuario['id_usuario'] ?>">Eliminar</a>
+                        <a href="<?= RUTA_APP . 'controller.php?controller=admin&action=modificarUsuario&id=' . $usuario['id_usuario'] ?>">Modificar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

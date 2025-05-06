@@ -144,7 +144,11 @@ class formulariomodificarproducto extends formularios
             $resultado = $productoModel->modificarProducto($id_producto, $nombre, $descripcion, $precio, $stock, $id_vendedor, $id_categoria, $imagen);
 
             if ($resultado) {
-                $this->urlRedireccion = RUTA_APP . 'controller.php?controller=admin&action=gestionarProductos';
+                if ($_SESSION['rol'] === 'administrador') {
+                    $this->urlRedireccion = RUTA_APP . 'controller.php?controller=admin&action=gestionarProductos';
+                } elseif ($_SESSION['rol'] === 'vendedor') {
+                    $this->urlRedireccion = RUTA_APP . 'controller.php?controller=vendedor&action=mostrarVendedor';;
+                }
             } else {
                 $this->errores[] = 'Error al actualizar el producto. Por favor, inténtalo de nuevo.';
             }
