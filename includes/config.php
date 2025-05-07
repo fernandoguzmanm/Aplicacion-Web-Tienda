@@ -2,12 +2,12 @@
 
 
 
-/*
+
 define('BD_HOST', 'vm019.db.swarm.test');
 define('BD_NAME', 'tienda');
 define('BD_USER', 'hola');
 define('BD_PASS', 'hola');
-*/
+/*
 define('BD_HOST', 'localhost');
 define('BD_NAME', 'tienda');
 define('BD_USER', 'rishi');

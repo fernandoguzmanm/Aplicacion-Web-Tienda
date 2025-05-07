@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__.'/includes/config.php';
-require_once RUTA_INCLUDES . 'formularioañadirstock.php';
+require_once RUTA_INCLUDES . 'formularioanadirstock.php';
 require_once RUTA_INCLUDES . 'formularioeliminarstock.php';
 require_once RUTA_INCLUDES . 'controladores/vendedorController.php';
 
@@ -31,14 +31,14 @@ $totalVendido = 0;
                         <td><?= (int)$producto->getStock() ?></td>
                         <td>
                             <?php
-                            $form = new formularioañadirstock($producto->getIdProducto());                   
-                            $htmlFormAñadirStock = $form->gestiona();
+                            $form = new formularioanadirstock($producto->getIdProducto());                   
+                            $htmlFormAnadirStock = $form->gestiona();
 
                             $form2 = new formularioeliminarstock($producto->getIdProducto());                   
                             $htmlFormEliminarStock = $form2->gestiona();
                             ?>
 
-                            <?= $htmlFormAñadirStock ?>
+                            <?= $htmlFormAnadirStock ?>
                             <?= $htmlFormEliminarStock ?>
 
                             <a href="controller.php?controller=vendedor&action=modificarProducto&id=<?php echo $producto->getIdProducto(); ?>" class="btn">Modificar Producto</a>

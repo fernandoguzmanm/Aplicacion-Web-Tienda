@@ -1,7 +1,7 @@
 <?php
 require_once RUTA_INCLUDES . 'formularios.php';
 
-class formularioañadirstock extends formularios
+class formularioanadirstock extends formularios
 {
     private $id_producto;
 
@@ -56,7 +56,7 @@ class formularioañadirstock extends formularios
                 'id' => $id_producto,
                 'numero_unidades' => $numero_unidades
             ]);
-            var_dump($queryString); // Debugging line to check the query string
+            var_dump($queryString);
             header("Location: " . RUTA_APP . "controller.php?$queryString");
             exit();
         }
