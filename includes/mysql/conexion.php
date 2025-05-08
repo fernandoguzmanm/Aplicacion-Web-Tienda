@@ -1,14 +1,14 @@
 <?php
-    
+    /*
     $servername = "vm019.db.swarm.test";
     $username = "hola";
     $password = "hola";
     $db = "tienda";
-    /*
+    */
     $servername = "localhost";
     $username = "rishi";
     $password = "contrasenarishi";
-    $db = "tienda";*/
+    $db = "tienda";
     // Crear conexion
     $conn = new mysqli($servername, $username, $password, $db);
     // Comprobar conexion

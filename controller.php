@@ -176,6 +176,20 @@ if ($controlador === 'detalle') {
     }
 }
 
+if ($controlador === 'usuario') {
+    if (isset($_GET['action'])) {
+        switch ($_GET['action']) {
+            case 'modificarUsuario':
+                if (isset($_POST['id_usuario']) && $_POST['id_usuario'] == $_SESSION['id_usuario']) {
+                    $controller->modificarUsuario($_POST['id_usuario']);
+                } else {
+                    die('Error: No tienes permiso para modificar este usuario.');
+                }
+                exit();
+        }
+    }
+}
+
 // Validar si la acción existe en el controlador
 if (!method_exists($controller, $accion)) {
     die('Error: Acción no encontrada');

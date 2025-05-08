@@ -10,7 +10,7 @@ $carrito_count = isset($_SESSION['carrito']) ? array_sum(array_column($_SESSION[
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="<?= URL_CSS . 'cssHeader.css?v=8' ?>">
+    <link rel="stylesheet" href="<?= URL_CSS . 'cssHeader.css?v=9' ?>">
 </head>
 <body>
 
@@ -35,6 +35,7 @@ $carrito_count = isset($_SESSION['carrito']) ? array_sum(array_column($_SESSION[
             <div id="login-container">
                 <?php if (isset($_SESSION['login'])) : ?>
                     <p>Bienvenido, <?= htmlspecialchars($_SESSION['nombre']); ?></p>
+                    <p><a href="<?= RUTA_APP . 'modificarUsuario.php?id=' . $_SESSION['id_usuario'] ?>">Modificar Usuario</a></p>
                     <p><a href="<?= RUTA_APP . 'controller.php?controller=logout' ?>">Cerrar sesión</a></p>
                 <?php else : ?>
                     <p><a href="<?= RUTA_APP . 'login.php' ?>">Iniciar sesión</a></p>

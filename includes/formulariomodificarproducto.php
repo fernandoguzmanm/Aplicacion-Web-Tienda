@@ -20,8 +20,8 @@ class formulariomodificarproducto extends formularios
         $stock = $datos['stock'] ?? $this->producto['stock'];
         $id_vendedor = $datos['id_vendedor'] ?? $this->producto['id_vendedor'];
         $id_categoria = $datos['id_categoria'] ?? $this->producto['id_categoria'];
-        $imagen = $this->producto['imagen'];
-
+        $imagen = $datos['imagen'] ?? $this->producto['imagen'];
+        
         $htmlErroresGlobales = self::generaListaErroresGlobales($this->errores);
         $erroresCampos = self::generaErroresCampos(['nombre', 'descripcion', 'precio', 'stock', 'id_vendedor', 'id_categoria', 'imagen'], $this->errores, 'span', array('class' => 'error'));
 
@@ -60,19 +60,14 @@ class formulariomodificarproducto extends formularios
             </div>
             <div>
                 <label for="imagen">Imagen:</label>
-                <input type="file" id="imagen" name="imagen">
-                <input type="hidden" name="imagen_actual" value="$imagen">
+                <input type="file" id="imagen" name="imagen" required>
                 {$erroresCampos['imagen']}
-            </div>
-            <div>
-                <label for="imagen_url">URL de la imagen:</label>
-                <input type="url" id="imagen_url" name="imagen_url" placeholder="Introduce la URL de la imagen">
             </div>
             <input type="hidden" name="id_producto" value="{$this->producto['id_producto']}">
             <button type="submit" class="btn">Guardar Cambios</button>
         </form>
         EOF;
-
+        
         return $html;
     }
 
@@ -87,7 +82,7 @@ class formulariomodificarproducto extends formularios
         $stock = trim($datos['stock'] ?? '');
         $id_vendedor = trim($datos['id_vendedor'] ?? '');
         $id_categoria = trim($datos['id_categoria'] ?? '');
-        $imagen = $datos['imagen'] ?? $datos['imagen_actual'];
+        $imagen = trim($datos['id_categoria'] ?? '');
 
         if (!$nombre) {
             $this->errores['nombre'] = 'El nombre no puede estar vacío.';
@@ -113,33 +108,20 @@ class formulariomodificarproducto extends formularios
             $this->errores['id_categoria'] = 'El ID de la categoría no puede estar vacío.';
         }
 
-        if (!empty($_POST['imagen_url']) && !empty($datos['imagen'])) {
-            $this->errores['imagen'] = 'Solo puedes proporcionar una imagen: desde tu ordenador o mediante una URL.';
+        if (!empty($_FILES['imagen']['name'])) {
+            $nombreArchivo = basename($_FILES['imagen']['name']);
+            $rutaDestino = RUTA_IMGS . 'productos/' . $nombreArchivo;
+
+            if (move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaDestino)) {
+                $imagen = $nombreArchivo;
+            } else {
+                $this->errores['imagen'] = 'Error al subir la imagen. Por favor, inténtalo de nuevo.';
+            }
+        } else {
+            $this->errores['imagen'] = 'Debes subir una imagen.';
         }
 
         if (count($this->errores) === 0) {
-            if (!empty($_POST['imagen_url'])) {
-                $urlImagen = $_POST['imagen_url'];
-                $nombreArchivo = basename(parse_url($urlImagen, PHP_URL_PATH));
-                $rutaDestino = RUTA_IMGS . 'productos/' . $nombreArchivo;
-
-                if (copy($urlImagen, $rutaDestino)) {
-                    $imagen = $nombreArchivo;
-                } else {
-                    $this->errores['imagen'] = 'No se pudo descargar la imagen desde la URL proporcionada.';
-                }
-            } elseif (!empty($datos['imagen'])) {
-                $rutaImagen = RUTA_IMGS . 'productos/' . basename($datos['imagen']);
-                /*
-                if (move_uploaded_file($datos['imagen'], $rutaImagen)) {
-                    $imagen = basename($datos['imagen']);
-                } else {
-                    $this->errores['imagen'] = 'Error al subir la imagen.';
-                }*/
-            } else {
-                $imagen = $datos['imagen_actual'];
-            }
-
             $productoModel = new Producto(Aplicacion::getInstance()->getConexionBd());
             $resultado = $productoModel->modificarProducto($id_producto, $nombre, $descripcion, $precio, $stock, $id_vendedor, $id_categoria, $imagen);
 
@@ -147,7 +129,7 @@ class formulariomodificarproducto extends formularios
                 if ($_SESSION['rol'] === 'administrador') {
                     $this->urlRedireccion = RUTA_APP . 'controller.php?controller=admin&action=gestionarProductos';
                 } elseif ($_SESSION['rol'] === 'vendedor') {
-                    $this->urlRedireccion = RUTA_APP . 'controller.php?controller=vendedor&action=mostrarVendedor';;
+                    $this->urlRedireccion = RUTA_APP . 'controller.php?controller=vendedor&action=mostrarVendedor';
                 }
             } else {
                 $this->errores[] = 'Error al actualizar el producto. Por favor, inténtalo de nuevo.';

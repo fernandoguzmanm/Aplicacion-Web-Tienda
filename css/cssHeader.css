@@ -185,6 +185,7 @@ nav ul li a:hover {
     font-weight: bold;          /* Negrita */
     font-size: 16px;            /* Tamaño del texto */
     margin: 0;                  /* Sin márgenes */
+    line-height: 0.2;          /* Espaciado entre líneas */
 }
 
 /* Enlaces del login */

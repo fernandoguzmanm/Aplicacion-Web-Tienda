@@ -7,6 +7,7 @@ $tituloPagina = 'Portada';
 $rutaLogotipo = RUTA_IMGS . 'logotipo.jpeg';
 
 $contenidoPrincipal = <<<EOS
+
     <h2>Bienvenido a ShopEasy</h2>
     <div class="logo-container">
         <img src="{$rutaLogotipo}" alt="Logotipo de ShopEasy" class="logo">

@@ -160,7 +160,9 @@ class Producto {
         }
     }
 
-    public function modificarProducto($id_producto, $nombre, $descripcion, $precio, $stock, $id_vendedor, $id_categoria, $imagen = null) {
+    public function modificarProducto($id_producto, $nombre, $descripcion, $precio, $stock, $id_vendedor, $id_categoria, $imagen) {
+        var_dump($imagen);
+        exit();
         $query = "UPDATE productos 
                   SET nombre = ?, descripcion = ?, precio = ?, stock = ?, id_vendedor = ?, id_categoria = ?";
         
