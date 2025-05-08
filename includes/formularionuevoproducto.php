@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/formularios.php';
 require_once __DIR__ . '/producto.php';
+require_once __DIR__ . '/categoria.php';
 
 class formularionuevoproducto extends formularios
 {
@@ -23,6 +24,16 @@ class formularionuevoproducto extends formularios
 
         // Si el usuario es un vendedor, asigna automáticamente su id_usuario
         $id_vendedor = ($_SESSION['rol'] === 'vendedor') ? $_SESSION['id_usuario'] : ($datos['id_vendedor'] ?? '');
+
+        // Obtener todas las categorías desde la base de datos
+        $categorias = Categoria::obtenerTodas();
+
+        // Generar las opciones del select para categorías
+        $opcionesCategorias = '<option value="" ' . ($id_categoria == '' ? 'selected' : '') . '>Selecciona una categoría</option>';
+        foreach ($categorias as $categoria) {
+            $selected = ($id_categoria == $categoria->getIdCategoria()) ? 'selected' : '';
+            $opcionesCategorias .= '<option value="' . htmlspecialchars($categoria->getIdCategoria()) . '" ' . $selected . '>' . ucfirst(htmlspecialchars($categoria->getNombre())) . '</option>';
+        }
 
         $htmlErroresGlobales = self::generaListaErroresGlobales($this->errores);
         $erroresCampos = self::generaErroresCampos(['nombre', 'descripcion', 'precio', 'stock', 'id_vendedor', 'id_categoria', 'imagen'], $this->errores, 'span', ['class' => 'error']);
@@ -63,10 +74,13 @@ class formularionuevoproducto extends formularios
             EOF;
         }
 
+        // Agregar el select dinámico para categorías
         $html .= <<<EOF
             <div>
-                <label for="id_categoria">ID Categoría:</label>
-                <input id="id_categoria" type="number" name="id_categoria" value="$id_categoria" required />
+                <label for="id_categoria">Categoría:</label>
+                <select id="id_categoria" name="id_categoria" required>
+                    $opcionesCategorias
+                </select>
                 {$erroresCampos['id_categoria']}
             </div>
             <div>

@@ -1,5 +1,6 @@
 <?php
 require_once RUTA_INCLUDES . 'formularios.php';
+require_once RUTA_INCLUDES . 'categoria.php';
 
 class formulariobuscar extends formularios
 {
@@ -10,13 +11,24 @@ class formulariobuscar extends formularios
     protected function generaCamposFormulario(&$datos)
     {
         $query = $datos['query'] ?? '';
-        $categoria = $datos['categorias'] ?? '';
+        $categoriaSeleccionada = $datos['categorias'] ?? '';
 
         $min_precio = $datos['min_precio'] ?? '';
         $max_precio = $datos['max_precio'] ?? '';
 
+        // Obtener todas las categorías desde la base de datos
+        
+        $categorias = Categoria::obtenerTodas();
+
+        // Generar las opciones del select
+        $opcionesCategorias = '<option value="" ' . ($categoriaSeleccionada == '' ? 'selected' : '') . '>Todas las categorías</option>';
+        foreach ($categorias as $categoria) {
+            $selected = ($categoriaSeleccionada == $categoria->getIdCategoria()) ? 'selected' : '';
+            $opcionesCategorias .= '<option value="' . htmlspecialchars($categoria->getIdCategoria()) . '" ' . $selected . '>' . ucfirst(htmlspecialchars($categoria->getNombre())) . '</option>';
+        }
+
         $htmlErroresGlobales = self::generaListaErroresGlobales($this->errores);
-        $erroresCampos = self::generaErroresCampos(['query', 'categorias','min_precio', 'max_precio'], $this->errores, 'span', array('class' => 'error'));
+        $erroresCampos = self::generaErroresCampos(['query', 'categorias', 'min_precio', 'max_precio'], $this->errores, 'span', array('class' => 'error'));
 
         $html = <<<EOF
         $htmlErroresGlobales
@@ -24,13 +36,9 @@ class formulariobuscar extends formularios
             <input type="text" name="query" placeholder="Buscar productos" value="$query">
             {$erroresCampos['query']}
             <select name="categorias">
-                <option value="" " . ($categoria == '' ? 'selected' : '') . ">Todas las categorías</option>
-                <option value="cereales" " . ($categoria == 'cereales' ? 'selected' : '') . ">Cereales</option>
-                <option value="fruta" " . ($categoria == 'fruta' ? 'selected' : '') . ">Fruta</option>
-                <option value="lacteo" " . ($categoria == 'lacteo' ? 'selected' : '') . ">Lácteos</option>
-                <option value="dulce" " . ($categoria == 'dulce' ? 'selected' : '') . ">Dulces</option>
-                <option value="refresco" " . ($categoria == 'refresco' ? 'selected' : '') . ">Refrescos</option>
+                $opcionesCategorias
             </select>
+            {$erroresCampos['categorias']}
             <div>
                 <label for="min_precio">Precio Mínimo:</label>
                 <input type="number" id="min_precio" name="min_precio" step="0.01" value="$min_precio" placeholder="Mínimo">
@@ -41,13 +49,12 @@ class formulariobuscar extends formularios
                 <input type="number" id="max_precio" name="max_precio" step="0.01" value="$max_precio" placeholder="Máximo">
                 {$erroresCampos['max_precio']}
             </div>
-            {$erroresCampos['categorias']}
             <input type="hidden" name="controller" value="busqueda">
             <input type="hidden" name="action" value="mostrarBusqueda">
             <button type="submit">Buscar</button>
         </form>
         EOF;
-        
+
         return $html;
     }
 

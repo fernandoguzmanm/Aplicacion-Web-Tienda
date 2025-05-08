@@ -2,6 +2,7 @@
 // filepath: c:\xampp\htdocs\AW\includes\formulariomodificarproducto.php
 require_once RUTA_INCLUDES . 'formularios.php';
 require_once './includes/config.php';
+require_once __DIR__ . '/categoria.php';
 
 class formulariomodificarproducto extends formularios
 {
@@ -21,7 +22,15 @@ class formulariomodificarproducto extends formularios
         $id_vendedor = $datos['id_vendedor'] ?? $this->producto['id_vendedor'];
         $id_categoria = $datos['id_categoria'] ?? $this->producto['id_categoria'];
         $imagen = $datos['imagen'] ?? $this->producto['imagen'];
-        
+
+        $categorias = Categoria::obtenerTodas();
+
+        $opcionesCategorias = '<option value="" ' . ($id_categoria == '' ? 'selected' : '') . '>Selecciona una categoría</option>';
+        foreach ($categorias as $categoria) {
+            $selected = ($id_categoria == $categoria->getIdCategoria()) ? 'selected' : '';
+            $opcionesCategorias .= '<option value="' . htmlspecialchars($categoria->getIdCategoria()) . '" ' . $selected . '>' . ucfirst(htmlspecialchars($categoria->getNombre())) . '</option>';
+        }
+
         $htmlErroresGlobales = self::generaListaErroresGlobales($this->errores);
         $erroresCampos = self::generaErroresCampos(['nombre', 'descripcion', 'precio', 'stock', 'id_vendedor', 'id_categoria', 'imagen'], $this->errores, 'span', array('class' => 'error'));
 
@@ -54,20 +63,22 @@ class formulariomodificarproducto extends formularios
                 {$erroresCampos['id_vendedor']}
             </div>
             <div>
-                <label for="id_categoria">ID Categoría:</label>
-                <input type="number" id="id_categoria" name="id_categoria" value="$id_categoria" required>
+                <label for="id_categoria">Categoría:</label>
+                <select id="id_categoria" name="id_categoria" required>
+                    $opcionesCategorias
+                </select>
                 {$erroresCampos['id_categoria']}
             </div>
             <div>
                 <label for="imagen">Imagen:</label>
-                <input type="file" id="imagen" name="imagen" required>
+                <input type="file" id="imagen" name="imagen">
                 {$erroresCampos['imagen']}
             </div>
             <input type="hidden" name="id_producto" value="{$this->producto['id_producto']}">
             <button type="submit" class="btn">Guardar Cambios</button>
         </form>
         EOF;
-        
+
         return $html;
     }
 
@@ -117,14 +128,14 @@ class formulariomodificarproducto extends formularios
             } else {
                 $this->errores['imagen'] = 'Error al subir la imagen. Por favor, inténtalo de nuevo.';
             }
-        } else {
+        } /*else {
             $this->errores['imagen'] = 'Debes subir una imagen.';
-        }
-
+        }*/
+        
         if (count($this->errores) === 0) {
             $productoModel = new Producto(Aplicacion::getInstance()->getConexionBd());
             $resultado = $productoModel->modificarProducto($id_producto, $nombre, $descripcion, $precio, $stock, $id_vendedor, $id_categoria, $imagen);
-
+            
             if ($resultado) {
                 if ($_SESSION['rol'] === 'administrador') {
                     $this->urlRedireccion = RUTA_APP . 'controller.php?controller=admin&action=gestionarProductos';
