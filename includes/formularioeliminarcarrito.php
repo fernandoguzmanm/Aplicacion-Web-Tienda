@@ -6,7 +6,7 @@ class formularioeliminarcarrito extends formularios
     private $id_producto;
 
     public function __construct($id_producto) {
-        parent::__construct('formEliminarCarrito', ['urlRedireccion' => RUTA_APP . 'carrito.php']);
+        parent::__construct('formEliminarCarrito_' . $id_producto, ['urlRedireccion' => RUTA_APP . 'carrito.php']);
         $this->id_producto = $id_producto;
     }
 
@@ -22,7 +22,7 @@ class formularioeliminarcarrito extends formularios
         $htmlErroresGlobales
         <form action="controller.php" method="GET">
             <input type="hidden" name="id" value="$id_producto">
-            <input type="number" id="numero_unidades" name="numero_unidades" step="1" min="1" value="$numero_unidades" placeholder="Número">
+            <input type="number" id="numero_unidades_$id_producto" name="numero_unidades" step="1" min="1" value="$numero_unidades" placeholder="Número">
             {$erroresCampos['numero_unidades']}
             <input type="hidden" name="controller" value="carrito">
             <input type="hidden" name="action" value="eliminarProducto">

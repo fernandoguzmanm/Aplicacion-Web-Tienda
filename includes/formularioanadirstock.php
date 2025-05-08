@@ -6,7 +6,7 @@ class formularioanadirstock extends formularios
     private $id_producto;
 
     public function __construct($id_producto) {
-        parent::__construct('formAñadirStock', ['urlRedireccion' => RUTA_APP . 'vendedor.php']);
+        parent::__construct('formAñadirStock_' . $id_producto, ['urlRedireccion' => RUTA_APP . 'vendedor.php']);
         $this->id_producto = $id_producto;
     }
 
@@ -23,7 +23,7 @@ class formularioanadirstock extends formularios
         $htmlErroresGlobales
         <form action="controller.php" method="GET">
             <input type="hidden" name="id" value="$id_producto">
-            <input type="number" id="numero_unidades" name="numero_unidades" step="1" min="1" value="$numero_unidades" placeholder="Número">
+            <input type="number" id="numero_unidades_sumar_$id_producto" name="numero_unidades" step="1" min="1" value="$numero_unidades" placeholder="Número">
             {$erroresCampos['numero_unidades']}
             <input type="hidden" name="controller" value="vendedor">
             <input type="hidden" name="action" value="añadirStock">
