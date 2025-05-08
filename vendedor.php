@@ -5,6 +5,10 @@ require RUTA_VISTAS . 'plantillas/plantilla2.php';
 require_once RUTA_INCLUDES . 'formularioanadirstock.php';
 require_once RUTA_INCLUDES . 'formularioeliminarstock.php';
 require_once RUTA_INCLUDES . 'controladores/vendedorController.php';
+require_once RUTA_INCLUDES . 'formularionuevacategoria.php';
+
+$form = new formularioNuevaCategoria();
+$htmlFormNuevaCategoria = $form->gestiona();
 
 $vendedorController = new VendedorController();
 $productosVendidos = $vendedorController->obtenerProductosVendidos();
@@ -92,4 +96,7 @@ $totalVendido = 0;
     </table>
 
     <h3>Total Vendido: €<?= number_format($totalVendido, 2) ?></h3>
+
+    <h3>Crear Nueva Categoría</h3>
+    <?= $htmlFormNuevaCategoria ?>
 </main>

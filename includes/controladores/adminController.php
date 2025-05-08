@@ -4,6 +4,7 @@ require_once RUTA_INCLUDES . 'producto.php';
 require_once RUTA_INCLUDES . 'usuario.php';
 require_once RUTA_INCLUDES . 'pedido.php';
 require_once RUTA_INCLUDES . 'detallespedido.php';
+require_once RUTA_INCLUDES . 'categoria.php';
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -14,6 +15,7 @@ class AdminController {
     private $usuario;
     private $pedido;
     private $detallespedido;
+    private $categoria;
 
     public function __construct() {
         global $conn;
@@ -21,7 +23,6 @@ class AdminController {
         $this->usuario = Usuario::getInstance($conn);
         $this->pedido = new Pedido($conn);
         $this->detallespedido = new DetallesPedido($conn);
-
 
         if (!isset($_SESSION['login']) || $_SESSION['rol'] !== 'administrador') {
             die('Acceso denegado: No tienes permisos para acceder a esta página.');
@@ -47,7 +48,29 @@ class AdminController {
         $detalles = $this->detallespedido->obtenerTodosLosDetalles();
         require 'gestionarPedidos.php';
     }
-    
+
+    public function gestionarCategorias() {
+        $categorias = Categoria::obtenerTodas();
+        require 'gestionarCategorias.php';
+    }    
+
+    public function eliminarCategoria($id_categoria) {
+        if (Categoria::eliminarCategoria($id_categoria)) {
+            echo "Categoría eliminada con éxito.";
+        } else {
+            echo "Error al eliminar la categoría.";
+        }    
+    }
+
+    public function modificarCategoria($id_categoria) {
+        $categoria = Categoria::buscarPorId($id_categoria);
+        if ($categoria) {
+            require 'modificarCategoria.php';
+        } else {
+            echo "Categoría no encontrada.";
+        }
+    }
+
     public function modificarProducto($id_producto) {
         $producto = $this->producto->obtenerProductoPorId($id_producto);
         if ($producto) {

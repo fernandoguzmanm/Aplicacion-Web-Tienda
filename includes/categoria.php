@@ -7,6 +7,8 @@ class Categoria
     private $id_categoria;
     private $nombre;
 
+    private $conn;
+
     private function __construct($id_categoria, $nombre)
     {
         $this->id_categoria = $id_categoria;

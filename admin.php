@@ -16,6 +16,7 @@ require_once RUTA_INCLUDES . 'controladores/adminController.php';
         <li><a href="<?= RUTA_APP . 'controller.php?controller=admin&action=gestionarUsuarios' ?>">Gestionar Usuarios</a></li>
         <li><a href="<?= RUTA_APP . 'controller.php?controller=admin&action=gestionarProductos' ?>">Gestionar Productos</a></li>
         <li><a href="<?= RUTA_APP . 'controller.php?controller=admin&action=gestionarPedidos' ?>">Gestionar Pedidos</a></li>
+        <li><a href="<?= RUTA_APP . 'controller.php?controller=admin&action=gestionarCategorias' ?>">Gestionar Categorías</a></li>
     </ul>
 </body>
 </html>

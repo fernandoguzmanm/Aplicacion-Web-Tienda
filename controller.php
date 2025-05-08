@@ -126,6 +126,10 @@ if ($controlador === 'admin') {
             case 'gestionarPedidos':
                 $controller->gestionarPedidos();
                 exit();
+            
+            case 'gestionarCategorias':
+                $controller->gestionarCategorias();
+                exit();
 
             case 'eliminarUsuario':
                 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -157,6 +161,20 @@ if ($controlador === 'admin') {
                     $controller->modificarProducto($_GET['id']);
                     exit();
                 }
+            case 'eliminarCategoria':
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                    $controller->eliminarCategoria($_GET['id']);
+                }
+                header("Location: controller.php?controller=admin&action=gestionarCategorias");
+                exit();
+            
+            case 'modificarCategoria':
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                    $controller->modificarCategoria($_GET['id']);
+                    exit();
+                }
+                header("Location: controller.php?controller=admin&action=gestionarCategorias");
+                exit();
 
             default:
                 die('Error: Acción no válida para el administrador.');
