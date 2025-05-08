@@ -1,6 +1,6 @@
 <?php
 require_once './includes/config.php';
-
+require RUTA_VISTAS . 'plantillas/plantilla2.php';
 $tituloPagina = 'Planificación';
 ?>
 
@@ -25,7 +25,7 @@ $tituloPagina = 'Planificación';
 
     <section>
         <h2>Plazos y Hitos</h2>
-        <table border="1">
+        <table>
             <tr>
                 <th>Hito</th>
                 <th>Descripción</th>
@@ -47,5 +47,3 @@ $tituloPagina = 'Planificación';
         </table>
     </section>
 </main>
-
-<?php require RUTA_VISTAS . 'plantillas/plantilla2.php'; ?>

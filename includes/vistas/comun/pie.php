@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="<?= RUTA_CSS . 'cssHeader.css?v=2' ?>">
-</head>
-
 <footer id="footer">
 <div class="footer-content">
         <!-- Navegación básica -->

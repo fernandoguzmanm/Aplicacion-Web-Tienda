@@ -1,6 +1,7 @@
 <?php
-require_once './includes/config.php';
 $tituloPagina = "Logout"; 
+require_once './includes/config.php';
+require RUTA_VISTAS . 'plantillas/plantilla2.php';
 ?>
 
 <body>
@@ -10,5 +11,3 @@ $tituloPagina = "Logout";
             <a href="index.php">Volver a la página principal</a>
     </div>
 </body>
-
-<?php require './includes/vistas/plantillas/plantilla2.php'; ?>

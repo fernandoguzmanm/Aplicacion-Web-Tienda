@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <?php require_once './includes/config.php';?>
 <head>
     <meta charset="UTF-8">

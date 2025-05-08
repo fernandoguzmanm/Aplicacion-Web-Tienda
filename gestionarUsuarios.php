@@ -1,12 +1,12 @@
 <?php
-require_once __DIR__.'/includes/config.php';
-require_once RUTA_INCLUDES . 'controladores/vendedorController.php';
-
 $tituloPagina = 'Admin';
+require_once __DIR__.'/includes/config.php';
+require RUTA_VISTAS . 'plantillas/plantilla2.php';
+require_once RUTA_INCLUDES . 'controladores/vendedorController.php';
 ?>
 <main>
 <h2>Gestión de Usuarios</h2>
-    <table border="1">
+    <table>
         <thead>
             <tr>
                 <th>ID</th>
@@ -33,5 +33,3 @@ $tituloPagina = 'Admin';
     </table>  
     <a href="<?= RUTA_APP . 'crearUsuario.php' ?>" class="btn">Crear Usuario</a>
 </main>
-
-<?php require './includes/vistas/plantillas/plantilla2.php'; ?>

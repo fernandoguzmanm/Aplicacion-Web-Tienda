@@ -1,5 +1,6 @@
 <?php 
 require_once './includes/config.php';
+require RUTA_VISTAS . 'plantillas/plantilla2.php';
 require_once RUTA_INCLUDES . 'formulariounidadescarrito.php';
 $tituloPagina = 'Producto';
 if (session_status() == PHP_SESSION_NONE) {
@@ -24,5 +25,3 @@ if (session_status() == PHP_SESSION_NONE) {
     <?php endif; ?>
     <a href="controller.php?controller=tienda&action=mostrarTienda" class="btn">Volver a la tienda</a>
 </main>
-
-<?php require RUTA_VISTAS . 'plantillas/plantilla2.php'; ?>

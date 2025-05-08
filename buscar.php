@@ -1,6 +1,7 @@
 <?php 
 $tituloPagina = 'Búsqueda';
 require_once './includes/config.php';
+require RUTA_VISTAS . 'plantillas/plantilla2.php';
 require_once RUTA_INCLUDES . 'formulariobuscar.php';
 require_once RUTA_INCLUDES . 'formulariounidadescarrito.php';
 if (session_status() == PHP_SESSION_NONE) {
@@ -40,5 +41,3 @@ if (session_status() == PHP_SESSION_NONE) {
         <?php endif; ?>
     </div>
 </body>
-
-<?php require RUTA_VISTAS . 'plantillas/plantilla2.php'; ?>

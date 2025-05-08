@@ -1,9 +1,9 @@
-<?php 
+<?php
+$tituloPagina = 'Usuario';
 require_once './includes/config.php';
-require_once RUTA_INCLUDES . 'Usuario.php';
+require RUTA_VISTAS . 'plantillas/plantilla2.php';
+require_once RUTA_INCLUDES . 'usuario.php';
 require_once RUTA_INCLUDES . 'formulariomodificarusuario.php';
-
-$tituloPagina = 'Modificar Usuario';
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -29,5 +29,3 @@ $htmlFormModificarUsuario = $form->gestiona();
     <?= $htmlFormModificarUsuario ?>
     <a href="index.php" class="btn">Volver</a>
 </main>
-
-<?php require './includes/vistas/plantillas/plantilla2.php'; ?>

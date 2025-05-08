@@ -1,5 +1,6 @@
 <?php 
 require_once './includes/config.php';
+require RUTA_VISTAS . 'plantillas/plantilla2.php';
 ?>
 
 <main>
@@ -12,4 +13,3 @@ require_once './includes/config.php';
     <?php endforeach; ?>
 </main>
 
-<?php require RUTA_VISTAS . 'plantillas/plantilla2.php'; ?>

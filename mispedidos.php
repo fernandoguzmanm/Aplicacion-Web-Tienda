@@ -1,9 +1,9 @@
 <?php 
+$tituloPagina = "Mis Pedidos";
 require_once './includes/config.php';
+require RUTA_VISTAS . 'plantillas/plantilla2.php';
 require_once RUTA_INCLUDES . 'controladores/mispedidosController.php';
 require_once RUTA_INCLUDES . 'producto.php';
-
-$tituloPagina = "Mis Pedidos";
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -115,5 +115,3 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== true): ?>
     </main>
 
 <?php endif; ?>
-
-<?php require RUTA_VISTAS . 'plantillas/plantilla2.php'; ?>

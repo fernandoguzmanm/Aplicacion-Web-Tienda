@@ -1,7 +1,8 @@
 <?php 
 $tituloPagina = 'Productos';
-
 require_once './includes/config.php';
+require RUTA_VISTAS . 'plantillas/plantilla2.php';
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -29,5 +30,3 @@ if (session_status() == PHP_SESSION_NONE) {
     </div>
     <a href="<?= RUTA_APP . 'crearProducto.php' ?>" class="btn">Crear Producto</a>
 </main>
-
-<?php require './includes/vistas/plantillas/plantilla2.php'; ?>

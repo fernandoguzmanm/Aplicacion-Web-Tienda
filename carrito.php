@@ -1,7 +1,8 @@
 <?php 
-require './includes/config.php';
-require_once RUTA_INCLUDES . 'formularioeliminarcarrito.php';
 $tituloPagina = "Carrito";
+require './includes/config.php';
+require RUTA_VISTAS . 'plantillas/plantilla2.php';
+require_once RUTA_INCLUDES . 'formularioeliminarcarrito.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -50,5 +51,3 @@ if (session_status() == PHP_SESSION_NONE) {
         <a href="<?php echo RUTA_APP . 'controller.php?controller=checkout&action=mostrarCheckout'; ?>" class="btn">Finalizar Compra</a>
     <?php endif; ?>
 </main>
-
-<?php require RUTA_VISTAS . 'plantillas/plantilla2.php'; ?>

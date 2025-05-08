@@ -2,20 +2,12 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-require_once './includes/config.php';
-require_once RUTA_INCLUDES . 'controladores/adminController.php';
 
 $tituloPagina = 'Admin';
+require_once './includes/config.php';
+require RUTA_VISTAS . 'plantillas/plantilla2.php';
+require_once RUTA_INCLUDES . 'controladores/adminController.php';
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consola de Administración</title>
-    <link rel="stylesheet" href="<?php echo RUTA_CSS . 'estilo.css'; ?>">
-</head>
 <body>
     <h2>Consola de Administración</h2>
     <p>Bienvenido, <?= htmlspecialchars($_SESSION['nombre']); ?>.</p>
@@ -27,5 +19,3 @@ $tituloPagina = 'Admin';
     </ul>
 </body>
 </html>
-
-<?php require './includes/vistas/plantillas/plantilla2.php'; ?>

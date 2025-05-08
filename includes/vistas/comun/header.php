@@ -6,10 +6,8 @@ if (session_status() == PHP_SESSION_NONE) {
 $carrito_count = isset($_SESSION['carrito']) ? array_sum(array_column($_SESSION['carrito'], 'cantidad')) : 0;
 ?>
 
-<!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
     <link rel="stylesheet" href="<?= URL_CSS . 'cssHeader.css?v=9' ?>">
 </head>
 <body>

@@ -1,8 +1,9 @@
 <?php 
+$tituloPagina = 'Producto';
 require_once './includes/config.php';
+require RUTA_VISTAS . 'plantillas/plantilla2.php';
 require_once RUTA_INCLUDES . 'formulariomodificarproducto.php';
 
-$tituloPagina = 'Admin';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -15,5 +16,3 @@ $htmlFormModificarProducto = $form->gestiona();
     <h2>Detalles del Producto</h2>
     <?= $htmlFormModificarProducto ?>
 </main>
-
-<?php require './includes/vistas/plantillas/plantilla2.php'; ?>

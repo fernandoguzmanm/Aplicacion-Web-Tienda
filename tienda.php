@@ -2,11 +2,13 @@
 $tituloPagina = 'Tienda';
 
 require_once './includes/config.php';
+require RUTA_VISTAS . 'plantillas/plantilla2.php';
 require_once RUTA_INCLUDES . 'formulariobuscar.php';
 require_once RUTA_INCLUDES . 'formulariounidadescarrito.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+ob_start();
 ?>
 
 <main>
@@ -17,7 +19,7 @@ if (session_status() == PHP_SESSION_NONE) {
         $form = new formulariobuscar();
         $htmlFormBuscar = $form->gestiona();
         ?>
-        <?= $htmlFormBuscar ?>
+        <?=$htmlFormBuscar?>
     </div>
 
     <div class="productos-container">
@@ -46,5 +48,3 @@ if (session_status() == PHP_SESSION_NONE) {
         <?php endif; ?>
     </div>
 </main>
-
-<?php require './includes/vistas/plantillas/plantilla2.php'; ?>

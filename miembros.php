@@ -1,3 +1,4 @@
+<?php require RUTA_VISTAS . 'plantillas/plantilla2.php'; ?>
 <main>
     <h2>Miembros del Grupo</h2>
     <ul>
@@ -15,5 +16,3 @@
         </div>
     <?php endforeach; ?>
 </main>
-
-<?php require './includes/vistas/plantillas/plantilla2.php'; ?>

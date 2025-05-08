@@ -1,8 +1,9 @@
 <?php
- if (session_status() == PHP_SESSION_NONE) {
-     session_start();
- }
- $tituloPagina = 'Detalles'; ?>
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+require RUTA_VISTAS . 'plantillas/plantilla2.php';
+$tituloPagina = 'Detalles'; ?>
 
 <main>
     <h2>Introducción</h2>
@@ -38,5 +39,3 @@
         <p><?= nl2br(htmlspecialchars($descripcion)) ?></p>
     <?php endforeach; ?>
 </main>
-
-<?php require './includes/vistas/plantillas/plantilla2.php'; ?>

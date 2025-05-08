@@ -1,7 +1,8 @@
 <?php 
 //require './includes/config.php';
-require_once RUTA_INCLUDES . 'formulariocheckout.php';
 $tituloPagina = "Checkout";
+require RUTA_VISTAS . 'plantillas/plantilla2.php';
+require_once RUTA_INCLUDES . 'formulariocheckout.php';
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -53,5 +54,3 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== true): ?>
     </main>
 
 <?php endif; ?>
-
-<?php require RUTA_VISTAS . 'plantillas/plantilla2.php'; ?>

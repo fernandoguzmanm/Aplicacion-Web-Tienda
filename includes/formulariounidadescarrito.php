@@ -56,7 +56,7 @@ class formulariounidadescarrito extends formularios
                 'id' => $id_producto,
                 'numero_unidades' => $numero_unidades
             ]);
-
+            
             header("Location: " . RUTA_APP . "controller.php?$queryString");
             exit();
         }

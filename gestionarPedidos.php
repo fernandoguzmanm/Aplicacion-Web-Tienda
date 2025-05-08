@@ -1,4 +1,6 @@
-<?php $tituloPagina = "Pedidos"; ?>
+<?php $tituloPagina = "Pedidos"; 
+require_once './includes/config.php';
+require RUTA_VISTAS . 'plantillas/plantilla2.php';?>
 
 <main>
     <h2>Gestión de Pedidos</h2>
@@ -15,7 +17,7 @@
                 <p><strong>Total:</strong> $<?= number_format($pedido->getTotal(), 2) ?></p>
 
                 <h3>Detalles del Pedido</h3>
-                <table border="1">
+                <table>
                     <thead>
                         <tr>
                             <th>ID Producto</th>
@@ -54,5 +56,3 @@
         <?php endforeach; ?>
     <?php endif; ?>
 </main>
-
-<?php require './includes/vistas/plantillas/plantilla2.php'; ?>
