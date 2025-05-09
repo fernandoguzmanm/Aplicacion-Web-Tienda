@@ -60,6 +60,15 @@ class VendedorController {
         }
     }
 
+    public function eliminarProducto($id_producto) {
+        $producto = $this->producto->obtenerProductoPorId($id_producto);
+        if ($producto) {
+            $this->producto->eliminarProducto($id_producto);
+        } else {
+            echo "Producto no encontrado.";
+        }
+    }
+
     public function getIdVendedor() {
         return $this->id_vendedor;
     }

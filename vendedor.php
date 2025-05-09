@@ -45,6 +45,7 @@ $totalVendido = 0;
                             <?= $htmlFormAnadirStock ?>
                             <?= $htmlFormEliminarStock ?>
 
+                            <a href="controller.php?controller=vendedor&action=eliminarProducto&id=<?php echo $producto->getIdProducto(); ?>" class="btn">Eliminar Producto</a>
                             <a href="controller.php?controller=vendedor&action=modificarProducto&id=<?php echo $producto->getIdProducto(); ?>" class="btn">Modificar Producto</a>
                         </td>
                     </tr>

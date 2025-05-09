@@ -1,5 +1,4 @@
 <?php
-// filepath: c:\xampp\htdocs\AW\includes\formulariomodificarproducto.php
 require_once RUTA_INCLUDES . 'formularios.php';
 require_once './includes/config.php';
 require_once __DIR__ . '/categoria.php';

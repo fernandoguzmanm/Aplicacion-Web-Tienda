@@ -102,6 +102,12 @@ if ($controlador === 'vendedor') {
                     $controller->modificarProducto($_GET['id']);
                     exit();
                 }
+            case 'eliminarProducto':
+                if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                    $controller->eliminarProducto($_GET['id']);
+                }
+                header("Location: controller.php?controller=vendedor&action=mostrarVendedor");
+                exit();
         }
     }
     header("Location: vendedor.php");
