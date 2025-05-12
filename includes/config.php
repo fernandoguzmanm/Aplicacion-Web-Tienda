@@ -2,17 +2,17 @@
 
 
 
-/*
+
 define('BD_HOST', 'vm019.db.swarm.test');
 define('BD_NAME', 'tienda');
 define('BD_USER', 'hola');
 define('BD_PASS', 'hola');
-*/
+/*
 define('BD_HOST', 'localhost');
 define('BD_NAME', 'tienda');
 define('BD_USER', 'rishi');
 define('BD_PASS', 'contrasenarishi');
-
+*/
 /**
  * Parámetros de configuración utilizados para generar las URLs y las rutas a ficheros en la aplicación
  */

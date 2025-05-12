@@ -108,11 +108,12 @@ class formularioregistro extends formularios
                 if (session_status() === PHP_SESSION_NONE) {
                     session_start();
                 }
-                $_SESSION['login'] = true;
-                $_SESSION['nombre'] = $nombre;
-                $_SESSION['id_usuario'] = $usuario->getId();
-                $_SESSION['rol'] = $tipoUsuario;
-
+                if (isset($_SESSION['login']) && $_SESSION['rol'] !== 'administrador') {
+                    $_SESSION['login'] = true;
+                    $_SESSION['nombre'] = $nombre;
+                    $_SESSION['id_usuario'] = $usuario->getId();
+                    $_SESSION['rol'] = $tipoUsuario;
+                }
                 $this->urlRedireccion = RUTA_APP . 'index.php';
             }
         }

@@ -97,8 +97,10 @@ class formularioModificarUsuario extends formularios
             $resultado = Usuario::modificarUsuario($id_usuario, $nombre, $email, $contraseña, $tipo_usuario, 0);
             
             if ($resultado) {
-                $_SESSION['nombre'] = $nombre;
-                $_SESSION['rol'] = $tipo_usuario;
+                if (isset($_SESSION['login']) && $_SESSION['rol'] !== 'administrador') {
+                    $_SESSION['nombre'] = $nombre;
+                    $_SESSION['rol'] = $tipo_usuario;
+                }
                 $this->urlRedireccion = RUTA_APP . 'index.php';
             } else {
                 $this->errores[] = 'Error al actualizar el usuario. Por favor, inténtalo de nuevo.';
