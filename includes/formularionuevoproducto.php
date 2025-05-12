@@ -9,6 +9,7 @@ class formularionuevoproducto extends formularios
     {
         parent::__construct('formNuevoProducto', [
             'method' => 'POST',
+            'enctype' => 'multipart/form-data',
             'action' => htmlspecialchars($_SERVER['REQUEST_URI']),
             'urlRedireccion' => RUTA_APP . 'controller.php?controller=admin&action=gestionarProductos'
         ]);
@@ -22,13 +23,10 @@ class formularionuevoproducto extends formularios
         $stock = $datos['stock'] ?? '';
         $id_categoria = $datos['id_categoria'] ?? '';
 
-        // Si el usuario es un vendedor, asigna automáticamente su id_usuario
         $id_vendedor = ($_SESSION['rol'] === 'vendedor') ? $_SESSION['id_usuario'] : ($datos['id_vendedor'] ?? '');
 
-        // Obtener todas las categorías desde la base de datos
         $categorias = Categoria::obtenerTodas();
 
-        // Generar las opciones del select para categorías
         $opcionesCategorias = '<option value="" ' . ($id_categoria == '' ? 'selected' : '') . '>Selecciona una categoría</option>';
         foreach ($categorias as $categoria) {
             $selected = ($id_categoria == $categoria->getIdCategoria()) ? 'selected' : '';
@@ -63,7 +61,6 @@ class formularionuevoproducto extends formularios
             </div>
         EOF;
 
-        // Solo muestra el campo de ID Vendedor si el usuario no es un vendedor
         if ($_SESSION['rol'] !== 'vendedor') {
             $html .= <<<EOF
             <div>
@@ -74,7 +71,6 @@ class formularionuevoproducto extends formularios
             EOF;
         }
 
-        // Agregar el select dinámico para categorías
         $html .= <<<EOF
             <div>
                 <label for="id_categoria">Categoría:</label>
@@ -85,7 +81,7 @@ class formularionuevoproducto extends formularios
             </div>
             <div>
                 <label for="imagen">Imagen:</label>
-                <input id="imagen" type="file" name="imagen" />
+                <input type="file" name="imagen" id="imagen" />
                 {$erroresCampos['imagen']}
             </div>
             <div>
@@ -107,7 +103,6 @@ class formularionuevoproducto extends formularios
         $stock = trim($datos['stock'] ?? '');
         $id_categoria = trim($datos['id_categoria'] ?? '');
 
-        // Asigna automáticamente el id_usuario del vendedor si el rol es vendedor
         $id_vendedor = ($_SESSION['rol'] === 'vendedor') ? $_SESSION['id_usuario'] : trim($datos['id_vendedor'] ?? '');
 
         if (!$nombre) {
@@ -134,17 +129,24 @@ class formularionuevoproducto extends formularios
             $this->errores['id_categoria'] = 'El ID de la categoría no puede estar vacío.';
         }
 
-        $imagen = $datos['imagen'] ?? null;
-        if (!empty($datos['imagen'])) {
-            $rutaImagen = RUTA_IMGS . 'productos/' . basename($datos['imagen']);
-            /*
-            if (move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaImagen)) {
-                $imagen = basename($_FILES['imagen']['name']);
-            } else {
-                $this->errores['imagen'] = 'Error al subir la imagen.';
-            }*/
-        }
+        $imagen = null;
+        if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+            $nombreArchivo = basename($_FILES['imagen']['name']);
+            $tipoArchivo = strtolower(pathinfo($nombreArchivo, PATHINFO_EXTENSION));
+            $tiposPermitidos = ['jpg', 'jpeg', 'png', 'gif'];
 
+            if (in_array($tipoArchivo, $tiposPermitidos)) {
+                $rutaImagen = RUTA_IMGS . 'productos/' . $nombreArchivo;
+
+                if (move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaImagen)) {
+                    $imagen = $nombreArchivo;
+                } else {
+                    $this->errores['imagen'] = 'Error al mover el archivo subido.';
+                }
+            } else {
+                $this->errores['imagen'] = 'Tipo de imagen no permitido.';
+            }
+        }
         if (count($this->errores) === 0) {
             $productoModel = new Producto(Aplicacion::getInstance()->getConexionBd());
             $resultado = $productoModel->añadirProducto($nombre, $descripcion, $precio, $stock, $id_vendedor, $id_categoria, $imagen);

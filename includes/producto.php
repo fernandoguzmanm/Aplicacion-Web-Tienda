@@ -192,6 +192,7 @@ class Producto {
         $query = "INSERT INTO productos (nombre, descripcion, precio, stock, id_vendedor, id_categoria, imagen) 
                   VALUES (?, ?, ?, ?, ?, ?, ?)";
         
+        
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("ssdiiis", $nombre, $descripcion, $precio, $stock, $id_vendedor, $id_categoria, $imagen);
         

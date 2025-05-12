@@ -1,5 +1,6 @@
 <?php
 require_once RUTA_INCLUDES . 'formularios.php';
+require_once RUTA_INCLUDES . 'producto.php';
 
 class formulariounidadescarrito extends formularios
 {
@@ -47,6 +48,19 @@ class formulariounidadescarrito extends formularios
 
         if (empty($numero_unidades) || !ctype_digit($numero_unidades) || (int)$numero_unidades < 1) {
             $this->errores['numero_unidades'] = 'Debe ingresar un número válido de unidades (mínimo 1).';
+        }
+
+        if (empty($this->errores)) {
+            $productoModel = new Producto(Aplicacion::getInstance()->getConexionBd());
+            $producto = $productoModel->obtenerProductoPorId($id_producto);
+            if (!$producto) {
+                $this->errores['id'] = 'El producto no existe.';
+            } else {
+                $stockDisponible = $productoModel->getStock();
+                if ((int)$numero_unidades > $stockDisponible) {
+                    $this->errores['numero_unidades'] = "El número de unidades no puede ser mayor al stock disponible ($stockDisponible).";
+                }
+            }
         }
         
         if (count($this->errores) === 0) {

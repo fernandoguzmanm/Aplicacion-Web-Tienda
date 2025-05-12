@@ -1,8 +1,8 @@
 <?php 
+$tituloPagina = 'Producto';
 require_once './includes/config.php';
 require RUTA_VISTAS . 'plantillas/plantilla2.php';
 require_once RUTA_INCLUDES . 'formulariounidadescarrito.php';
-$tituloPagina = 'Producto';
 if (session_status() == PHP_SESSION_NONE) {
 	session_start();
 }

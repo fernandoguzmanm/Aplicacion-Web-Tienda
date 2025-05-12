@@ -8,7 +8,11 @@ class formulariomodificarproducto extends formularios
     private $producto;
 
     public function __construct($producto) {
-        parent::__construct('formModificarProducto', ['urlRedireccion' => RUTA_APP . 'controller.php?controller=admin&action=gestionarProductos']);
+        parent::__construct('formModificarProducto', [
+            'urlRedireccion' => RUTA_APP . 'controller.php?controller=admin&action=gestionarProductos',
+            'method' => 'POST',
+            'enctype' => 'multipart/form-data'
+        ]);
         $this->producto = $producto;
     }
 
@@ -20,7 +24,7 @@ class formulariomodificarproducto extends formularios
         $stock = $datos['stock'] ?? $this->producto['stock'];
         $id_vendedor = $datos['id_vendedor'] ?? $this->producto['id_vendedor'];
         $id_categoria = $datos['id_categoria'] ?? $this->producto['id_categoria'];
-        $imagen = $datos['imagen'] ?? $this->producto['imagen'];
+        $imagen = $this->producto['imagen'];
 
         $categorias = Categoria::obtenerTodas();
 
@@ -71,6 +75,7 @@ class formulariomodificarproducto extends formularios
             <div>
                 <label for="imagen">Imagen:</label>
                 <input type="file" id="imagen" name="imagen">
+                <p>Imagen actual: $imagen</p>
                 {$erroresCampos['imagen']}
             </div>
             <input type="hidden" name="id_producto" value="{$this->producto['id_producto']}">
@@ -92,7 +97,7 @@ class formulariomodificarproducto extends formularios
         $stock = trim($datos['stock'] ?? '');
         $id_vendedor = trim($datos['id_vendedor'] ?? '');
         $id_categoria = trim($datos['id_categoria'] ?? '');
-        $imagen = trim($datos['id_categoria'] ?? '');
+        $imagen = $this->producto['imagen'];
 
         if (!$nombre) {
             $this->errores['nombre'] = 'El nombre no puede estar vacío.';
@@ -118,23 +123,28 @@ class formulariomodificarproducto extends formularios
             $this->errores['id_categoria'] = 'El ID de la categoría no puede estar vacío.';
         }
 
-        if (!empty($_FILES['imagen']['name'])) {
+        if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
             $nombreArchivo = basename($_FILES['imagen']['name']);
-            $rutaDestino = RUTA_IMGS . 'productos/' . $nombreArchivo;
+            $tipoArchivo = strtolower(pathinfo($nombreArchivo, PATHINFO_EXTENSION));
+            $tiposPermitidos = ['jpg', 'jpeg', 'png', 'gif'];
 
-            if (move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaDestino)) {
-                $imagen = $nombreArchivo;
+            if (in_array($tipoArchivo, $tiposPermitidos)) {
+                $rutaImagen = RUTA_IMGS . 'productos/' . $nombreArchivo;
+
+                if (move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaImagen)) {
+                    $imagen = $nombreArchivo;
+                } else {
+                    $this->errores['imagen'] = 'Error al mover el archivo subido.';
+                }
             } else {
-                $this->errores['imagen'] = 'Error al subir la imagen. Por favor, inténtalo de nuevo.';
+                $this->errores['imagen'] = 'Tipo de imagen no permitido.';
             }
-        } /*else {
-            $this->errores['imagen'] = 'Debes subir una imagen.';
-        }*/
-        
+        }
+
         if (count($this->errores) === 0) {
             $productoModel = new Producto(Aplicacion::getInstance()->getConexionBd());
             $resultado = $productoModel->modificarProducto($id_producto, $nombre, $descripcion, $precio, $stock, $id_vendedor, $id_categoria, $imagen);
-            
+
             if ($resultado) {
                 if ($_SESSION['rol'] === 'administrador') {
                     $this->urlRedireccion = RUTA_APP . 'controller.php?controller=admin&action=gestionarProductos';
